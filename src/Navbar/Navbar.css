@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: "Sevillana", cursive;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #c25757; /* Navbar background color */
+  color: white;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px; /* Adjust height as needed */
+  width: auto;
+  background-color: transparent; /* Ensure logo has no background color */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+    
+}
+
+.nav-links li {
+  margin: 0 15px;
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 5px; /* Adjust space between text and underline */
+  transition: 0.5s;
+}
+.nav-links a:hover{
+  color: rgb(255, 157, 45);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: rgb(255, 157, 45);
+  transition: width 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+.nav-links a:hover::after {
+  width: 100%; /* Underline extends across the entire link */
+
+}

@@ -1,5 +1,5 @@
 import './App.css'
-import Navbar from './Navbar'
+import Navbar from './Navbar/Navbar'
 
 function App() {
   return (
@@ -9,4 +9,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
