@@ -1,0 +1,145 @@
+/* Container to center the animated paragraph */
+.animated_container_tecn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+    padding: 2rem;
+    overflow: hidden;
+  }
+  
+  /* General styling for the paragraph */
+  .animated_para_tecn {
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: white;
+    line-height: 3.5rem;
+    font-family: "Nerko One", cursive;
+  }
+  
+  /* Line styles */
+  .line_tecn {
+    opacity: 0;
+    position: relative;
+    transform: translateX(0); /* Start in normal position */
+    transition: transform 1.5s ease, opacity 1.5s ease;
+  }
+  
+  /* Enter Animation */
+  .enter .line_tecn {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0); /* Reset to normal */
+  }
+  
+  /* Exit Animation */
+  .exit .line_tecn {
+    opacity: 0;
+  }
+  
+  /* Different directions for each line */
+  /* Line 1 comes from top-left */
+  .line-1 {
+    transform: translateX(-100vw) translateY(-100vh) rotate(-45deg);
+  }
+  
+  .enter .line-1 {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  
+  /* Line 2 comes from bottom-right */
+  .line-2 {
+    transform: translateX(100vw) translateY(100vh) rotate(45deg);
+  }
+  
+  .enter .line-2 {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  
+  /* Line 3 comes from top-right */
+  .line-3 {
+    transform: translateX(100vw) translateY(-100vh) rotate(-45deg);
+  }
+  
+  .enter .line-3 {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  
+  /* Line 4 comes from bottom-left */
+  .line-4 {
+    transform: translateX(-100vw) translateY(100vh) rotate(45deg);
+  }
+  
+  .enter .line-4 {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  
+  /* Line 5 comes from the left side */
+  .line-5 {
+    transform: translateX(-100vw) translateY(0) rotate(0deg);
+  }
+  
+  .enter .line-5 {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  
+  /* Line 6 comes from the right side */
+  .line-6 {
+    transform: translateX(100vw) translateY(0) rotate(0deg);
+  }
+  
+  .enter .line-6 {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  
+  /* Line 7 comes from the top */
+  .line-7 {
+    transform: translateY(-100vh) translateX(0) rotate(0deg);
+  }
+  
+  .enter .line-7 {
+    transform: translateY(0) translateX(0) rotate(0);
+  }
+  
+  /* Line 8 comes from the bottom */
+  .line-8 {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+  }
+  
+  .enter .line-8 {
+    transform: translateY(0) translateX(0) rotate(0);
+  }
+  
+  /* Exit: Lines go back the way they came */
+  .exit .line-1 {
+    transform: translateX(-100vw) translateY(-100vh) rotate(-45deg);
+  }
+  
+  .exit .line-2 {
+    transform: translateX(100vw) translateY(100vh) rotate(45deg);
+  }
+  
+  .exit .line-3 {
+    transform: translateX(100vw) translateY(-100vh) rotate(-45deg);
+  }
+  
+  .exit .line-4 {
+    transform: translateX(-100vw) translateY(100vh) rotate(45deg);
+  }
+  
+  .exit .line-5 {
+    transform: translateX(-100vw) translateY(0) rotate(0deg);
+  }
+  
+  .exit .line-6 {
+    transform: translateX(100vw) translateY(0) rotate(0deg);
+  }
+  
+  .exit .line-7 {
+    transform: translateY(-100vh) translateX(0) rotate(0deg);
+  }
+  
+  .exit .line-8 {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+  }
+  

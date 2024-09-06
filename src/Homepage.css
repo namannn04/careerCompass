@@ -1,0 +1,12 @@
+.home-page{
+    background: linear-gradient(
+    45deg,
+    rgb(36, 35, 35),
+    rgb(66, 63, 63),
+    rgb(67, 65, 65),
+    rgb(60, 58, 58)79%,
+    rgb(0, 128, 128) 87%,
+    rgb(60, 58, 58),
+    rgb(67, 66, 66)
+  );
+}
