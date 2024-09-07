@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./index.css";
+// import "./index.css";
 
 const BlogPost = ({
   title,
   author,
+  data,
   career,
   content,
   quote,
@@ -46,7 +47,8 @@ const BlogPost = ({
         <div className="quote">{quote}</div>
         <div className="quoteAuth">{quoteAuth}</div>
       </div>
-      <div className="head">Crafting a Career</div>
+      <div className="headBlog">Crafting a Career</div>
+      <div className="blogInfo">{data}</div>
       <h3 className="headAuth"> by {author}</h3>
       {content.map((section, index) => (
         <div

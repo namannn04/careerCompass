@@ -78,7 +78,7 @@ body {
     padding: 30px;
   }
   .careerCard:hover {
-    transform: scale(1.1) rotateX(15deg) rotateY(-10deg); 
+    transform: scale(1.05) rotateX(5deg) rotateY(-5deg); 
     box-shadow: 0 4px 8px #f9f9f9; 
     cursor:pointer;
   }
@@ -112,4 +112,11 @@ body {
     height:auto;
   }
   
-  
+.exploreButton{
+    padding:1rem;
+    border-radius:1rem;
+    margin-top:1rem;
+}
+.exploreButton:hover{
+    cursor:pointer;
+}

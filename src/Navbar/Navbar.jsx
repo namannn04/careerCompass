@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo-avatars/logo.png";
@@ -14,7 +13,7 @@ export default function Navbar() {
           <a href="#about">About</a>
         </li>
         <li className="navopt">
-        <Link to="/Career/Careers">Explore</Link>
+        <Link to="/Career">Explore</Link>
         </li>
         <li>
           <a href="#study-techniques">Strategies</a>

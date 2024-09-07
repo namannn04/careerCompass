@@ -1,22 +1,33 @@
 import React from "react";
-import mainImage from '/src/Career/main.png';
+import mainImage from "./main.png";
 import careerData from "./careerData";
+import { Link } from "react-router-dom";
 import './career.css';
-const Career = ({}) => {
-  const CareerCard = ({ category, image, careers }) => (
+import Navbar from "../Navbar/Navbar";
+import './subCar.css'
+const Career = () => {
+  const CareerCard = ({ id, category, image, careers }) => (
     <div className="careerCard">
       <h2 className="careerCategory">{category}</h2>
       <img src={image} alt={category} className="careerImage" />
-      <ul className="careerList">
-        {careers.map((career, index) => (
-          <li key={index}>{career}</li>
+      <div className="careerGrid">
+        {careers.slice(0, 3).map((career, index) => (
+          <div key={index} className="careerItem">
+            {career}
+          </div>
         ))}
-      </ul>
+      </div>
+      <Link to={`/category/${id}`}>
+        <button className="exploreButton">
+          Explore {category} Careers
+        </button>
+      </Link>
     </div>
   );
 
   return (
     <>
+      <Navbar/>
       <div className="main">
         <h1 className="carHead">Explore Careers</h1>
         <div className="Explore">
@@ -43,6 +54,7 @@ const Career = ({}) => {
         {careerData.map((card) => (
           <CareerCard
             key={card.id}
+            id={card.id}
             category={card.category}
             image={card.image}
             careers={card.careers}
