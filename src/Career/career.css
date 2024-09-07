@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    font-family: "EB Garamond", serif;
+    font-weight: 400;
+    background:rgb(36, 35, 35);
+    color:#f9f9f9;
+  }
+  .main{
+    background: linear-gradient(
+      45deg,
+      rgb(36, 35, 35),
+      rgb(66, 63, 63),
+      rgb(67, 65, 65),
+      rgb(60, 58, 58),
+      #fcb326,
+      rgb(60, 58, 58),
+      rgb(67, 66, 66)
+    );
+    color: #eeeeee;
+    height: 100vh;
+  }
+
+  .carHead {
+    margin-top:1em;
+    font-family: "Protest Riot";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4.2rem;
+    text-shadow: 3px 3px 5px rgb(255, 157, 45),
+      1px 1px 2px rgb(255, 157, 45);
+    text-align: center;
+  }
+  
+  .Explore {
+    font-size: 1.5rem;
+    display: flex;
+    padding: 1.7rem;
+  }
+  .exploreAbout {
+    text-align:center;
+    position:relative;
+    top:1rem;
+    margin-right: 11rem;
+  }
+  .explorePhoto img {
+    position: relative;
+    right: 7rem;
+    height: auto;
+    width: 300px;
+    border-radius: 1rem;
+  }
+  .byLine{
+    margin-top:4rem;
+    font-family: "Protest Riot";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+    text-shadow: 3px 3px 5px rgb(255, 157, 45),
+      1px 1px 2px rgb(255, 157, 45);
+    text-align: center;
+    margin-bottom:3rem;
+  }
+  .careerCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 35px;
+    padding: 30px;
+  }
+  
+  .careerCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #28282B;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    padding: 30px;
+  }
+  .careerCard:hover {
+    transform: scale(1.1) rotateX(15deg) rotateY(-10deg); 
+    box-shadow: 0 4px 8px #f9f9f9; 
+    cursor:pointer;
+  }
+  .careerImage {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .careerCategory {
+    font-family: "Protest Riot";
+    margin: 16px 0;
+    font-size: 1.7em;
+    color:#f9f9f9;
+    font-weight:100;
+    text-shadow: 2px 2px 3px rgb(255, 157, 45),
+      1px 1px 2px rgb(255, 157, 45);
+  }
+  
+  .careerList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .careerList li {
+    margin: 4px 0;
+    color:#f9f9f;
+  }
+  .careerImage{
+    width:200px;
+    height:auto;
+  }
+  
+  
