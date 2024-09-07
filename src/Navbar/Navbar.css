@@ -1,27 +1,30 @@
-body {
+* {
   margin: 0;
-  font-family: "Sevillana", cursive;
+  padding: 0;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #3c3b3b; /* Navbar background color */
+  background-color: transparent;
+  padding-top: 2rem;
   color: white;
-  position: fixed; /* Fixes the navbar at the top */
-  top: 0; /* Positions it at the top */
-  left: 0; /* Ensures it stretches across the full width */
   width: 100%; /* Ensures the navbar spans the full width of the viewport */
   z-index: 1000; /* Ensures the navbar is above other content */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a shadow to make the navbar stand out */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Adds a subtle border at the bottom */
 }
 
-.logo-container {
+.web_name {
   display: flex;
   align-items: center;
+  margin-left: 4rem;
+}
+
+.web_name a{
+  text-decoration: none;
+  color: white;
+  font-size: 2.1rem;
+  /* font-family: "Dosis", sans-serif; */
 }
 
 .logo {
@@ -52,6 +55,7 @@ body {
   padding-bottom: 5px; /* Adjust space between text and underline */
   transition: 0.5s;
   font-size: 1.1rem;
+  font-family: "Macondo", cursive;
 }
 .nav-links a:hover{
   color: #fcb326;

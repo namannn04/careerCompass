@@ -1,0 +1,37 @@
+.feature-container {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap; /* Prevents boxes from wrapping onto the next line */
+    padding: 10px;
+    gap: 20px; /* Adds space between the boxes */
+    scroll-behavior: smooth; /* Smooth scrolling effect */
+  }
+  
+  .feature-box {
+    min-width: 200px; /* Width of each box */
+    height: 150px; /* Height of each box */
+    background-color: #232c33; /* Dark background */
+    color: #fff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .feature-container::-webkit-scrollbar {
+    height: 8px; /* Height of scrollbar */
+  }
+  
+  .feature-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px;
+  }
+  
+  .feature-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Background of the scrollbar track */
+  }
+  

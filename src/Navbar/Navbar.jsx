@@ -5,8 +5,8 @@ import logo from "../assets/logo-avatars/logo.png";
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <div className="logo-container">
-        <a href="#home"><img src={logo} alt="Logo" className="logo"/></a>
+      <div className="web_name">
+        <a href="#home">careerCompass</a>
       </div>
       <ul className="nav-links">
         <li>
