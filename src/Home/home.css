@@ -1,40 +1,152 @@
 .homepage-container {
   display: flex;
-  height: 120vh;
-  margin-top: 3rem;
-  
+  justify-content: space-between;
+  /* align-items: center; */
+  height: 100vh;
+  padding: 20px;
 }
 
-.left-section,
+.left-section {
+  width: 50%;
+}
+
+.tagline_home {
+  font-family: 'Playfair Display', serif;
+
+  font-size: 4.5rem;
+  color: rgb(251, 251, 251);
+  margin-top: 7rem;
+  margin-left: 7rem;
+}
+
+.tagline2_home {
+  font-family: 'Playfair Display', serif;
+
+  font-size: 4.5rem;
+  color: rgb(135, 91, 201);
+  /* margin-top: 10rem; */
+  margin-left: 7rem;
+}
+
+.tagpara_home {
+  font-size: 1.5rem;
+  color: #ffffff; 
+  margin-top: 3rem;
+  margin-left: 7.2rem;
+}
+
 .right-section {
-  flex: 1;
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.left-section {
-  flex-direction: column;
+.right-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Outer container that holds the feature boxes and hides overflow */
+.slider-container {
+  width: 47rem; /* Full width of the visible area */
+  height: 10rem; /* Same height as the boxes */
+  overflow: hidden; /* Hide overflow to ensure no scrollbars are visible */
+  position: relative;
+  margin-left: 4rem;
+}
+
+/* Inner container for the feature boxes, set up for sliding */
+.feature-container {
+  display: flex;
+  width: fit-content; /* Dynamically adjust to the width of all boxes */
+  animation: slide 20s linear infinite; /* Smooth sliding animation */
+}
+
+/* Styling for each feature box */
+.feature-box {
+  width: 8rem; /* Width of each box */
+  height: 4rem;
+  margin-top: 4rem; /* Fixed height for each box */
+  background-color: #232c33; /* Dark background */
+  color: #fff; /* White text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  margin-right: 20px; /* Space between boxes */
   text-align: center;
 }
 
-.website-name {
-  font-size: 7rem;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  margin-bottom: 5rem;
-  margin-left: 3rem;
-  font-family: "Nerko One", cursive;
+/* Keyframes for smooth sliding */
+@keyframes slide {
+  0% {
+    transform: translateX(0); /* Start from the initial position */
+  }
+  100% {
+    transform: translateX(-50%); /* Slide the container by half its width */
+  }
 }
 
-.tagline {
-  font-size: 1.9rem;
-  color: #fcb326;
-  max-width: 80%;
-  margin-left: 7rem;
+
+.main_img {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  perspective: 1000px; /* Enables 3D space */
 }
 
-.avatar1 {
-  height: 25rem;
-  width: auto;
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  z-index: 1; /* Ensures it's behind rotating images */
+}
+
+.rotating-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Hides parts of images that go outside the container */
+}
+
+.rotating-image {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  animation: rotate-cross 10s infinite linear;
+  transform-origin: center;
+}
+
+.image1 {
+  top: 0;
+  left: 0;
+}
+
+.image2 {
+  top: 0;
+  right: 0;
+}
+
+@keyframes rotate-cross {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) translateX(0) translateY(0);
+  }
+  25% {
+    transform: rotateX(45deg) rotateY(45deg) translateX(100px) translateY(100px);
+  }
+  50% {
+    transform: rotateX(90deg) rotateY(90deg) translateX(200px) translateY(200px);
+  }
+  75% {
+    transform: rotateX(135deg) rotateY(135deg) translateX(100px) translateY(100px);
+  }
+  100% {
+    transform: rotateX(180deg) rotateY(180deg) translateX(0) translateY(0);
+  }
 }

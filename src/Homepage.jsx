@@ -11,9 +11,9 @@ export default function Homepage() {
       <div className='home-page'>
         <Navbar/> 
         <Home/> 
-        <About_q/>
-        <About_s/>
-        <Techn/>
+        {/* <About_q/> */}
+        {/* <About_s/> */}
+        {/* <Techn/> */}
         <Footer/>
       </div>
     )
