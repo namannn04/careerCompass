@@ -1,40 +1,40 @@
 .homepage-container {
-    display: flex;
-    height: 100vh; /* Full viewport height */
-    margin-top: 3rem;
-    background: linear-gradient(45deg, rgb(36, 35, 35), rgb(66, 63, 63),rgb(67, 65, 65),rgb(60, 58, 58),  #fcb326, rgb(60, 58, 58) ,rgb(67, 66, 66)); /* Background color of the page */
+  display: flex;
+  height: 120vh;
+  margin-top: 3rem;
+  
 }
 
-.left-section, .right-section {
-    flex: 1; /* Each section takes up 50% of the width */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.left-section,
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .left-section {
-    flex-direction: column; /* Stack items vertically */
-    text-align: center; /* Center-align text */
+  flex-direction: column;
+  text-align: center;
 }
 
 .website-name {
-    font-size: 5rem; /* Adjust size as needed */
-    font-weight: bold;
-    color: rgb(255, 255, 255); /* Text color */
-    margin-bottom: 5rem; /* Space between website name and tagline */
-    margin-left: 3rem;
-    font-family: "Matemasie", sans-serif;
+  font-size: 7rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  margin-bottom: 5rem;
+  margin-left: 3rem;
+  font-family: "Nerko One", cursive;
 }
 
 .tagline {
-    font-size: 1.9rem; /* Adjust size as needed */
-    color: #2dff42; /* Tagline color */
-    max-width: 80%; /* Prevent text from overflowing */
-    margin-left: 7rem;
+  font-size: 1.9rem;
+  color: #fcb326;
+  max-width: 80%;
+  margin-left: 7rem;
 }
 
-.avatar {
-    height: 30rem; /* Adjust height as needed */
-    width: auto;
-    border-radius: 50%; /* Make the avatar circular */
+.avatar1 {
+  height: 25rem;
+  width: auto;
 }
