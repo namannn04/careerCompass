@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import careerData from "./careerData";
 import './subCar.css';
 import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 const SubCareer = () => {
   const { id } = useParams();
   const selectedCategory = careerData.find((category) => category.id === parseInt(id));
@@ -31,6 +32,7 @@ const SubCareer = () => {
         ))}
       </div>
     </div>
+    <Footer/>
     </>
   );
 };

@@ -9,6 +9,7 @@ import blogData from "../Blog/blogData";
 import BlogPost from "../Blog/BlogPost";
 import './subCareer.css'; 
 import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 const CareerDetail = () => {
   const { careerName } = useParams();
@@ -123,6 +124,7 @@ const CareerDetail = () => {
         />
       )}
     </div>
+    <Footer/>
     </>
   );
 };

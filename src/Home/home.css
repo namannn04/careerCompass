@@ -68,7 +68,7 @@
 .feature-box {
   width: 9rem; /* Width of each box */
   height: 4rem;
-  margin-top: 4rem; /* Fixed height for each box */
+  margin-top: 3rem; /* Fixed height for each box */
   background-color: #232c33; /* Dark background */
   color: #fff; /* White text */
   display: flex;

@@ -4,6 +4,7 @@ import careerData from "./careerData";
 import { Link } from "react-router-dom";
 import './career.css';
 import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 import './subCar.css'
 const Career = () => {
   const CareerCard = ({ id, category, image, careers }) => (
@@ -61,6 +62,7 @@ const Career = () => {
           />
         ))}
       </div>
+      <Footer/>
     </>
   );
 };
