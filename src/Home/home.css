@@ -66,7 +66,7 @@
 
 /* Styling for each feature box */
 .feature-box {
-  width: 9rem; /* Width of each box */
+  width: 11rem; /* Width of each box */
   height: 4rem;
   margin-top: 3rem; /* Fixed height for each box */
   background-color: #232c33; /* Dark background */
@@ -92,63 +92,3 @@
   }
 }
 
-
-.main_img {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  perspective: 1000px; /* Enables 3D space */
-}
-
-.main-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  z-index: 1; /* Ensures it's behind rotating images */
-}
-
-.rotating-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* Hides parts of images that go outside the container */
-}
-
-.rotating-image {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  animation: rotate-cross 10s infinite linear;
-  transform-origin: center;
-}
-
-.image1 {
-  top: 0;
-  left: 0;
-}
-
-.image2 {
-  top: 0;
-  right: 0;
-}
-
-@keyframes rotate-cross {
-  0% {
-    transform: rotateX(0deg) rotateY(0deg) translateX(0) translateY(0);
-  }
-  25% {
-    transform: rotateX(45deg) rotateY(45deg) translateX(100px) translateY(100px);
-  }
-  50% {
-    transform: rotateX(90deg) rotateY(90deg) translateX(200px) translateY(200px);
-  }
-  75% {
-    transform: rotateX(135deg) rotateY(135deg) translateX(100px) translateY(100px);
-  }
-  100% {
-    transform: rotateX(180deg) rotateY(180deg) translateX(0) translateY(0);
-  }
-}
