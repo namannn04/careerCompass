@@ -66,7 +66,7 @@
 
 /* Styling for each feature box */
 .feature-box {
-  width: 8rem; /* Width of each box */
+  width: 9rem; /* Width of each box */
   height: 4rem;
   margin-top: 4rem; /* Fixed height for each box */
   background-color: #232c33; /* Dark background */
@@ -78,6 +78,8 @@
   border-radius: 10px;
   margin-right: 20px; /* Space between boxes */
   text-align: center;
+  font-family: "Macondo", cursive;
+
 }
 
 /* Keyframes for smooth sliding */

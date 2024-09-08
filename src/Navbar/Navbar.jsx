@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="web_name">
-        <a href="#home">careerCompass</a>
+      <Link to="/">careerCompass</Link>
       </div>
       <ul className="nav-links">
         <li>

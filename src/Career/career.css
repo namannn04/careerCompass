@@ -1,27 +1,13 @@
-body {
-    margin: 0;
-    font-family: "EB Garamond", serif;
-    font-weight: 400;
-    background:rgb(36, 35, 35);
-    color:#f9f9f9;
-  }
+
   .main{
-    background: linear-gradient(
-      45deg,
-      rgb(36, 35, 35),
-      rgb(66, 63, 63),
-      rgb(67, 65, 65),
-      rgb(60, 58, 58),
-      #fcb326,
-      rgb(60, 58, 58),
-      rgb(67, 66, 66)
-    );
+    background: linear-gradient(135deg, #232c33 0%, #2c363d 40%, #4f5b63 70%, #a0a7ac 100%);
     color: #eeeeee;
     height: 100vh;
+    margin-top: 6rem  ;
   }
 
   .carHead {
-    margin-top:1em;
+    /* margin-top:1em; */
     font-family: "Protest Riot";
     font-weight: 400;
     font-style: normal;
@@ -35,6 +21,7 @@ body {
     font-size: 1.5rem;
     display: flex;
     padding: 1.7rem;
+    margin-top: 5rem;
   }
   .exploreAbout {
     text-align:center;
@@ -55,9 +42,8 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 3rem;
-    text-shadow: 3px 3px 5px rgb(255, 157, 45),
-      1px 1px 2px rgb(255, 157, 45);
-    text-align: center;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+        text-align: center;
     margin-bottom:3rem;
   }
   .careerCards {
@@ -101,11 +87,12 @@ body {
   .careerList {
     list-style: none;
     padding: 0;
+    color: wheat;
   }
   
   .careerList li {
     margin: 4px 0;
-    color:#f9f9f;
+    color:#f9f9f9;
   }
   .careerImage{
     width:200px;
@@ -119,4 +106,8 @@ body {
 }
 .exploreButton:hover{
     cursor:pointer;
+}
+
+.careerItem{
+  color: white;
 }

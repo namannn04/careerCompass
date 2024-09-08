@@ -1,13 +1,18 @@
+.Subcar{
+  margin-top: 5rem  ;
+}
+
 .SubcareerGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 80px;
-    margin-top: 30px;
+    margin-top: 3rem;
     padding:2rem;
+    text-decoration: none;
   }
   
   .careerGridItem {
-    text-decoration:none;
+    /* text-decoration:none; */
     font-size:1.2rem;
     padding: 10px;
     text-align: center;
@@ -15,6 +20,7 @@
     border-radius: 5px;
     background-color: rgb(36, 35, 35);
     box-shadow: 0 2px 4px #f5f5f5;
+    color: white;
   }
   
   .careerGridItem:hover {
@@ -91,10 +97,13 @@
   }
   
   .head {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-weight: 500;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7),
+    text-shadow: 3px 3px 5px rgba(66, 65, 65, 0.7),
       1px 1px 2px rgba(255, 255, 255, 0.5);
+    color: white;
+    margin-top: 4rem;
+    padding: 2rem;
   }
   .headAuth {
     margin-left: 1rem;
