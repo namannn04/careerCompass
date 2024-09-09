@@ -42,7 +42,7 @@ export default function Navbar() {
         <div className="close-btn" onClick={toggleMenu}>
           &times; {/* Close icon */}
         </div>
-        <ul>
+        <ul className="side_menu_list">
           <li>
             <a href="#about" onClick={toggleMenu}>About</a>
           </li>
