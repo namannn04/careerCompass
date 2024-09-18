@@ -2,32 +2,22 @@ body {
     margin: 0;
     font-family: "EB Garamond", serif;
     font-weight: 400;
-    background:rgb(36, 35, 35);
+    /* background:rgb(36, 35, 35); */
     color:#f9f9f9;
+    background: linear-gradient(135deg, #232c33 0%, #2c363d 40%, #4f5b63 70%, #a0a7ac 100%);
   }
   .main{
-    background: linear-gradient(
-      45deg,
-      rgb(36, 35, 35),
-      rgb(66, 63, 63),
-      rgb(67, 65, 65),
-      rgb(60, 58, 58),
-      #fcb326,
-      rgb(60, 58, 58),
-      rgb(67, 66, 66)
-    );
-    color: #eeeeee;
     height: 100vh;
   }
 
   .carHead {
-    margin-top:1em;
     font-family: "Protest Riot";
     font-weight: 400;
+    margin-top:3.7rem;
     font-style: normal;
     font-size: 4.2rem;
-    text-shadow: 3px 3px 5px rgb(255, 157, 45),
-      1px 1px 2px rgb(255, 157, 45);
+    text-shadow: 3px 3px 5px black,
+      1px 1px 2px black;
     text-align: center;
   }
   
@@ -39,7 +29,8 @@ body {
   .exploreAbout {
     text-align:center;
     position:relative;
-    top:1rem;
+    top:3rem;
+    font-size:1.65rem;
     margin-right: 11rem;
   }
   .explorePhoto img {
@@ -55,14 +46,14 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 3rem;
-    text-shadow: 3px 3px 5px rgb(255, 157, 45),
-      1px 1px 2px rgb(255, 157, 45);
+    text-shadow: 3px 3px 5px black,
+      1px 1px 2px black;
     text-align: center;
     margin-bottom:3rem;
   }
   .careerCards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(4, 1fr); 
     gap: 35px;
     padding: 30px;
   }
@@ -72,14 +63,12 @@ body {
     border-radius: 8px;
     overflow: hidden;
     background: #28282B;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    transition: transform 0.3s ease; 
     padding: 30px;
   }
   .careerCard:hover {
     transform: scale(1.05) rotateX(5deg) rotateY(-5deg); 
-    box-shadow: 0 4px 8px #f9f9f9; 
     cursor:pointer;
   }
   .careerImage {
@@ -94,8 +83,8 @@ body {
     font-size: 1.7em;
     color:#f9f9f9;
     font-weight:100;
-    text-shadow: 2px 2px 3px rgb(255, 157, 45),
-      1px 1px 2px rgb(255, 157, 45);
+    text-shadow: 2px 2px 3px black,
+      1px 1px 2px black;
   }
   
   .careerList {
@@ -119,4 +108,8 @@ body {
 }
 .exploreButton:hover{
     cursor:pointer;
+}
+.exploreStart{
+  font-size:1.9rem;
+  color:#fcb326;
 }
