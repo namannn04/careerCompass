@@ -8,6 +8,8 @@ import careerDetails from "./careerDetails";
 import blogData from "../Blog/blogData";
 import BlogPost from "../Blog/BlogPost";
 import './subCareer.css'; 
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 const CareerDetail = () => {
   const { careerName } = useParams();
@@ -42,7 +44,10 @@ const CareerDetail = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="careerDetail">
+      
       <h1 className="carHead">{careerName}</h1>
 
       {/* Education Path with Animations */}
@@ -119,6 +124,7 @@ const CareerDetail = () => {
         />
       )}
     </div>
+    </>
   );
 };
 

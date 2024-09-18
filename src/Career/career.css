@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     margin: 0;
     font-family: "EB Garamond", serif;
@@ -9,8 +10,125 @@ body {
   .main{
     height: 100vh;
   }
+=======
+.main {
+  background: linear-gradient(135deg, #232c33 0%, #2c363d 40%, #4f5b63 70%, #a0a7ac 100%);
+  color: #eeeeee;
+  height: 100vh;
+  margin-top: 6rem;
+}
+>>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
 
+/* Large screens (default styles) */
+.carHead {
+  font-family: "Protest Riot";
+  font-weight: 400;
+  font-size: 4.2rem;
+  text-shadow: 3px 3px 5px rgb(255, 157, 45), 1px 1px 2px rgb(255, 157, 45);
+  text-align: center;
+}
+
+.Explore {
+  font-size: 1.5rem;
+  display: flex;
+  padding: 1.7rem;
+  margin-top: 5rem;
+}
+
+.exploreAbout {
+  text-align: center;
+  position: relative;
+  top: 1rem;
+  margin-right: 11rem;
+}
+
+.explorePhoto img {
+  position: relative;
+  right: 7rem;
+  height: auto;
+  width: 300px;
+  border-radius: 1rem;
+}
+
+.byLine {
+  margin-top: 4rem;
+  font-family: "Protest Riot";
+  font-weight: 400;
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgb(255, 255, 255);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.careerCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  padding: 30px;
+}
+
+.careerCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #28282B;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 30px;
+}
+
+.careerCard:hover {
+  transform: scale(1.05) rotateX(5deg) rotateY(-5deg);
+  box-shadow: 0 4px 8px #f9f9f9;
+  cursor: pointer;
+}
+
+.careerCategory {
+  font-family: "Protest Riot";
+  margin: 16px 0;
+  font-size: 1.7em;
+  color: #f9f9f9;
+  font-weight: 100;
+  text-shadow: 2px 2px 3px rgb(255, 157, 45), 1px 1px 2px rgb(255, 157, 45);
+}
+
+.careerList {
+  list-style: none;
+  padding: 0;
+  color: wheat;
+}
+
+.careerList li {
+  margin: 4px 0;
+  color: #f9f9f9;
+}
+
+.careerImage {
+  width: 200px;
+  height: auto;
+}
+
+.exploreButton {
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.exploreButton:hover {
+  cursor: pointer;
+}
+
+.careerItem {
+  color: white;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Tablet devices */
+@media (max-width: 1024px) {
   .carHead {
+<<<<<<< HEAD
     font-family: "Protest Riot";
     font-weight: 400;
     margin-top:3.7rem;
@@ -19,21 +137,33 @@ body {
     text-shadow: 3px 3px 5px black,
       1px 1px 2px black;
     text-align: center;
+=======
+    font-size: 3.5rem;
+>>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
   }
   
   .Explore {
-    font-size: 1.5rem;
-    display: flex;
-    padding: 1.7rem;
+    font-size: 1.2rem;
+    flex-direction: column;
+    margin-top: 3rem;
+    align-items: center;
   }
+
   .exploreAbout {
+<<<<<<< HEAD
     text-align:center;
     position:relative;
     top:3rem;
     font-size:1.65rem;
     margin-right: 11rem;
+=======
+    margin-right: 0;
+    top: 0;
+>>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
   }
+
   .explorePhoto img {
+<<<<<<< HEAD
     position: relative;
     right: 7rem;
     height: auto;
@@ -50,15 +180,56 @@ body {
       1px 1px 2px black;
     text-align: center;
     margin-bottom:3rem;
+=======
+    width: 250px;
+    right: 0;
+>>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
   }
+
   .careerCards {
+<<<<<<< HEAD
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     gap: 35px;
     padding: 30px;
+=======
+    grid-template-columns: repeat(2, 1fr); /* Show two columns instead of three */
+  }
+
+  .byLine {
+    font-size: 2.5rem;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .carHead {
+    font-size: 2.5rem;
+>>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
   }
   
+  .Explore {
+    font-size: 1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+
+  .explorePhoto img {
+    width: 200px;
+    right: 0;
+    margin-top: 4rem;
+  }
+
+  .careerCards {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+
+  .byLine {
+    font-size: 2rem;
+  }
+
   .careerCard {
+<<<<<<< HEAD
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
@@ -85,29 +256,14 @@ body {
     font-weight:100;
     text-shadow: 2px 2px 3px black,
       1px 1px 2px black;
+=======
+    padding: 20px;
   }
-  
-  .careerList {
-    list-style: none;
-    padding: 0;
+
+  .careerCategory {
+    font-size: 1.5rem;
+>>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
   }
-  
-  .careerList li {
-    margin: 4px 0;
-    color:#f9f9f;
-  }
-  .careerImage{
-    width:200px;
-    height:auto;
-  }
-  
-.exploreButton{
-    padding:1rem;
-    border-radius:1rem;
-    margin-top:1rem;
-}
-.exploreButton:hover{
-    cursor:pointer;
 }
 .exploreStart{
   font-size:1.9rem;

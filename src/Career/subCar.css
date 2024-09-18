@@ -1,186 +1,250 @@
+.Subcar {
+  margin-top: 5rem;
+}
+
 .SubcareerGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 80px;
-    margin-top: 30px;
-    padding:2rem;
-  }
-  
-  .careerGridItem {
-    text-decoration:none;
-    font-size:1.2rem;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #f5f5f5;
-    border-radius: 5px;
-    background-color: rgb(36, 35, 35);
-    box-shadow: 0 2px 4px #f5f5f5;
-  }
-  
-  .careerGridItem:hover {
-    background-color: #cfd7c7;
-    color:rgb(36, 35, 35);
-    cursor:pointer;
-  }
-  
-  .title {
-    margin-top: 20px;
-    font-weight: 600;
-    font-size: 4rem;
-    text-align: center;
-    color: #cfd7c7;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7),
-      1px 1px 2px rgba(255, 255, 255, 0.5);
-  }
-  
-  .quoteCont {
-    display: inline-block;
-    position: relative;
-    margin: 20px 0;
-    padding: 40px 60px;
-    background-color: #cfd7c7;
-    border-left: 5px solid #0b2027;
-    border-right: 5px solid #0b2027;
-    font-style: italic;
-    font-size: 2.3rem;
-    line-height: 1.6;
-    color: #0b2027;
-    margin-left: 2rem;
-    margin-top: 3rem;
-    border-radius: 1rem;
-    margin-bottom: 6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 80px;
+  margin-top: 3rem;
+  padding: 2rem;
+  text-decoration: none;
+}
+
+.careerGridItem {
+  font-size: 1.2rem;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+  background-color: rgb(36, 35, 35);
+  box-shadow: 0 2px 4px #f5f5f5;
+  color: white;
+}
+
+.careerGridItem:hover {
+  background-color: #cfd7c7;
+  color: rgb(36, 35, 35);
+  cursor: pointer;
+}
+
+.title {
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 4rem;
+  text-align: center;
+  color: #cfd7c7;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.quoteCont {
+  display: inline-block;
+  position: relative;
+  margin: 20px 0;
+  padding: 40px 60px;
+  background-color: #cfd7c7;
+  border-left: 5px solid #0b2027;
+  border-right: 5px solid #0b2027;
+  font-style: italic;
+  font-size: 2.3rem;
+  line-height: 1.6;
+  color: #0b2027;
+  margin-left: 2rem;
+  margin-top: 3rem;
+  border-radius: 1rem;
+  margin-bottom: 6rem;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideIn 3s forwards;
+}
+
+@keyframes slideIn {
+  from {
     opacity: 0;
-    transform: translateX(-50px);
-    animation: slideIn 3s forwards;
+    transform: translateX(-350px);
   }
-  
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateX(-350px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  .quoteCont::before {
-    content: "“";
+}
+
+.quoteCont::before {
+  content: "“";
+  font-size: 3rem;
+  color: #0b2027;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+}
+
+.quoteCont::after {
+  content: "”";
+  font-size: 3rem;
+  color: #0b2027;
+  position: absolute;
+  bottom: -20px;
+  right: 10px;
+}
+
+.quoteAuth {
+  text-align: right;
+  font-size: 1.4rem;
+  color: #0b2027;
+  margin-top: 10px;
+}
+
+.head {
+  font-size: 4.5rem;
+  font-weight: 500;
+  text-shadow: 3px 3px 5px rgba(66, 65, 65, 0.7), 1px 1px 2px rgba(255, 255, 255, 0.5);
+  color: white;
+  margin-top: 4rem;
+  padding: 2rem;
+}
+
+.headAuth {
+  margin-left: 1rem;
+  margin-bottom: 4rem;
+  font-size: 2rem;
+  font-weight: 500;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.qa-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  padding: 20px;
+  margin: 20px auto;
+  border: 1px solid #c4b2bc;
+  border-radius: 10px;
+  background-color: #cfd7c7;
+  cursor: pointer;
+  position: relative;
+}
+
+.qa-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.qa-section.transition-complete {
+  transition: none !important;
+}
+
+.qa-section:hover {
+  background-color: #a7aea0;
+}
+
+.question {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0b2027;
+}
+
+.answer {
+  font-size: 1.2rem;
+  color: #0b2027;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out;
+}
+
+.qa-section.active .answer {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.reveal-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #0b2027;
+  color: #cfd7c7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.reveal-button:hover {
+  background-color: #333;
+}
+
+.qa-section.custom-layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+.qa-section.custom-layout .qa-content {
+  flex: 1;
+}
+
+.qa-image img {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 10px;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Tablet devices */
+@media (max-width: 1024px) {
+  .SubcareerGrid {
+    gap: 40px;
+  }
+
+  .careerGridItem {
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  .title {
     font-size: 3rem;
-    color: #0b2027;
-    position: absolute;
-    top: -10px;
-    left: 10px;
   }
-  
-  .quoteCont::after {
-    content: "”";
-    font-size: 3rem;
-    color: #0b2027;
-    position: absolute;
-    bottom: -20px;
-    right: 10px;
+
+  .quoteCont {
+    padding: 30px 50px;
+    font-size: 2rem;
   }
-  
-  .quoteAuth {
-    text-align: right;
-    font-size: 1.4rem;
-    color: #0b2027;
-    margin-top: 10px;
-  }
-  
+
   .head {
     font-size: 3.5rem;
-    font-weight: 500;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7),
-      1px 1px 2px rgba(255, 255, 255, 0.5);
   }
-  .headAuth {
-    margin-left: 1rem;
-    margin-bottom: 4rem;
-    font-size: 2rem;
-    font-weight: 500;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7),
-      1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .Subcar {
+    margin-top: 3rem;
   }
-  .qa-section {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 80%;
-    padding: 20px;
-    margin: 20px auto;
-    border: 1px solid #c4b2bc;
-    border-radius: 10px;
-    background-color: #cfd7c7;
-    cursor: pointer;
-    position: relative;
+
+  .SubcareerGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
   }
-  
-  .qa-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .qa-section.transition-complete {
-    transition: none !important;
-  }
-  
-  .qa-section:hover {
-    background-color: #a7aea0;
-  }
-  
-  .question {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #0b2027;
-  }
-  
-  .answer {
-    font-size: 1.2rem;
-    color: #0b2027;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out;
-  }
-  
-  .qa-section.active .answer {
-    max-height: 500px;
-    opacity: 1;
-  }
-  
-  .reveal-button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #0b2027;
-    color: #cfd7c7;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+  .careerGridItem {
     font-size: 0.9rem;
-    transition: background-color 0.3s ease-in-out;
+    padding: 6px;
   }
-  
-  .reveal-button:hover {
-    background-color: #333;
+
+  .title {
+    font-size: 2.5rem;
   }
-  
-  .qa-section.custom-layout {
-    display: flex;
-    align-items: flex-start;
+
+  .quoteCont {
+    padding: 20px 30px;
+    font-size: 1.8rem;
   }
-  
-  .qa-section.custom-layout .qa-content {
-    flex: 1;
+
+  .head {
+    font-size: 3rem;
   }
-  
-  .qa-image img {
-    max-width: 300px;
-    max-height: 300px;
-    border-radius: 10px;
-  }
+}
