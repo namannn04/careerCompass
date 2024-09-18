@@ -9,8 +9,8 @@ import './subCar.css'
 const Career = () => {
   const CareerCard = ({ id, category, image, careers }) => (
     <div className="careerCard">
-      <h2 className="careerCategory">{category}</h2>
       <img src={image} alt={category} className="careerImage" />
+      <h2 className="careerCategory">{category}</h2>
       <div className="careerGrid">
         {careers.slice(0, 3).map((career, index) => (
           <div key={index} className="careerItem">
@@ -33,15 +33,12 @@ const Career = () => {
         <h1 className="carHead">Explore Careers</h1>
         <div className="Explore">
           <div className="exploreAbout">
-            In the Explore section, your journey to the perfect career starts
+            Your journey to the perfect career starts
             with ease. Discover a world of opportunities as our career cards
-            guide you step-by-step on how to excel in your chosen field,
-            highlighting the essential skills you'll need along the way. Dive
+            guide you step-by-step on how to excel in your chosen field. Dive
             deeper with expert insights through blogs that address the most
-            common questions students like you face. With clear, actionable
-            advice from professionals who’ve been there, our website ensures
-            you’re not just exploring careers, but charting a path to success.
-            Start your exploration now and find the career that’s right for you!
+            common questions students face.<br/><br/><br/><br/>
+            <div className="exploreStart">Start your exploration now and find the career that’s right for you!    <i class="fa-solid fa-arrow-right"></i></div>
           </div>
           <div className="explorePhoto">
             <img src={mainImage} alt="img" />
@@ -56,8 +53,8 @@ const Career = () => {
           <CareerCard
             key={card.id}
             id={card.id}
-            category={card.category}
             image={card.image}
+            category={card.category}
             careers={card.careers}
           />
         ))}
