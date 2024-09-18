@@ -3,3 +3,14 @@
     
 }
 
+html, body {
+    overflow: auto;
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;  /* For Firefox */
+  }
+  
+  /* For WebKit browsers (Chrome, Safari, etc.) */
+  html::-webkit-scrollbar, 
+  body::-webkit-scrollbar {
+    display: none;
+  }
