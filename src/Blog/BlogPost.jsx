@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import "./index.css";
+import "./blog.css"
 
 const BlogPost = ({
   title,

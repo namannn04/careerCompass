@@ -124,6 +124,7 @@ const CareerDetail = () => {
         />
       )}
     </div>
+    <Footer/>
     </>
   );
 };

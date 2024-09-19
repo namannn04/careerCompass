@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
 body {
     margin: 0;
     font-family: "EB Garamond", serif;
@@ -10,22 +10,23 @@ body {
   .main{
     height: 100vh;
   }
-=======
-.main {
+/* .main {
   background: linear-gradient(135deg, #232c33 0%, #2c363d 40%, #4f5b63 70%, #a0a7ac 100%);
   color: #eeeeee;
   height: 100vh;
   margin-top: 6rem;
-}
->>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
+} */
+/* >>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5 */
 
 /* Large screens (default styles) */
 .carHead {
   font-family: "Protest Riot";
   font-weight: 400;
   font-size: 4.2rem;
-  text-shadow: 3px 3px 5px rgb(255, 157, 45), 1px 1px 2px rgb(255, 157, 45);
+  /* text-shadow: 3px 3px 5px rgb(255, 157, 45), 1px 1px 2px rgb(0, 0, 0); */
   text-align: center;
+  margin-top: 7rem;
+  color: #fcb326;
 }
 
 .Explore {
@@ -38,16 +39,18 @@ body {
 .exploreAbout {
   text-align: center;
   position: relative;
-  top: 1rem;
   margin-right: 11rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 .explorePhoto img {
   position: relative;
   right: 7rem;
   height: auto;
-  width: 300px;
+  width: 20rem;
   border-radius: 1rem;
+  top: -50px;
 }
 
 .byLine {
@@ -55,7 +58,7 @@ body {
   font-family: "Protest Riot";
   font-weight: 400;
   font-size: 3rem;
-  text-shadow: 2px 2px 4px rgb(255, 255, 255);
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
   text-align: center;
   margin-bottom: 3rem;
 }
@@ -71,7 +74,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  background: #28282B;
+  background: rgba(40, 40, 43, 0.4);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -80,7 +83,7 @@ body {
 
 .careerCard:hover {
   transform: scale(1.05) rotateX(5deg) rotateY(-5deg);
-  box-shadow: 0 4px 8px #f9f9f9;
+  box-shadow: 0 4px 8px #000000;
   cursor: pointer;
 }
 
@@ -88,9 +91,9 @@ body {
   font-family: "Protest Riot";
   margin: 16px 0;
   font-size: 1.7em;
-  color: #f9f9f9;
+  color: #fcb326  ;
   font-weight: 100;
-  text-shadow: 2px 2px 3px rgb(255, 157, 45), 1px 1px 2px rgb(255, 157, 45);
+  /* text-shadow: 2px 2px 3px rgb(0, 0, 0), 1px 1px 2px rgb(135, 91, 201); */
 }
 
 .careerList {
@@ -128,18 +131,7 @@ body {
 /* Tablet devices */
 @media (max-width: 1024px) {
   .carHead {
-<<<<<<< HEAD
-    font-family: "Protest Riot";
-    font-weight: 400;
-    margin-top:3.7rem;
-    font-style: normal;
-    font-size: 4.2rem;
-    text-shadow: 3px 3px 5px black,
-      1px 1px 2px black;
-    text-align: center;
-=======
     font-size: 3.5rem;
->>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
   }
   
   .Explore {
@@ -150,49 +142,16 @@ body {
   }
 
   .exploreAbout {
-<<<<<<< HEAD
-    text-align:center;
-    position:relative;
-    top:3rem;
-    font-size:1.65rem;
-    margin-right: 11rem;
-=======
     margin-right: 0;
     top: 0;
->>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
   }
 
   .explorePhoto img {
-<<<<<<< HEAD
-    position: relative;
-    right: 7rem;
-    height: auto;
-    width: 300px;
-    border-radius: 1rem;
-  }
-  .byLine{
-    margin-top:4rem;
-    font-family: "Protest Riot";
-    font-weight: 400;
-    font-style: normal;
-    font-size: 3rem;
-    text-shadow: 3px 3px 5px black,
-      1px 1px 2px black;
-    text-align: center;
-    margin-bottom:3rem;
-=======
     width: 250px;
     right: 0;
->>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
   }
 
   .careerCards {
-<<<<<<< HEAD
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 35px;
-    padding: 30px;
-=======
     grid-template-columns: repeat(2, 1fr); /* Show two columns instead of three */
   }
 
@@ -205,7 +164,6 @@ body {
 @media (max-width: 768px) {
   .carHead {
     font-size: 2.5rem;
->>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
   }
   
   .Explore {
@@ -229,40 +187,11 @@ body {
   }
 
   .careerCard {
-<<<<<<< HEAD
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #28282B;
-    text-align: center;
-    transition: transform 0.3s ease; 
-    padding: 30px;
-  }
-  .careerCard:hover {
-    transform: scale(1.05) rotateX(5deg) rotateY(-5deg); 
-    cursor:pointer;
-  }
-  .careerImage {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .careerCategory {
-    font-family: "Protest Riot";
-    margin: 16px 0;
-    font-size: 1.7em;
-    color:#f9f9f9;
-    font-weight:100;
-    text-shadow: 2px 2px 3px black,
-      1px 1px 2px black;
-=======
     padding: 20px;
   }
 
   .careerCategory {
     font-size: 1.5rem;
->>>>>>> bd9eccf244b44e7e5c3670dc1ce52c95b886afa5
   }
 }
 .exploreStart{

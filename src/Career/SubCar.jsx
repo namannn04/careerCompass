@@ -5,6 +5,7 @@ import careerData from "./careerData";
 import './subCar.css';
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+
 const SubCareer = () => {
   const { id } = useParams();
   const selectedCategory = careerData.find((category) => category.id === parseInt(id));
@@ -15,24 +16,23 @@ const SubCareer = () => {
 
   return (
     <>
-    <Navbar/>
-    <div className="Subcar">
-      
-      <h1 className="carHead">{selectedCategory.category}</h1>
-      <h3 className="head">Careers in {selectedCategory.category}:</h3>
-      <div className="SubcareerGrid">
-        {selectedCategory.careers.map((career, index) => (
-          <Link 
-            to={`/career/${encodeURIComponent(career)}`} 
-            key={index} 
-            className="careerGridItemLink"
-          >
-            <div className="careerGridItem">{career}</div>
-          </Link>
-        ))}
+      <Navbar/>
+      <div className="Subcar-subcar">
+        {/* <h1 className="carHead-subcar">{selectedCategory.category}</h1> */}
+        <h3 className="head-subcar">Careers in {selectedCategory.category}:</h3>
+        <div className="SubcareerGrid-subcar">
+          {selectedCategory.careers.map((career, index) => (
+            <Link 
+              to={`/career/${encodeURIComponent(career)}`} 
+              key={index} 
+              className="careerGridItemLink-subcar"
+            >
+              <div className="careerGridItem-subcar">{career}</div>
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
-    <Footer/>
+      <Footer/>
     </>
   );
 };

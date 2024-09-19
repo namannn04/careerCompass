@@ -1,43 +1,56 @@
-.Subcar {
+.Subcar-subcar {
   margin-top: 5rem;
 }
 
-.SubcareerGrid {
+.SubcareerGrid-subcar {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 80px;
   margin-top: 3rem;
-  padding: 2rem;
+  padding-top: 2rem;
+  padding-right: 7rem;
+  padding-left: 7rem;
+  padding-bottom: 7rem;
   text-decoration: none;
 }
 
-.careerGridItem {
+.careerGridItem-subcar {
   font-size: 1.2rem;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   border: 1px solid #f5f5f5;
-  border-radius: 5px;
+  border-radius: 20px;
   background-color: rgb(36, 35, 35);
-  box-shadow: 0 2px 4px #f5f5f5;
+  box-shadow: 2px 2px 4px #f5f5f5;
   color: white;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
 }
 
-.careerGridItem:hover {
+.careerGridItem-subcar:hover {
   background-color: #cfd7c7;
   color: rgb(36, 35, 35);
   cursor: pointer;
+  box-shadow: 2px 2px 4px #000000;
+
 }
 
-.title {
+.title-subcar {
   margin-top: 20px;
   font-weight: 600;
   font-size: 4rem;
   text-align: center;
   color: #cfd7c7;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 1px 1px 2px rgba(255, 255, 255, 0.5);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7),
+    1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-.quoteCont {
+.careerGridItemLink-subcar {
+  text-decoration: none;
+}
+
+.quoteCont-subcar {
   display: inline-block;
   position: relative;
   margin: 20px 0;
@@ -69,7 +82,7 @@
   }
 }
 
-.quoteCont::before {
+.quoteCont-subcar::before {
   content: "“";
   font-size: 3rem;
   color: #0b2027;
@@ -78,7 +91,7 @@
   left: 10px;
 }
 
-.quoteCont::after {
+.quoteCont-subcar::after {
   content: "”";
   font-size: 3rem;
   color: #0b2027;
@@ -87,31 +100,34 @@
   right: 10px;
 }
 
-.quoteAuth {
+.quoteAuth-subcar {
   text-align: right;
   font-size: 1.4rem;
   color: #0b2027;
   margin-top: 10px;
 }
 
-.head {
-  font-size: 4.5rem;
+.head-subcar {
+  font-size: 4rem;
   font-weight: 500;
-  text-shadow: 3px 3px 5px rgba(66, 65, 65, 0.7), 1px 1px 2px rgba(255, 255, 255, 0.5);
-  color: white;
+  text-shadow: 3px 3px 5px rgba(66, 65, 65, 0.7),
+    1px 1px 2px rgba(255, 255, 255, 0.5);
+  color: #fcb326;
   margin-top: 4rem;
+  text-align: center;
   padding: 2rem;
 }
 
-.headAuth {
+.headAuth-subcar {
   margin-left: 1rem;
   margin-bottom: 4rem;
   font-size: 2rem;
   font-weight: 500;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 1px 1px 2px rgba(255, 255, 255, 0.5);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7),
+    1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-.qa-section {
+.qa-section-subcar {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
@@ -128,26 +144,26 @@
   position: relative;
 }
 
-.qa-section.visible {
+.qa-section-subcar.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.qa-section.transition-complete {
+.qa-section-subcar.transition-complete {
   transition: none !important;
 }
 
-.qa-section:hover {
+.qa-section-subcar:hover {
   background-color: #a7aea0;
 }
 
-.question {
+.question-subcar {
   font-size: 1.5rem;
   font-weight: 600;
   color: #0b2027;
 }
 
-.answer {
+.answer-subcar {
   font-size: 1.2rem;
   color: #0b2027;
   max-height: 0;
@@ -156,12 +172,12 @@
   transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out;
 }
 
-.qa-section.active .answer {
+.qa-section-subcar.active .answer-subcar {
   max-height: 500px;
   opacity: 1;
 }
 
-.reveal-button {
+.reveal-button-subcar {
   margin-top: 10px;
   padding: 5px 10px;
   background-color: #0b2027;
@@ -173,20 +189,20 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.reveal-button:hover {
+.reveal-button-subcar:hover {
   background-color: #333;
 }
 
-.qa-section.custom-layout {
+.qa-section-subcar.custom-layout {
   display: flex;
   align-items: flex-start;
 }
 
-.qa-section.custom-layout .qa-content {
+.qa-section-subcar.custom-layout .qa-content-subcar {
   flex: 1;
 }
 
-.qa-image img {
+.qa-image-subcar img {
   max-width: 300px;
   max-height: 300px;
   border-radius: 10px;
@@ -196,55 +212,55 @@
 
 /* Tablet devices */
 @media (max-width: 1024px) {
-  .SubcareerGrid {
+  .SubcareerGrid-subcar {
     gap: 40px;
   }
 
-  .careerGridItem {
+  .careerGridItem-subcar {
     font-size: 1rem;
     padding: 8px;
   }
 
-  .title {
+  .title-subcar {
     font-size: 3rem;
   }
 
-  .quoteCont {
+  .quoteCont-subcar {
     padding: 30px 50px;
     font-size: 2rem;
   }
 
-  .head {
+  .head-subcar {
     font-size: 3.5rem;
   }
 }
 
 /* Mobile devices */
 @media (max-width: 768px) {
-  .Subcar {
+  .Subcar-subcar {
     margin-top: 3rem;
   }
 
-  .SubcareerGrid {
+  .SubcareerGrid-subcar {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
   }
 
-  .careerGridItem {
+  .careerGridItem-subcar {
     font-size: 0.9rem;
     padding: 6px;
   }
 
-  .title {
+  .title-subcar {
     font-size: 2.5rem;
   }
 
-  .quoteCont {
+  .quoteCont-subcar {
     padding: 20px 30px;
     font-size: 1.8rem;
   }
 
-  .head {
+  .head-subcar {
     font-size: 3rem;
   }
 }

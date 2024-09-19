@@ -67,7 +67,7 @@ html, body {
 .top-left-about1::before {
   right: -30px;
   bottom: -30px;
-  box-shadow: 0 0 0 10px rgba(255, 157, 45, 0.9);
+  box-shadow: 0 0 0 10px rgba(135, 91, 201, 0.9);
 }
 
 .top-right-about1 {
@@ -78,7 +78,7 @@ html, body {
 .top-right-about1::before {
   left: -30px;
   bottom: -30px;
-  box-shadow: 0 0 0 10px rgba(255, 157, 45, 0.9);
+  box-shadow: 0 0 0 10px rgba(135, 91, 201, 0.9);
 }
 
 .bottom-left-about1 {
@@ -89,7 +89,7 @@ html, body {
 .bottom-left-about1::before {
   right: -30px;
   top: -30px;
-  box-shadow: 0 0 0 10px rgba(255, 157, 45, 0.9);
+  box-shadow: 0 0 0 10px rgba(135, 91, 201, 0.9);
 }
 
 .bottom-right-about1 {
@@ -100,7 +100,7 @@ html, body {
 .bottom-right-about1::before {
   left: -30px;
   top: -30px;
-  box-shadow: 0 0 0 10px rgba(255, 157, 45, 0.9);
+  box-shadow: 0 0 0 10px rgba(135, 91, 201, 0.9);
 }
 
 /* Responsive Design */

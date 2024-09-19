@@ -1,12 +1,14 @@
 * {
     margin: 0;
   }
+body{ 
+  background: linear-gradient(135deg, #232c33 0%, #2c363d 40%, #4f5b63 70%, #a0a7ac 100%);
+}
   .careerDetail {
     color: #fff;
     padding: 20px;
-    background: linear-gradient(135deg, #232c33 0%, #2c363d 40%, #4f5b63 70%, #a0a7ac 100%);
     background-size:cover;
-    margin-top: 6rem;
+    padding-bottom: 60px;
   }
   
   .timeline {
@@ -15,6 +17,11 @@
     height: 100vh;
   }
   
+  .exploreButton{
+    margin-bottom: 30px;
+    margin-left: 3rem;
+  }
+
   .line {
     position: absolute;
     left: 50%;
@@ -99,6 +106,7 @@
     text-align:center;
     margin-top:9rem;
     font-size:3rem;
+    color: #fcb326;
   }
   
   /* Add this for consistent size of skill cards */
