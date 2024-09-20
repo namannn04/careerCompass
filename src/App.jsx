@@ -15,6 +15,7 @@ function App() {
         <Route path="/career" element={<Career />} /> 
         <Route path="/category/:id" element={<SubCareer/>} />
         <Route path="/career/:careerName" element={<CareerDetail/>} /> 
+        {/* <Route path="/Strategies" element={<Strategiess/>} />  */}
       </Routes>
     </Router>
   )

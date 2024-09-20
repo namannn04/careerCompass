@@ -30,7 +30,7 @@ export default function Navbar() {
           <Link to="/Career">Explore</Link>
         </li>
         <li>
-          <a href="#study-techniques">Strategies</a>
+          <a href="/Strategies">Strategies</a>
         </li>
         <li>
           <a href="#counseling">Contact</a>
@@ -50,7 +50,7 @@ export default function Navbar() {
             <Link to="/Career" onClick={toggleMenu}>Explore</Link>
           </li>
           <li>
-            <a href="#study-techniques" onClick={toggleMenu}>Strategies</a>
+            <a href="/Strategies" onClick={toggleMenu}>Strategies</a>
           </li>
           <li>
             <a href="#counseling" onClick={toggleMenu}>Contact</a>
