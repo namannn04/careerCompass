@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { HashLink } from 'react-router-hash-link'; 
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,7 +25,7 @@ export default function Navbar() {
       {/* Normal links for larger screens */}
       <ul className="nav-links">
         <li>
-          <a href="#about">About</a>
+        <HashLink smooth to="/#about">About</HashLink>
         </li>
         <li>
           <Link to="/Career">Explore</Link>
