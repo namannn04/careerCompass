@@ -31,7 +31,7 @@ export default function Navbar() {
           <Link to="/Career">Explore</Link>
         </li>
         <li>
-          <a href="/Strategies">Strategies</a>
+          <Link to ="/Strategies">Strategies</Link>
         </li>
         <li>
           <a href="#counseling">Contact</a>
