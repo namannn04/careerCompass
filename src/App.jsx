@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Career from './Career/Careers'; 
 import SubCareer from './Career/SubCar';
 import CareerDetail from './Career/SubCareerDetails';
+import Strategies from './Strategies/stratFront';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path="/career" element={<Career />} /> 
         <Route path="/category/:id" element={<SubCareer/>} />
         <Route path="/career/:careerName" element={<CareerDetail/>} /> 
-        {/* <Route path="/Strategies" element={<Strategiess/>} />  */}
+        <Route path="/Strategies" element={<Strategies/>} /> 
       </Routes>
     </Router>
   )
