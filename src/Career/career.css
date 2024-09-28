@@ -65,7 +65,7 @@ body {
 
 .careerCards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusts columns dynamically */
+  grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Adjusts columns dynamically */
   gap: 35px;
   padding: 30px;
 }
