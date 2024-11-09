@@ -83,14 +83,14 @@ const BlogPost = ({
               {activeIndex === index ? "Hide Answer" : "Click to Reveal Answer"}
             </button>
           </div>
-          {section.imageUrl && (
+          {/* {section.imageUrl && (
             <div className="qa-image">
               <img
                 src={section.imageUrl}
                 alt={` ${section.question}`}
               />
             </div>
-          )}
+          )} */}
         </div>
       ))}
     </div>

@@ -1,11 +1,5 @@
 const careerDetails = {
   "Software Engineer": {
-    educationPath: [
-      "Take Physics, Chemistry, and Mathematics (PCM) in high school (Class 11-12).",
-      "Qualify JEE Mains/Advanced to secure admission to top engineering colleges.",
-      "Pursue a B.Tech in Computer Science or a related field (4 years).",
-      "If required, pursue a Master's in Computer Science (M.Tech/MS) or specialized certifications.",
-    ],
     resources: {
       online: [
         "Coursera (courses on programming, algorithms, data structures)",

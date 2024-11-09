@@ -1,0 +1,143 @@
+*{
+    padding:0;
+    margin:0;
+  }
+  
+  .main-heading{
+      font-size:3rem;
+      color:#EAEAEA;
+      text-align:center;
+      padding:1rem;
+      padding-bottom:1rem;
+      margin-top:5rem;
+      width: fit-content;
+  }
+  
+  
+  .flowchart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align to left */
+    padding: 20px;
+    font-family: "Arial", sans-serif;
+    background-color: #1c1c1c;
+    color: #f2f2f2;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .flowchart-level {
+    display: flex;
+    align-items: center; /* Align boxes with the head */
+    margin: 20px 0;
+    position: relative;
+  }
+  
+  .flowchart-head {
+      --r: .8em; /* control the cutout */
+      
+      border-block: .5em solid #0000;
+      padding-inline: .5em calc(var(--r) + .25em);
+      line-height: 1.8;
+      clip-path: polygon(100% 0,0 0,0 100%,100% 100%,calc(100% - var(--r)) calc(100% - .25em),100% 50%,calc(100% - var(--r)) .25em);
+      background:
+       radial-gradient(.2em 50% at left,#000a,#0000) border-box,
+       #45ADA8 padding-box; /* the color  */
+      width: fit-content;
+     background-color: #EAEAEA;
+    color: #3A3335;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-right: 20px; /* Space between head and boxes */
+    text-align: center;
+    position: relative;
+    min-width: 280px;
+    z-index: 1;
+    font-size: 1rem;
+  }
+  
+  .flowchart-branches {
+    display: flex;
+    flex-wrap: wrap; /* Allow boxes to wrap into a new row */
+    gap: 10px; /* Space between boxes */
+  }
+  
+  .flowchart-box {
+    background-color: #3A3335;
+    color: #EAEAEA;
+    z-index: 1;
+    border: 2px solid #ccc;
+    padding: 15px 30px;
+    border-radius: 10px;
+    margin: 5px;
+    text-align: center;
+    box-shadow: 0 2px 2px #EAEAEA;
+    height: 4rem;
+    position: relative;
+    left: 4rem;
+    font-size: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 150px;
+    max-width: 350px;
+  }
+  
+  .flowchart-line {
+    height: 2px;
+    width: 100px; /* Adjust line length between head and boxes */
+    background-color: #ccc;
+    position: absolute;
+    top: 50%;
+    left: 280px; /* Adjust based on the size of the flowchart-head */
+    z-index: 1;
+  }
+  
+  /* Vertical connecting line for flowchart heads
+  .flowchart-head::before {
+    content: "";
+    position: absolute;
+    top: -20px; /* Adjust this to change the vertical position */
+    left: 50%;
+    width: 2px;
+    height: 2px; /* Length of the vertical line above the head */
+    background-color: #ccc;
+    z-index: 0;
+  } */
+  
+  .flowchart-head::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 70px; /* Length of the vertical line below the head */
+    background-color: #ccc;
+    z-index: 0;
+  }
+  
+  /* Remove the top line from the first flowchart-head */
+  .flowchart-level:first-child .flowchart-head::before {
+    height: 0;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .flowchart-box {
+      font-size: 0.9rem;
+    }
+    .flowchart-head {
+      min-width: 100px;
+    }
+    .flowchart-line {
+      width: 50px; /* Shorten lines for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .flowchart-box {
+      font-size: 0.8rem;
+    }
+    .main-heading {
+      font-size: 1.2rem;
+    }
+  }
+  
