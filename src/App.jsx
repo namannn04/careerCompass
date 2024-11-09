@@ -1,19 +1,16 @@
 import './App.css';
-import Home from './Home/home';
 import Homepage from './Homepage';
-import Navbar from './Navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Career from './Career/Careers'; 
 import SubCareer from './Career/SubCar';
 import CareerDetail from './Career/SubCareerDetails';
 import Strategies from './Strategies/stratFront';
-// Import the custom Background component, not from react-flow-renderer
-import Background from './Background';  // Adjust the path if necessary
+import Background from './Background';
+import './index.css';
 
 function App() {
   return (
     <Router>
-      {/* Add your custom Background component */}
       <Background />
       <Routes>
         <Route path="/" element={<Homepage />} /> 

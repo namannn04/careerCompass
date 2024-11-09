@@ -1,118 +1,159 @@
-/* Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  font-size: 16px;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(120deg, #f0f0f0, #e0e0e0);
-  overflow-y: scroll; /* Enable vertical scrolling */
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-/* Container Styles */
-.about-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 2rem;
-}
-
-/* Section Styles */
-.about-section {
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.3rem;
   position: relative;
-  width: 100%;
-  height: 80vh; /* Adjusted for visibility */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* Prevents overflow */
 }
 
-/* Box Styles */
-.box {
-  position: absolute;
-  width: 15rem;
-  height: 8rem;
-  background-color: rgba(255, 157, 45, 0.9);
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 1.2rem;
+@media (min-width: 48rem) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card.gradient {
+  background: linear-gradient(to bottom right, #6b46c1, #d53f8c);
   color: white;
-  transition: transform 0.5s, opacity 0.5s;
-  opacity: 0; /* Start with boxes hidden */
-  animation: fadeIn 1s forwards; /* Animation for appearing */
+  z-index: 1;
 }
 
-/* Box Positions */
-.top-left {
-  top: 5%;
-  left: 5%;
-  animation-delay: 0.1s;
+.card:nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
-.top-right {
-  top: 5%;
-  right: 5%;
-  animation-delay: 0.2s;
+.card:nth-child(2) {
+  grid-column: span 1;
+  grid-row: span 1;
 }
 
-.bottom-left {
-  bottom: 5%;
-  left: 5%;
-  animation-delay: 0.3s;
+.card:nth-child(3) {
+  grid-column: span 1;
+  grid-row: span 1;
 }
 
-.bottom-right {
-  bottom: 5%;
-  right: 5%;
-  animation-delay: 0.4s;
+.card:nth-child(4) {
+  grid-column: span 1;
+  grid-row: span 1;
 }
 
-/* Image Styles */
-.center-image {
-  position: relative;
-  z-index: 10;
-  width: 30%;
-  height: auto;
-  animation: zoomIn 1s forwards; /* Animation for image */
+.card:nth-child(5) {
+  grid-column: span 1;
+  grid-row: span 2;
 }
 
-/* Keyframes */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+.card:nth-child(6) {
+  grid-column: span 1;
+  grid-row: span 1;
 }
 
-@keyframes zoomIn {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
+.card:nth-child(7) {
+  grid-column: span 1;
+  grid-row: span 1;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .box {
-    width: 80%;
-    height: 5rem;
-    font-size: 1rem;
-  }
+.card:nth-child(8) {
+  grid-column: span 1;
+  grid-row: span 1;
+}
 
-  .center-image {
-    width: 70%;
-  }
+.secondary {
+  background-color: #f6e05e;
+}
+
+.secondary:hover {
+  background-color: #fbd38d;
+}
+
+.blue {
+  background-color: #3182ce;
+  color: white;
+}
+
+.green {
+  background-color: #c6f6d5;
+}
+
+.red {
+  background-color: #f56565;
+  color: white;
+}
+
+.red:hover {
+  background-color: #e53e3e;
+}
+
+.indigo {
+  background-color: #ebf8ff;
+}
+
+.orange {
+  background: linear-gradient(to right, #f6ad55, #e53e3e);
+  color: white;
+}
+
+.cyan {
+  background-color: #81e6d9;
+}
+
+.cyan:hover {
+  background-color: #b2f5ea;
+}
+
+h2, h3 {
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-center {
+  text-align: center;
 }
