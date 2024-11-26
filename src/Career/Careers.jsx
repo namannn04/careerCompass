@@ -3,9 +3,10 @@ import mainImage from "./main.png";
 import careerData from "./careerData";
 import { Link } from "react-router-dom";
 import './career.css';
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
 import './subCar.css'
+import Navbar from "../Components/Navbar/Navbar";
+import Footer from "../Components/Footer/Footer";
+
 const Career = () => {
   const CareerCard = ({ id, category, image, careers }) => (
     <div className="careerCard">

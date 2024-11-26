@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import "./stratFront.css";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
-import strat1 from "../assets/logo-avatars/strat1.png";
+import "../Strategies/stratFront.css";
+import strat1 from "../../assets/logo-avatars/strat1.png";
+import Navbar from "../../Components/Navbar/Navbar";
+import Footer from "../../Components/Footer/Footer";
 
 const Button = ({ children, className, ...props }) => (
   <button className={`explore-button ${className}`} {...props}>
@@ -45,7 +45,7 @@ const Strategies = () => {
 
   return (
     <div className="cool-dark-ui-page">
-      <Navbar />
+      <Navbar/>
       <div className="container">
         <motion.div
           className="background-blob background-blob-1"
@@ -208,7 +208,7 @@ const Strategies = () => {
           </motion.div>
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   );
 };

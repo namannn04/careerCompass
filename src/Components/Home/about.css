@@ -1,0 +1,116 @@
+@keyframes gather {
+  0% {
+    transform: translate3d(var(--initial-x), var(--initial-y), 0) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes disperse {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--initial-x), var(--initial-y), 0) scale(0);
+    opacity: 0;
+  }
+}
+
+.card {
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  --initial-x: calc(-50vw + 100px); /* Default origin */
+  --initial-y: calc(-50vh + 100px);
+}
+
+.card:nth-child(1) {
+  --initial-x: -100vw;
+  --initial-y: -100vh;
+}
+
+.card:nth-child(2) {
+  --initial-x: 100vw;
+  --initial-y: -100vh;
+}
+
+.card:nth-child(3) {
+  --initial-x: -100vw;
+  --initial-y: 100vh;
+}
+
+.card:nth-child(4) {
+  --initial-x: 100vw;
+  --initial-y: 100vh;
+}
+
+.card:nth-child(5) {
+  --initial-x: -50vw;
+  --initial-y: 100vh;
+}
+
+.card:nth-child(6) {
+  --initial-x: 50vw;
+  --initial-y: -100vh;
+}
+
+.animate-gather .card {
+  animation: gather 1s ease-in-out forwards;
+}
+
+.animate-disperse .card {
+  animation: disperse 1s ease-in-out forwards;
+}
+
+/* Default grid layout for large screens (same as your original) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
+  gap: 1.5rem;
+}
+
+/* Responsive adjustments for small devices */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr; /* 1 column per row for small devices */
+  }
+
+  .card {
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    margin: 0 auto;
+  }
+
+  /* Animation for cards to slide in */
+  .card:nth-child(odd) {
+    animation-name: slide-in-left;
+  }
+
+  .card:nth-child(even) {
+    animation-name: slide-in-right;
+  }
+
+  @keyframes slide-in-left {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
