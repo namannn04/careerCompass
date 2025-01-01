@@ -22,7 +22,7 @@
 
 .card {
   transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-  --initial-x: calc(-50vw + 100px); /* Default origin */
+  --initial-x: calc(-50vw + 100px);
   --initial-y: calc(-50vh + 100px);
 }
 
@@ -64,17 +64,16 @@
   animation: disperse 1s ease-in-out forwards;
 }
 
-/* Default grid layout for large screens (same as your original) */
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
-/* Responsive adjustments for small devices */
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: 1fr; /* 1 column per row for small devices */
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .card {
