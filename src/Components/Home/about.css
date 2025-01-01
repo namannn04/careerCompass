@@ -1,3 +1,9 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 @keyframes gather-once {
   0% {
     transform: translate3d(var(--initial-x), var(--initial-y), 0) scale(0);
@@ -14,12 +20,12 @@
 }
 
 .hidden-before-animation {
-  opacity: 0; /* Initially hidden */
+  opacity: 0;
   visibility: hidden;
 }
 
 .animate-gather-once {
-  opacity: 1; /* Visible after animation starts */
+  opacity: 1;
   visibility: visible;
 }
 
@@ -77,7 +83,6 @@
     margin: 0 auto;
   }
 
-  /* Animation for cards to slide in */
   .card:nth-child(odd) {
     animation-name: slide-in-left;
   }
