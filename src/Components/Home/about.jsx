@@ -40,13 +40,17 @@ const Badge = ({ children, className }) => {
 };
 
 export default function About() {
-  const [inView, setInView] = useState(false);
+  const [animationPlayed, setAnimationPlayed] = useState(false);
   const sectionRef = useRef(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setInView(entry.isIntersecting);
+        if (entry.isIntersecting && !animationPlayed) {
+          setAnimationPlayed(true); // Animation play hogi pehli baar.
+          setHasAnimated(true);
+        }
       },
       { threshold: 0.5 }
     );
@@ -60,13 +64,13 @@ export default function About() {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
+  }, [hasAnimated]);
 
   return (
     <div
       ref={sectionRef}
       className={`relative max-w-screen-xl mx-auto px-4 py-6 min-h-screen ${
-        inView ? "animate-gather" : "animate-disperse"
+        animationPlayed ? "animate-gather-once" : "hidden-before-animation"
       }`}
     >
       <div className="grid">

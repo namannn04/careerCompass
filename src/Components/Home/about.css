@@ -1,4 +1,4 @@
-@keyframes gather {
+@keyframes gather-once {
   0% {
     transform: translate3d(var(--initial-x), var(--initial-y), 0) scale(0);
     opacity: 0;
@@ -9,15 +9,18 @@
   }
 }
 
-@keyframes disperse {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(var(--initial-x), var(--initial-y), 0) scale(0);
-    opacity: 0;
-  }
+.animate-gather-once .card {
+  animation: gather-once 1s ease-in-out forwards;
+}
+
+.hidden-before-animation {
+  opacity: 0; /* Initially hidden */
+  visibility: hidden;
+}
+
+.animate-gather-once {
+  opacity: 1; /* Visible after animation starts */
+  visibility: visible;
 }
 
 .card {
@@ -54,14 +57,6 @@
 .card:nth-child(6) {
   --initial-x: 50vw;
   --initial-y: -100vh;
-}
-
-.animate-gather .card {
-  animation: gather 1s ease-in-out forwards;
-}
-
-.animate-disperse .card {
-  animation: disperse 1s ease-in-out forwards;
 }
 
 .grid {
