@@ -34,7 +34,7 @@ export default function Navbar() {
           <Link to ="/strategies">Strategies</Link>
         </li>
         <li>
-          <a href="#counseling">Contact</a>
+          <a href="#contact">Contact</a>
         </li>
       </ul>
 
@@ -54,7 +54,7 @@ export default function Navbar() {
             <Link to="/strategies" onClick={toggleMenu}>Strategies</Link>
           </li>
           <li>
-            <a href="#counseling" onClick={toggleMenu}>Contact</a>
+            <a href="#contact" onClick={toggleMenu}>Contact</a>
           </li>
         </ul>
       </div>

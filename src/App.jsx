@@ -18,7 +18,7 @@ function App() {
         <Route path="/career" element={<Career />} /> 
         <Route path="/category/:id" element={<SubCareer />} />
         <Route path="/career/:careerName" element={<CareerDetail />} /> 
-        <Route path="/strategies" element={<Strategies />} /> 
+        <Route path="/strategies" element={<Strategies />} />
       </Routes>
     </Router>
   );
