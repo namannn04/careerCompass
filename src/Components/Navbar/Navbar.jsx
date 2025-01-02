@@ -34,7 +34,7 @@ export default function Navbar() {
           <Link to ="/strategies">Strategies</Link>
         </li>
         <li>
-          <a href="#contact">Contact</a>
+          <HashLink smooth to="/#contact">Contact</HashLink>
         </li>
       </ul>
 
