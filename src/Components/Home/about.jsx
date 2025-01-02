@@ -68,10 +68,11 @@ export default function About() {
 
   return (
     <div
-      ref={sectionRef}
-      className={`relative max-w-screen-xl mx-auto px-4 py-6 min-h-screen ${
+      ref={sectionRef} id="about"
+      className={`relative max-w-screen-xl mx-auto px-4 my-40 min-h-screen ${
         animationPlayed ? "animate-gather-once" : "hidden-before-animation"
-      }`}
+      }`
+    }
     >
       <div className="grid">
         <Card className="col-span-2 row-span-2 bg-gradient-to-br from-purple-700 to-pink-600 text-white">
