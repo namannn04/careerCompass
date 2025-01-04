@@ -6,8 +6,7 @@ import SubCareer from './Career/SubCar';
 import CareerDetail from './Career/SubCareerDetails';
 import Background from './Background';
 import './index.css';
-import Strategiess from './Pages/Strategies';
-import Strategies from './Components/Strategies/stratFront';
+import Strategies from './Pages/Strategies';
 
 function App() {
   return (

@@ -1,13 +1,15 @@
 import Footer from "../Components/Footer/Footer";
 import Navbar from "../Components/Navbar/Navbar";
-import Strategies from "../Components/Strategies/stratFront";
+import StratFront from "../Components/Strategies/stratFront";
 
-const Strategiess = () => {
-  <div className="Strategies">
-    <Navbar />
-    <Strategies />
-    <Footer />
-  </div>;
-}
+const Strategies = () => {
+  return (
+    <div>
+      <Navbar />
+      <StratFront />
+      <Footer />
+    </div>
+  );
+};
 
-export default Strategiess;
+export default Strategies;

@@ -1,7 +1,7 @@
 * {
   margin: 0;
 }
-body {
+/* body {
   background: linear-gradient(
     135deg,
     #232c33 0%,
@@ -9,7 +9,7 @@ body {
     #4f5b63 70%,
     #a0a7ac 100%
   );
-}
+} */
 .careerDetail {
   color: #fff;
   padding: 20px;
