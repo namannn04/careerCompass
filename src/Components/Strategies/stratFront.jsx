@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 const stratFront = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -7,12 +7,12 @@ const stratFront = () => {
 
   const handleHover = () => {
     setIsHovered(!isHovered);
-    controls.start(isHovered ? 'initial' : 'hover');
+    controls.start(isHovered ? "initial" : "hover");
   };
 
   const buttonVariants = {
-    initial: { scale: 1, boxShadow: '0px 0px 8px rgb(109, 40, 217)' },
-    hover: { scale: 1.05, boxShadow: '0px 0px 20px rgb(109, 40, 217)' },
+    initial: { scale: 1, boxShadow: "0px 0px 8px rgb(109, 40, 217)" },
+    hover: { scale: 1.05, boxShadow: "0px 0px 20px rgb(109, 40, 217)" },
   };
 
   return (
@@ -22,10 +22,10 @@ const stratFront = () => {
         <motion.div
           className="absolute inset-0 opacity-30"
           animate={{
-            backgroundPosition: ['0% 0%', '100% 100%'],
-            backgroundSize: ['100% 100%', '200% 200%'],
+            backgroundPosition: ["0% 0%", "100% 100%"],
+            backgroundSize: ["100% 100%", "200% 200%"],
           }}
-          transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
+          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
@@ -50,7 +50,7 @@ const stratFront = () => {
           transition={{
             duration: Math.random() * 10 + 10,
             repeat: Infinity,
-            repeatType: 'reverse',
+            repeatType: "reverse",
           }}
         />
       ))}
@@ -78,17 +78,19 @@ const stratFront = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
         >
-          <motion.button
-            className="px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-300"
-            variants={buttonVariants}
-            initial="initial"
-            animate={controls}
-            onHoverStart={handleHover}
-            onHoverEnd={handleHover}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get Started
-          </motion.button>
+          <a href="#strat">
+            <motion.button
+              className="px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-300"
+              variants={buttonVariants}
+              initial="initial"
+              animate={controls}
+              onHoverStart={handleHover}
+              onHoverEnd={handleHover}
+              whileTap={{ scale: 0.95 }}
+            >
+              Get Started
+            </motion.button>
+          </a>
         </motion.div>
       </div>
 
@@ -103,7 +105,7 @@ const stratFront = () => {
         transition={{
           duration: 15,
           repeat: Infinity,
-          repeatType: 'reverse',
+          repeatType: "reverse",
         }}
       />
       <motion.div
@@ -116,7 +118,7 @@ const stratFront = () => {
         transition={{
           duration: 18,
           repeat: Infinity,
-          repeatType: 'reverse',
+          repeatType: "reverse",
         }}
       />
 

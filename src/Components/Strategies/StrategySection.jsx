@@ -153,7 +153,7 @@ const StrategySection = () => {
   };
 
   return (
-    <div className="mt-20 text-gray-100 min-h-screen py-10 px-6">
+    <div id="strat" className="mt-20 text-gray-100 min-h-screen py-10 px-6">
       {/* Header Section */}
       <header className="text-center mb-12">
         <h1 className="text-4xl font-extrabold text-blue-400">
