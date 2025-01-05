@@ -1,5 +1,6 @@
 import Footer from "../Components/Footer/Footer";
 import Navbar from "../Components/Navbar/Navbar";
+import StrategySection from "../Components/Strategies/StrategySection";
 import StratFront from "../Components/Strategies/stratFront";
 
 const Strategies = () => {
@@ -7,6 +8,8 @@ const Strategies = () => {
     <div>
       <Navbar />
       <StratFront />
+      <hr/>
+      <StrategySection />
       <Footer />
     </div>
   );

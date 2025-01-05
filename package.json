@@ -13,6 +13,7 @@
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@headlessui/react": "^2.2.0",
     "@mui/icons-material": "^6.0.2",
     "@mui/material": "^6.0.1",
     "@radix-ui/react-slot": "^1.1.0",
