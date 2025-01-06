@@ -58,7 +58,7 @@ const stratFront = () => {
       {/* Main content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
         <motion.h1
-          className="text-6xl sm:text-7xl md:text-8xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
+          className="text-6xl sm:text-7xl md:text-8xl font-extrabold mb-6 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
