@@ -7,11 +7,13 @@ import CareerDetail from './Career/SubCareerDetails';
 import Background from './Background';
 import './index.css';
 import Strategies from './Pages/Strategies';
+import ScrollToTop from './Components/ui/ScrollToTop';
 
 function App() {
   return (
     <Router>
       <Background />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Homepage />} /> 
         <Route path="/career" element={<Career />} /> 
