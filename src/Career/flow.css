@@ -104,7 +104,7 @@
   } 
   
   .flowchart-head::after {
-    content: "";
+    /* content: "";
     position: absolute;
     top: 100%;
     left: 50%;
@@ -112,7 +112,7 @@
     height: 70px; /* Length of the vertical line below the head */
     background-color: #ccc;
     z-index: 0;
-  }
+  } */
   
   /* Remove the top line from the first flowchart-head */
   .flowchart-level:first-child .flowchart-head::before {
