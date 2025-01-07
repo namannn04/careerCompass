@@ -31,7 +31,11 @@ const Career = () => {
             </div>
           ))}
         </div>
-        <Link to={`/category/${id}`}><button className="bg-[#4ded62] text-xl px-3 h-10 w-32 mt-7 rounded-3xl text-black">Explore</button></Link>
+        <Link to={`/category/${id}`}>
+          <button className="bg-[#4ded62] text-xl px-3 h-10 w-32 mt-7 rounded-3xl text-black">
+            Explore
+          </button>
+        </Link>
       </div>
     </div>
   );
@@ -79,7 +83,7 @@ const Career = () => {
       <div className="relative z-10 mt-20 pt-20 pb-32 md:pt-32 md:pb-40 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-36"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -91,14 +95,16 @@ const Career = () => {
               Explore endless possibilities and find the perfect path that
               aligns with your passions and skills.
             </p>
-            <motion.div
-              className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-blue-700 cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Start Exploring
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </motion.div>
+            <a href="#careers">
+              <motion.div
+                className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-blue-700 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Exploring
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </motion.div>
+            </a>
           </motion.div>
 
           <div className="flex flex-col md:flex-row items-center justify-between">
@@ -191,6 +197,7 @@ const Career = () => {
 
       <motion.div
         className="byLine bg-blue-600 text-white p-4 text-center text-3xl font-semibold"
+        id="careers"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
