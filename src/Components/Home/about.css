@@ -78,38 +78,6 @@ body, html {
   }
 
   .card {
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
     margin: 0 auto;
-  }
-
-  .card:nth-child(odd) {
-    animation-name: slide-in-left;
-  }
-
-  .card:nth-child(even) {
-    animation-name: slide-in-right;
-  }
-
-  @keyframes slide-in-left {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes slide-in-right {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
   }
 }
