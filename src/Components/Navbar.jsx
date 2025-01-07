@@ -12,20 +12,18 @@ export default function Navbar() {
 
   return (
     <nav className="flex justify-between items-center w-full px-4 md:pl-32 md:pr-36 md:pt-10 pt-4 bg-transparent text-white z-50 relative">
-      {/* Logo for all views */}
       <div className="text-3xl md:text-4xl font-semibold">
         <Link to="/" className="hover:text-yellow-400 transition">
           careerCompass
         </Link>
       </div>
 
-      {/* Hamburger Icon for Mobile View */}
       <button
         className="block md:hidden text-3xl"
         onClick={toggleMenu}
         aria-label="Toggle Menu"
       >
-        {menuOpen ? "✖" : "☰"} {/* Hamburger changes to cross */}
+        {menuOpen ? "✖" : "☰"}
       </button>
 
       {/* Normal Links for Desktop View */}
@@ -89,14 +87,12 @@ export default function Navbar() {
         } z-40`}
       >
         <div className="flex justify-between items-center px-4 py-4">
-          {/* Logo in Mobile Dropdown */}
           <div className="text-3xl font-semibold">
             <Link to="/" onClick={() => setMenuOpen(false)}>
               careerCompass
             </Link>
           </div>
 
-          {/* Close Icon */}
           <button
             className="text-3xl"
             onClick={toggleMenu}
