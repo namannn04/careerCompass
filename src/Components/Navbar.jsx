@@ -1,14 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  // Function to handle link click
+  const handleLinkClick = (link) => {
+    setActiveLink(link); // Set active link
+    setMenuOpen(false); // Close the menu for mobile view
+  };
+
+  // Sync active link with the current path
+  useState(() => {
+    setActiveLink(location.pathname + location.hash);
+  }, [location]);
 
   return (
     <nav className="flex justify-between items-center w-full px-4 md:pl-32 md:pr-36 md:pt-10 pt-4 bg-transparent text-white z-50 relative">
@@ -32,50 +44,78 @@ export default function Navbar() {
           <HashLink
             smooth
             to="/#about"
-            className="relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1"
+            className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
+              activeLink === "/#about" ? "text-[#fcb326]" : ""
+            }`}
             style={{
               fontFamily: "'Sevillana', cursive",
             }}
+            onClick={() => handleLinkClick("/#about")}
           >
             About
-            <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326] scale-x-0 transition-transform duration-300 ease-out origin-left group-hover:scale-x-100"></span>
+            <span
+              className={`absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left ${
+                activeLink === "/#about" ? "scale-x-100" : "scale-x-0"
+              }`}
+            ></span>
           </HashLink>
         </li>
         <li className="group relative">
           <Link
             to="/Career"
-            className="relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1"
+            className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
+              activeLink === "/Career" ? "text-[#fcb326]" : ""
+            }`}
             style={{
               fontFamily: "'Sevillana', cursive",
             }}
+            onClick={() => handleLinkClick("/Career")}
           >
             Explore
-            <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326] scale-x-0 transition-transform duration-300 ease-out origin-left group-hover:scale-x-100"></span>
+            <span
+              className={`absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left ${
+                activeLink === "/Career" ? "scale-x-100" : "scale-x-0"
+              }`}
+            ></span>
           </Link>
         </li>
         <li className="group relative">
           <Link
             to="/strategies"
-            className="relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1"
+            className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
+              activeLink === "/strategies" ? "text-[#fcb326]" : ""
+            }`}
             style={{
               fontFamily: "'Sevillana', cursive",
             }}
+            onClick={() => handleLinkClick("/strategies")}
           >
             Strategies
-            <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326] scale-x-0 transition-transform duration-300 ease-out origin-left group-hover:scale-x-100"></span>
+            <span
+              className={`absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326]  scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left ${
+                activeLink === "/strategies" ? "scale-x-100" : "scale-x-0"
+              }`}
+            ></span>
           </Link>
         </li>
         <li className="group relative">
           <HashLink
             smooth
             to="/#contact"
-            className="relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1"
+            className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
+              activeLink === "/#contact" ? "text-[#fcb326]" : ""
+            }`}
             style={{
               fontFamily: "'Sevillana', cursive",
             }}
+            onClick={() => handleLinkClick("/#contact")}
           >
             Contact
-            <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326] scale-x-0 transition-transform duration-300 ease-out origin-left group-hover:scale-x-100"></span>
+            <span
+              className={`absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left ${
+                activeLink === "/#contact" ? "scale-x-100" : "scale-x-0"
+              }`}
+            ></span>
           </HashLink>
         </li>
       </ul>
@@ -108,12 +148,11 @@ export default function Navbar() {
               smooth
               to="/#about"
               className={`text-xl font-semibold px-4 py-2 rounded-full transition duration-300 ease-in-out ${
-                activeLink === "about" ? "bg-[#fcb326] text-gray-900" : "hover:text-[#fcb326]"
+                activeLink === "/#about"
+                  ? "bg-[#fcb326] text-gray-900"
+                  : "hover:text-[#fcb326]"
               }`}
-              onClick={() => {
-                setActiveLink("about");
-                toggleMenu();
-              }}
+              onClick={() => handleLinkClick("/#about")}
             >
               About
             </HashLink>
@@ -122,12 +161,11 @@ export default function Navbar() {
             <Link
               to="/Career"
               className={`text-xl font-semibold px-4 py-2 rounded-full transition duration-300 ease-in-out ${
-                activeLink === "career" ? "bg-[#fcb326] text-gray-900" : "hover:text-[#fcb326]"
+                activeLink === "/Career"
+                  ? "bg-[#fcb326] text-gray-900"
+                  : "hover:text-[#fcb326]"
               }`}
-              onClick={() => {
-                setActiveLink("career");
-                toggleMenu();
-              }}
+              onClick={() => handleLinkClick("/Career")}
             >
               Explore
             </Link>
@@ -136,12 +174,11 @@ export default function Navbar() {
             <Link
               to="/strategies"
               className={`text-xl font-semibold px-4 py-2 rounded-full transition duration-300 ease-in-out ${
-                activeLink === "strategies" ? "bg-[#fcb326] text-gray-900" : "hover:text-[#fcb326]"
+                activeLink === "/strategies"
+                  ? "bg-[#fcb326] text-gray-900"
+                  : "hover:text-[#fcb326]"
               }`}
-              onClick={() => {
-                setActiveLink("strategies");
-                toggleMenu();
-              }}
+              onClick={() => handleLinkClick("/strategies")}
             >
               Strategies
             </Link>
@@ -151,12 +188,11 @@ export default function Navbar() {
               smooth
               to="/#contact"
               className={`text-xl font-semibold px-4 py-2 rounded-full transition duration-300 ease-in-out ${
-                activeLink === "contact" ? "bg-[#fcb326] text-gray-900" : "hover:text-[#fcb326]"
+                activeLink === "/#contact"
+                  ? "bg-[#fcb326] text-gray-900"
+                  : "hover:text-[#fcb326]"
               }`}
-              onClick={() => {
-                setActiveLink("contact");
-                toggleMenu();
-              }}
+              onClick={() => handleLinkClick("/#contact")}
             >
               Contact
             </HashLink>

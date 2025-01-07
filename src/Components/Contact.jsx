@@ -73,7 +73,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen px-4 bg-gradient-to-tr overflow-hidden">
+    <div id="contact" className="relative flex items-center justify-center min-h-screen px-4 bg-gradient-to-tr overflow-hidden">
 
       {/*Notification */}
       {toast && <Toast message={toast.message} type={toast.type} />}
