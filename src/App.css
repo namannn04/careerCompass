@@ -1,12 +1,12 @@
 *{
     margin: 0;
-    
 }
 
 html, body {
     overflow: auto;
     -ms-overflow-style: none;  /* For Internet Explorer and Edge */
     scrollbar-width: none;  /* For Firefox */
+    scroll-behavior: smooth;
   }
   
   /* For WebKit browsers (Chrome, Safari, etc.) */

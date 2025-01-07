@@ -91,14 +91,14 @@
     z-index: 1;
   }
   
-  /* Vertical connecting line for flowchart heads*/
+  /* Vertical connecting line for flowchart heads*/*/
   .flowchart-head::before {
     content: "";
     position: absolute;
-    top: -20px; /* Adjust this to change the vertical position */
+    top: -20px;
     left: 50%;
     width: 2px;
-    height: 2px; /* Length of the vertical line above the head */
+    height: 2px;
     background-color: #ccc;
     z-index: 0;
   } 

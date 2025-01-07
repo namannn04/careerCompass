@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import careerData from "./careerData";
 import './subCar.css';
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer/Footer";
 
 const SubCareer = () => {
   const { id } = useParams();

@@ -1,0 +1,83 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+@keyframes gather-once {
+  0% {
+    transform: translate3d(var(--initial-x), var(--initial-y), 0) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-gather-once .card {
+  animation: gather-once 1s ease-in-out forwards;
+}
+
+.hidden-before-animation {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.animate-gather-once {
+  opacity: 1;
+  visibility: visible;
+}
+
+.card {
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  --initial-x: calc(-50vw + 100px);
+  --initial-y: calc(-50vh + 100px);
+}
+
+.card:nth-child(1) {
+  --initial-x: -100vw;
+  --initial-y: -100vh;
+}
+
+.card:nth-child(2) {
+  --initial-x: 100vw;
+  --initial-y: -100vh;
+}
+
+.card:nth-child(3) {
+  --initial-x: -100vw;
+  --initial-y: 100vh;
+}
+
+.card:nth-child(4) {
+  --initial-x: 100vw;
+  --initial-y: 100vh;
+}
+
+.card:nth-child(5) {
+  --initial-x: -50vw;
+  --initial-y: 100vh;
+}
+
+.card:nth-child(6) {
+  --initial-x: 50vw;
+  --initial-y: -100vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    margin: 0 auto;
+  }
+}

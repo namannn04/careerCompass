@@ -7,9 +7,9 @@ import { Autoplay } from 'swiper/modules';
 import blogData from "../Blog/blogData";
 import BlogPost from "../Blog/BlogPost";
 import './subCareer.css'; 
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
 import Flowchart from "./flow";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer/Footer";
 
 const CareerDetail = () => {
   const { careerName } = useParams();
@@ -70,7 +70,7 @@ const CareerDetail = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className="careerDetail">
         <h1 className="carHead">{careerName}</h1>
         <Flowchart careerName={careerName} />
@@ -134,7 +134,7 @@ const CareerDetail = () => {
           />
         )}
       </div>
-      <Footer />
+      <Footer/>
     </>
   );
 };
