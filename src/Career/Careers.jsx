@@ -5,7 +5,7 @@ import careerData from "./careerData";
 import { Link } from "react-router-dom";
 import "./career.css";
 import "./subCar.css";
-import Navbar from "../Components/Navbar/Navbar";
+import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer/Footer";
 import { ArrowRight, Search, BookOpen, Users } from "lucide-react";
 

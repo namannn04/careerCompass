@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import careerData from "./careerData";
 import './subCar.css';
-import Navbar from "../Components/Navbar/Navbar";
+import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer/Footer";
 
 const SubCareer = () => {

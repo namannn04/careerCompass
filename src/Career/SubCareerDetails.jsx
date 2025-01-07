@@ -8,7 +8,7 @@ import blogData from "../Blog/blogData";
 import BlogPost from "../Blog/BlogPost";
 import './subCareer.css'; 
 import Flowchart from "./flow";
-import Navbar from "../Components/Navbar/Navbar";
+import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer/Footer";
 
 const CareerDetail = () => {
