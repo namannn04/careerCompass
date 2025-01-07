@@ -91,7 +91,7 @@
     z-index: 1;
   }
   
-  /* Vertical connecting line for flowchart heads
+  /* Vertical connecting line for flowchart heads*/
   .flowchart-head::before {
     content: "";
     position: absolute;
@@ -101,7 +101,7 @@
     height: 2px; /* Length of the vertical line above the head */
     background-color: #ccc;
     z-index: 0;
-  } */
+  } 
   
   .flowchart-head::after {
     content: "";
