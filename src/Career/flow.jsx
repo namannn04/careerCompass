@@ -1,17 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import './flow.css';
+import { db } from '../../backend/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+
 const Flowchart = ({ careerName }) => {
   const [careerInfo, setCareerInfo] = useState(null);
 
   useEffect(() => {
     const fetchCareerPath = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/careers/${encodeURIComponent(careerName)}/path`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        const careersRef = collection(db, 'careers');
+        const q = query(careersRef, where('careerName', '==', careerName));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+          const careerData = querySnapshot.docs[0].data();
+          if (careerData.careerPath) {
+            setCareerInfo(careerData.careerPath);
+          } else {
+            throw new Error('Career path not found for this career');
+          }
+        } else {
+          throw new Error('Career not found');
         }
-        const data = await response.json();
-        setCareerInfo(data);
       } catch (error) {
         console.error('Error fetching career path:', error);
       }
@@ -45,3 +56,4 @@ const Flowchart = ({ careerName }) => {
 };
 
 export default Flowchart;
+

@@ -1,42 +1,23 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const admin = require('firebase-admin');
 const cors = require('cors');
-
 const app = express();
+
 app.use(express.json());
 app.use(cors({ origin: '*' }));
 
-mongoose.connect('mongodb://localhost:27017/careersDB', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(), // Ensure the Firebase Admin SDK is properly configured
+  databaseURL: 'https://careercompass-dab7f.firebaseio.com',
 });
 
-mongoose.connection.on('error', (err) => {
-  console.error('Failed to connect to MongoDB:', err);
-});
+const db = admin.firestore();
 
-const careerSchema = new mongoose.Schema({
-  careerName: String,
-  skillsRequired: [String],
-  resources: {
-    online: [String],
-    offline: [String],
-  },
-  careerPath: [
-    {
-      level: String,
-      options: [String],
-    },
-  ],
-});
-
-
-
-const Career = mongoose.model('Career', careerSchema);
-
+// API routes to fetch data from Firestore
 app.get('/api/careers', async (req, res) => {
   try {
-    const careers = await Career.find();
+    const snapshot = await db.collection('careers').get();
+    const careers = snapshot.docs.map(doc => doc.data());
     res.json(careers);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -46,11 +27,11 @@ app.get('/api/careers', async (req, res) => {
 app.get('/api/careers/:careerName', async (req, res) => {
   const { careerName } = req.params;
   try {
-    const career = await Career.findOne({ careerName: careerName });
-    if (!career) {
+    const doc = await db.collection('careers').doc(careerName).get();
+    if (!doc.exists) {
       return res.status(404).json({ message: 'Career not found' });
     }
-    res.json(career);
+    res.json(doc.data());
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -59,11 +40,11 @@ app.get('/api/careers/:careerName', async (req, res) => {
 app.get('/api/careers/:careerName/path', async (req, res) => {
   const { careerName } = req.params;
   try {
-    const career = await Career.findOne({ careerName: careerName }, 'careerPath');
-    if (!career) {
+    const doc = await db.collection('careers').doc(careerName).get();
+    if (!doc.exists) {
       return res.status(404).json({ message: 'Career not found' });
     }
-    res.json(career.careerPath);
+    res.json(doc.data().careerPath);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
