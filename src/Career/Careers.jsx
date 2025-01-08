@@ -88,10 +88,10 @@ const Career = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-5xl md:text-8xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#5fda6c] via-[#26fcf1] to-[#27e227]">
+            <h1 className="text-5xl md:text-8xl font-extrabold mb-6  text-[#fcb326]">
               Discover Your Dream Career
             </h1>
-            <p className="text-xl md:text-2xl text-[#fcb326] max-w-3xl mx-auto mb-8">
+            <p className="text-xl md:text-2xl  max-w-3xl mx-auto mb-8">
               Explore endless possibilities and find the perfect path that
               aligns with your passions and skills.
             </p>
@@ -117,7 +117,7 @@ const Career = () => {
               <img
                 src={mainImage}
                 alt="Career exploration"
-                className="max-w-full h-auto"
+                className="max-w-[35rem] h-auto"
               />
             </motion.div>
             <motion.div

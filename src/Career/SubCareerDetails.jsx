@@ -10,33 +10,46 @@ import './subCareer.css';
 import Flowchart from "./flow";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer/Footer";
+import { db } from '../../backend/firestore'; 
+import { collection, query, where, getDocs } from 'firebase/firestore';
 
 const CareerDetail = () => {
   const { careerName } = useParams();
   const [career, setCareer] = useState(null); 
-  const [boxes, setBoxes] = useState([]);
-  const [showBlog, setShowBlog] = useState(false);
+  const [boxes, setBoxes] = useState([]); 
+  const [showBlog, setShowBlog] = useState(false); 
   const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCareerData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/careers/${encodeURIComponent(careerName)}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        console.log('Fetching career data for:', careerName);
+        
+        // Create a query to find the document where careerName matches
+        const careersRef = collection(db, 'careers');
+        const q = query(careersRef, where('careerName', '==', careerName));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+          // Get the first matching document
+          const doc = querySnapshot.docs[0];
+          console.log('Career data found:', doc.data());
+          setCareer(doc.data());
+        } else {
+          console.error('Career not found in Firestore');
+          setError(`Career "${careerName}" not found. Please check the URL and try again.`);
         }
-        const data = await response.json();
-        setCareer(data);
       } catch (error) {
         console.error('Error fetching career data:', error);
+        setError('An error occurred while fetching the career data. Please try again later.');
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
-  
+
     fetchCareerData();
   }, [careerName]);
-  
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -57,11 +70,15 @@ const CareerDetail = () => {
   }, [boxes]);
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
   }
 
   if (!career) {
-    return <div>Career not found</div>;
+    return <div>Career not found. Please check the URL and try again.</div>;
   }
 
   const handleReadBlogClick = () => {
@@ -79,7 +96,7 @@ const CareerDetail = () => {
         <div className="resources-container">
           <div className="resources-column online-resources">
             <h3 className="head">Online Resources</h3>
-            {career.resources.online.map((resource, index) => (
+            {career.resources?.online?.map((resource, index) => (
               <div key={index} className="resource-card">
                 {resource}
               </div>
@@ -88,7 +105,7 @@ const CareerDetail = () => {
           
           <div className="resources-column offline-resources">
             <h3 className="head">Offline Resources</h3>
-            {career.resources.offline.map((resource, index) => (
+            {career.resources?.offline?.map((resource, index) => (
               <div key={index} className="resource-card">
                 {resource}
               </div>
@@ -97,26 +114,29 @@ const CareerDetail = () => {
         </div>
 
         <h2 className="headRes">Skills Required</h2>
-        {/* Automatic Skills Slider */}
-        <Swiper
-          modules={[Autoplay]} 
-          spaceBetween={20}
-          slidesPerView={3}
-          loop={true}
-          autoplay={{
-            delay: 2500, 
-            disableOnInteraction: false, 
-          }}
-          grabCursor={true}
-        >
-          {career.skillsRequired.map((skill, index) => (
-            <SwiperSlide key={index}>
-              <div className="skill-card">
-                {skill}
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {career.skillsRequired && career.skillsRequired.length > 0 ? (
+          <Swiper
+            modules={[Autoplay]} 
+            spaceBetween={20}
+            slidesPerView={3}
+            loop={true}
+            autoplay={{
+              delay: 2500, 
+              disableOnInteraction: false, 
+            }}
+            grabCursor={true}
+          >
+            {career.skillsRequired.map((skill, index) => (
+              <SwiperSlide key={index}>
+                <div className="skill-card">
+                  {skill}
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <div>No skills data available.</div>
+        )}
 
         <button onClick={handleReadBlogClick} className="exploreButton">
           {showBlog ? "Hide Blog" : "Read the Blog"}
@@ -140,3 +160,4 @@ const CareerDetail = () => {
 };
 
 export default CareerDetail;
+
