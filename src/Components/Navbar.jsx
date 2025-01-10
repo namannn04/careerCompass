@@ -118,6 +118,18 @@ export default function Navbar() {
             ></span>
           </HashLink>
         </li>
+        <li className="group relative">
+          <Link
+            to="/authentication"
+            className={`relative text-lg font-semibold text-black transition duration-300 ease-out px-4 pt-1 pb-2 rounded-full bg-[#fcb326]`}
+            style={{
+              fontFamily: "'Sevillana', cursive",
+            }}
+            onClick={() => handleLinkClick("/authentication")}
+          >
+            LogIn
+          </Link>
+        </li>
       </ul>
 
       {/* Dropdown Menu for Mobile View */}
@@ -196,6 +208,15 @@ export default function Navbar() {
             >
               Contact
             </HashLink>
+          </li>
+          <li>
+            <Link
+              to="/authentication"
+              className={`text-xl font-semibold px-4 py-2 rounded-full transition duration-300 ease-in-out`}
+              onClick={() => handleLinkClick("/authentication")}
+            >
+              LogIn
+            </Link>
           </li>
         </ul>
       </div>
