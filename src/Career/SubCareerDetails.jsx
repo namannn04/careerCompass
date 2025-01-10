@@ -160,4 +160,3 @@ const CareerDetail = () => {
 };
 
 export default CareerDetail;
-

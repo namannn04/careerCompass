@@ -4,7 +4,7 @@
   font-weight: 600;
   font-size: 4rem;
   text-align: center;
-  color: #cfd7c7;
+  color: #fcb326;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7),
     1px 1px 2px rgba(255, 255, 255, 0.5);
 }
@@ -14,7 +14,7 @@
   position: relative;
   margin: 20px 0;
   padding: 40px 60px;
-  background-color: #cfd7c7;
+  background-color: #fff3e0;
   border-left: 5px solid #0b2027;
   border-right: 5px solid #0b2027;
   font-style: italic;
@@ -102,7 +102,7 @@
   margin: 20px auto;
   border: 1px solid #c4b2bc;
   border-radius: 10px;
-  background-color: #cfd7c7;
+  background-color: #fff3e0;
   cursor: pointer;
   position: relative;
 }
@@ -117,7 +117,7 @@
 }
 
 .qa-section:hover {
-  background-color: rgb(192, 199, 185);
+  background-color:rgb(218, 208, 193);
 }
 
 .question h2 {

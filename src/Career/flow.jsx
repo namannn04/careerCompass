@@ -32,12 +32,12 @@ const Flowchart = ({ careerName }) => {
   }, [careerName]);
 
   if (!careerInfo) {
-    return <div>Loading career path...</div>;
+    return <div className="loading">Loading career path...</div>;
   }
 
   return (
-    <>
-      <div className="main-heading">Career Path</div>
+    <div className="flowchart">
+      <h2 className="main-heading">Career Path</h2>
       <div className="flowchart-container">
         {careerInfo.map((step, index) => (
           <div key={index} className="flowchart-level">
@@ -51,9 +51,8 @@ const Flowchart = ({ careerName }) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
 export default Flowchart;
-
