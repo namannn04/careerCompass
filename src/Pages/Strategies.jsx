@@ -5,13 +5,13 @@ import StratFront from "../Components/Strategies/stratFront";
 
 const Strategies = () => {
   return (
-    <div>
+    <main>
       <Navbar />
       <StratFront />
       <hr/>
       <StrategySection />
       <Footer />
-    </div>
+    </main>
   );
 };
 
