@@ -8,6 +8,7 @@ import Background from './Background';
 import './index.css';
 import Strategies from './Pages/Strategies';
 import ScrollToTop from './Components/ui/ScrollToTop';
+import AuthPage from './Pages/AuthPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/category/:id" element={<SubCareer />} />
         <Route path="/career/:careerName" element={<CareerDetail />} /> 
         <Route path="/strategies" element={<Strategies />} />
+        <Route path="/authentication" element={<AuthPage />} />
       </Routes>
     </Router>
   );
