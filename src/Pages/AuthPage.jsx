@@ -15,7 +15,7 @@ export default function AuthPage() {
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const navigate = useNavigate(); // For redirection
+  const navigate = useNavigate();
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -25,14 +25,13 @@ export default function AuthPage() {
     try {
       if (isSignUp) {
         // Handle Sign-Up
-        const user = await signUp(email, password, name); // Assuming `signUp` accepts `name`
+        const user = await signUp(email, password, name);
         setSuccessMessage(`Welcome, ${user.email}! Your account has been created.`);
       } else {
         // Handle Sign-In
         const user = await signIn(email, password);
         setSuccessMessage(`Welcome back, ${user.email}!`);
-        // Redirect to the landing page
-        navigate('/'); // Update the path as per your routing configuration
+        navigate('/');
       }
     } catch (err) {
       setError(err.message || 'Something went wrong. Please try again.');
