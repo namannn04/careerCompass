@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './flow.css';
-import { db } from '../../backend/firestore';
+import { db } from '../../../backend/firestore';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 
 const Flowchart = ({ careerName }) => {
