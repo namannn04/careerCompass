@@ -43,7 +43,7 @@ const Career = () => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <Navbar />
-      {[...Array(50)].map((_, index) => (
+      {[...Array(30)].map((_, index) => (
         <motion.div
           key={index}
           className="absolute w-2 h-2 bg-blue-400 rounded-full"
@@ -217,34 +217,6 @@ const Career = () => {
           </div>
         ))}
       </div>
-
-      {/* Animated shapes */}
-      <motion.div
-        className="absolute bottom-3 left-3 w-40 h-40 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full filter blur-3xl opacity-50"
-        animate={{
-          x: [0, 100, 0],
-          y: [0, -50, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-      />
-      <motion.div
-        className="absolute top-[6.5rem] right-0 w-60 h-60 bg-gradient-to-bl from-indigo-500 to-purple-500 rounded-full filter blur-3xl opacity-50"
-        animate={{
-          x: [0, -100, 0],
-          y: [0, 50, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-      />
 
       {/* Decorative elements */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden">

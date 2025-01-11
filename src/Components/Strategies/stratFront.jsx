@@ -58,7 +58,7 @@ const stratFront = () => {
       {/* Main content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
         <motion.h1
-          className="text-6xl sm:text-7xl md:text-8xl -mt-16 md:mt-0 font-extrabold mb-6 pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
+          className="text-6xl sm:text-7xl md:text-8xl -mt-16 md:mt-0 font-extrabold mb-6 pb-2 bg-clip-text text-[#fcb326]"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -93,34 +93,6 @@ const stratFront = () => {
           </a>
         </motion.div>
       </div>
-
-      {/* Animated shapes */}
-      <motion.div
-        className="absolute bottom-3 left-3 w-40 h-40 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full filter blur-3xl opacity-50"
-        animate={{
-          x: [0, 100, 0],
-          y: [0, -50, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-      />
-      <motion.div
-        className="absolute top-[6.5rem] right-0 w-60 h-60 bg-gradient-to-bl from-[#fcb326] to-[#fcb326] rounded-full filter blur-3xl opacity-50"
-        animate={{
-          x: [0, -100, 0],
-          y: [0, 50, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-      />
 
       {/* Decorative elements */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden">
