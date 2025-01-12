@@ -5,8 +5,8 @@ import careerData from "./careerData";
 import { Link } from "react-router-dom";
 import "./career.css";
 import "./subCar.css";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer/Footer";
+import Navbar from "../Navbar";
+import Footer from "../Footer/Footer";
 import { ArrowRight, Search, BookOpen, Users } from "lucide-react";
 
 const Career = () => {
@@ -18,7 +18,6 @@ const Career = () => {
         {category}
       </div>
 
-      {/* Hover Overlay */}
       <div className="absolute bottom-0 left-0 w-full h-0 bg-black bg-opacity-85 text-white flex flex-col justify-center items-center p-4 transition-all duration-300 group-hover:h-3/4 group-hover:opacity-100 opacity-0">
         <h2 className="text-2xl font-bold mb-3">{category}</h2>
         <div className="grid grid-cols-2 gap-2">
@@ -32,7 +31,7 @@ const Career = () => {
           ))}
         </div>
         <Link to={`/category/${id}`}>
-          <button className="bg-[#4ded62] text-xl px-3 h-10 w-32 mt-7 rounded-3xl text-black">
+          <button className="bg-[#875BC9] text-xl px-3 h-10 w-32 mt-7 rounded-3xl text-black">
             Explore
           </button>
         </Link>
@@ -64,7 +63,6 @@ const Career = () => {
           }}
         />
       ))}
-      {/* Animated background */}
       <div className="mt-20 absolute inset-0">
         <motion.div
           className="absolute inset-0 opacity-30"
@@ -97,7 +95,7 @@ const Career = () => {
             </p>
             <a href="#careers">
               <motion.div
-                className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-blue-700 cursor-pointer"
+                className="inline-flex items-center bg-[#875BC9] text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-[#875BC9] cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -136,7 +134,7 @@ const Career = () => {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex items-center">
-                  <Search className="text-blue-600 h-8 w-8 mr-4" />
+                  <Search className="text-[#875BC9] h-8 w-8 mr-4" />
                   <div>
                     <h3 className="font-semibold text-[#fcb326]">
                       Explore Options
@@ -147,7 +145,7 @@ const Career = () => {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <BookOpen className="text-blue-600 h-8 w-8 mr-4" />
+                  <BookOpen className="text-[#875BC9] h-8 w-8 mr-4" />
                   <div>
                     <h3 className="font-semibold text-[#fcb326]">
                       Learn Skills
@@ -158,7 +156,7 @@ const Career = () => {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <Users className="text-blue-600 h-8 w-8 mr-4" />
+                  <Users className="text-[#875BC9] h-8 w-8 mr-4" />
                   <div>
                     <h3 className="font-semibold text-[#fcb326]">Roadmap</h3>
                     <p className="text-white">
@@ -196,7 +194,7 @@ const Career = () => {
       ))}
 
       <motion.div
-        className="byLine bg-blue-600 text-white p-4 text-center text-3xl font-semibold"
+        className="byLine bg-[#875BC9] text-white p-4 text-center text-3xl font-semibold"
         id="careers"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -218,7 +216,6 @@ const Career = () => {
         ))}
       </div>
 
-      {/* Decorative elements */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden">
         <svg
           className="relative block w-full h-24 sm:h-32 md:h-40 lg:h-48"

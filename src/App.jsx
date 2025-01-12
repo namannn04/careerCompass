@@ -1,9 +1,9 @@
 import './App.css';
 import Homepage from './Pages/Homepage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Career from './Career/Careers'; 
-import SubCareer from './Career/SubCar';
-import CareerDetail from './Career/SubCareerDetails';
+import Career from './Components/Career/Careers'; 
+import SubCareer from './Components/Career/SubCar';
+import CareerDetail from './Components/Career/SubCareerDetails';
 import Background from './Background';
 import './index.css';
 import Strategies from './Pages/Strategies';
