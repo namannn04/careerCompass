@@ -16,7 +16,6 @@ const blogData = {
     {
       question: "What are the growth opportunities and future trends in this industry?",
       answer: "The software engineering field is vast and continuously evolving, offering numerous growth opportunities. With the rapid advancement of technologies like cloud computing, artificial intelligence, and machine learning, there’s always something new to learn. Engineers who are adaptable and continuously upskill will find themselves in high demand. Future trends suggest an increasing focus on DevOps practices, microservices architecture, and cybersecurity. Additionally, there’s growing importance placed on understanding the user experience, which aligns well with my background in customer support and psychology.",
-      imageUrl:"https://plus.unsplash.com/premium_photo-1683120966127-14162cdd0935?q=80&w=1926&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       question: "What type of work environment should one expect?",
@@ -29,7 +28,7 @@ const blogData = {
     {
       question: "What are the challenges that I faced in this field?",
       answer: "Transitioning into software engineering from a completely different field was daunting. One of the biggest challenges was overcoming my self-doubt and the fear of not having the right qualifications or experience. Initially, understanding and making changes to large production codebases, working alongside senior developers, and learning best practices were incredibly intimidating. Another challenge was balancing my time between studying new technologies, working a full-time job, and overcoming the steep learning curve. However, with persistence, a willingness to ask questions, and the support of mentors, I gradually became more confident and proficient in my role.",
-      imageUrl:"https://plus.unsplash.com/premium_photo-1678565879444-f87c8bd9f241?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
     },
     {
       question: "How did I get started in this field?",
