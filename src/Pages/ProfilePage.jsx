@@ -117,10 +117,10 @@ const ProfilePage = () => {
       )}
       <div className="min-h-screen bg-transparent flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl w-full bg-white shadow-2xl rounded-xl border border-[#fcb326] overflow-hidden">
-          {/* Profile Header */}
+          {/* Profile */}
           <div className="flex flex-col items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 text-white py-10">
             <div className="w-28 h-28 rounded-full bg-gradient-to-r from-gray-700 via-gray-600 to-gray-500 flex items-center justify-center shadow-lg border-4 border-[#fcb326]">
-              <span className="text-5xl font-extrabold text-gray-200">
+              <span className="text-5xl font-extrabold text-[#fcb326]">
                 {profileData.displayName
                   ? profileData.displayName[0].toUpperCase()
                   : "P"}
@@ -134,13 +134,12 @@ const ProfilePage = () => {
             </p>
           </div>
 
-          {/* Profile Details Section */}
-          <div className="p-8 space-y-8 bg-gray-400">
+          {/* Profile Details */}
+          <div className="p-8 space-y-8 bg-[#bb974e]">
             {error && (
               <p className="text-red-500 text-center font-medium">{error}</p>
             )}
 
-            {/* Editable Fields */}
             {isEditing ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
@@ -209,7 +208,6 @@ const ProfilePage = () => {
               </div>
             )}
 
-            {/* Buttons */}
             <div className="flex justify-end space-x-4 mt-4">
               {isEditing ? (
                 <>
