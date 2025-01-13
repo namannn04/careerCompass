@@ -21,7 +21,7 @@ const BlogPost = ({ title, author, data, content, quote, quoteAuth, head }) => {
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto text-center mt-9">
-          <h1 className="text-9xl md:text-6xl text-[#fcb326] font-bold mb-[7rem]">{title}</h1>
+          <h1 className="text-7xl md:text-6xl text-[#fcb326] font-bold mb-[7rem]">{title}</h1>
           <motion.div 
             className="mb-[5rem] mt-9 p-8 bg-gray-800 rounded-lg shadow-lg"
             initial={{ opacity: 0, y: 20 }}
