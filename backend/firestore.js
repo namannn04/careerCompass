@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth"; // For authentication
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth"; // For authentication
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
@@ -36,4 +36,4 @@ const newAnalytics = getAnalytics(newApp);
 const newDb = getFirestore(newApp);
 const auth = getAuth(newApp); // Initialize authentication for the new project
 
-export { app, analytics, db, newApp, newAnalytics, newDb, auth };
+export { app, analytics, db, newApp, newAnalytics, newDb, auth, onAuthStateChanged, signOut };

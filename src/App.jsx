@@ -9,6 +9,7 @@ import './index.css';
 import Strategies from './Pages/Strategies';
 import ScrollToTop from './Components/ui/ScrollToTop';
 import AuthPage from './Pages/AuthPage';
+import ProfilePage from './Pages/ProfilePage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/career/:careerName" element={<CareerDetail />} /> 
         <Route path="/strategies" element={<Strategies />} />
         <Route path="/authentication" element={<AuthPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </Router>
   );

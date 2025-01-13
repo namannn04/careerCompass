@@ -1,14 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { auth, onAuthStateChanged, signOut } from "../../backend/firestore";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+  const [user, setUser] = useState(null); // State to hold user info
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const location = useLocation();
+
+  // Check if user is authenticated
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      console.log("Auth state changed: ", authUser); // Debugging
+      setUser(authUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const toggleProfileDropdown = () => {
+    setProfileDropdownOpen(!profileDropdownOpen);
   };
 
   // Function to handle link click
@@ -18,9 +34,21 @@ export default function Navbar() {
   };
 
   // Sync active link with the current path
-  useState(() => {
+  useEffect(() => {
     setActiveLink(location.pathname + location.hash);
   }, [location]);
+
+  // Function to handle LogOut
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("User logged out");
+        setUser(null); // Reset user state
+      })
+      .catch((error) => {
+        console.error("Error logging out: ", error);
+      });
+  };
 
   return (
     <nav className="flex justify-between items-center w-full px-4 md:pl-32 md:pr-36 md:pt-10 pt-4 bg-transparent text-white z-50 relative">
@@ -118,17 +146,49 @@ export default function Navbar() {
             ></span>
           </HashLink>
         </li>
-        <li className="group relative">
-          <Link
-            to="/authentication"
-            className={`relative text-lg font-semibold text-black transition duration-300 ease-out px-4 pt-1 pb-2 rounded-full bg-[#fcb326]`}
-            style={{
-              fontFamily: "'Sevillana', cursive",
-            }}
-            onClick={() => handleLinkClick("/authentication")}
+        <li className="relative group">
+          <button
+            className="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center overflow-hidden focus:outline-none"
+            onClick={toggleProfileDropdown}
           >
-            LogIn
-          </Link>
+            {user?.photoURL ? (
+              <img
+                src={user.photoURL}
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <span className="text-white text-lg">P</span>
+            )}
+          </button>
+          {profileDropdownOpen && (
+            <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg">
+              <Link
+                to="/profile"
+                className="block px-4 py-2 text-black hover:bg-gray-200 hover:rounded-md"
+                onClick={() => handleLinkClick("/profile")}
+              >
+                Profile
+              </Link>
+              <li className="group relative">
+                {user ? (
+                  <button
+                    onClick={handleLogout}
+                    className="relative text-lg font-semibold text-black transition duration-300 ease-out px-4 pt-1 pb-2"
+                  >
+                    LogOut
+                  </button>
+                ) : (
+                  <Link
+                    to="/authentication"
+                    className="relative text-lg font-semibold text-black transition duration-300 ease-out px-4 pt-1 pb-2"
+                  >
+                    LogIn
+                  </Link>
+                )}
+              </li>
+            </div>
+          )}
         </li>
       </ul>
 
@@ -153,7 +213,26 @@ export default function Navbar() {
             ✖
           </button>
         </div>
-
+        <div className="flex justify-center items-center px-4 py-4">
+          <div className="w-20 h-20 rounded-full bg-gray-500 flex items-center justify-center overflow-hidden">
+            {user?.photoURL ? (
+              <img
+                src={user.photoURL}
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <span className="text-white text-3xl">P</span>
+            )}
+          </div>
+          <Link
+            to="/profile"
+            className="text-xl font-semibold mt-2 hover:text-[#fcb326] transition"
+            onClick={() => setMenuOpen(false)}
+          >
+            Profile
+          </Link>
+        </div>
         <ul className="flex flex-col items-center space-y-4 pt-4 pb-6">
           <li>
             <HashLink
@@ -209,17 +288,46 @@ export default function Navbar() {
               Contact
             </HashLink>
           </li>
+          {/* Conditional Rendering for LogIn/LogOut */}
           <li>
-            <Link
-              to="/authentication"
-              className={`text-xl font-semibold px-4 py-2 rounded-full transition duration-300 ease-in-out`}
-              onClick={() => handleLinkClick("/authentication")}
-            >
-              LogIn
-            </Link>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="text-xl font-semibold px-4 py-2 transition duration-300 ease-in-out"
+              >
+                LogOut
+              </button>
+            ) : (
+              <Link
+                to="/authentication"
+                className="text-xl font-semibold px-4 py-2 transition duration-300 ease-in-out"
+              >
+                LogIn
+              </Link>
+            )}
           </li>
         </ul>
       </div>
     </nav>
   );
+}
+
+{
+  /* <li className="group relative">
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="relative text-lg font-semibold text-black transition duration-300 ease-out px-4 pt-1 pb-2 rounded-full bg-[#fcb326]"
+            >
+              LogOut
+            </button>
+          ) : (
+            <Link
+              to="/authentication"
+              className="relative text-lg font-semibold text-black transition duration-300 ease-out px-4 pt-1 pb-2 rounded-full bg-[#fcb326]"
+            >
+              LogIn
+            </Link>
+          )}
+        </li> */
 }
