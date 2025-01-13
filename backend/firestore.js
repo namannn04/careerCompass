@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth"; // For authentication
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
@@ -14,12 +14,12 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase for the existing project
+// Firebase for the existing project
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app); // Optional, if you're using analytics
-const db = getFirestore(app); // Initialize Firestore
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
 
-// Configuration for the new Firebase project
+// Configuration for the Authentication Firebase project
 const newFirebaseConfig = {
   apiKey: "AIzaSyBA2vd-1Ao5NCatLUX08_m6RIjmbQ4invE",
   authDomain: "careercompass-87188.firebaseapp.com",
@@ -34,6 +34,6 @@ const newFirebaseConfig = {
 const newApp = initializeApp(newFirebaseConfig, "newApp");
 const newAnalytics = getAnalytics(newApp);
 const newDb = getFirestore(newApp);
-const auth = getAuth(newApp); // Initialize authentication for the new project
+const auth = getAuth(newApp);
 
 export { app, analytics, db, newApp, newAnalytics, newDb, auth, onAuthStateChanged, signOut };

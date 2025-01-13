@@ -5,8 +5,8 @@ import {
   onAuthStateChanged 
 } from 'firebase/auth';
 import { signOut as firebaseSignOut } from 'firebase/auth';
-import { doc, setDoc, getDoc } from 'firebase/firestore'; // Import Firestore methods
-import { db } from './firestore'; // Firestore instance
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { db } from './firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 // Helper function to map Firebase error codes to user-friendly messages

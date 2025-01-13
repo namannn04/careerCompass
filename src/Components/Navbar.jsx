@@ -7,7 +7,7 @@ import { authStateListener, getUserProfile } from "../../backend/authService";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
-  const [user, setUser] = useState(null); // State to hold user info
+  const [user, setUser] = useState(null);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const location = useLocation();
   const [displayName, setDisplayName] = useState("");
@@ -30,7 +30,7 @@ export default function Navbar() {
   // Check if user is authenticated
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-      console.log("Auth state changed: ", authUser); // Debugging
+      console.log("Auth state changed: ", authUser);
       setUser(authUser);
     });
     return () => unsubscribe();
@@ -44,10 +44,9 @@ export default function Navbar() {
     setProfileDropdownOpen(!profileDropdownOpen);
   };
 
-  // Function to handle link click
   const handleLinkClick = (link) => {
-    setActiveLink(link); // Set active link
-    setMenuOpen(false); // Close the menu for mobile view
+    setActiveLink(link);
+    setMenuOpen(false);
   };
 
   // Sync active link with the current path
@@ -55,17 +54,29 @@ export default function Navbar() {
     setActiveLink(location.pathname + location.hash);
   }, [location]);
 
-  // Function to handle LogOut
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
         console.log("User logged out");
-        setUser(null); // Reset user state
+        setUser(null);
       })
       .catch((error) => {
         console.error("Error logging out: ", error);
       });
   };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (!event.target.closest(".group")) {
+        setProfileDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className="flex justify-between items-center w-full px-4 md:pl-32 md:pr-36 md:pt-10 pt-4 bg-transparent text-white z-50 relative">
@@ -83,7 +94,7 @@ export default function Navbar() {
         {menuOpen ? "✖" : "☰"}
       </button>
 
-      {/* Normal Links for Desktop View */}
+      {/* Desktop View */}
       <ul className="hidden md:flex space-x-10">
         <li className="group relative">
           <HashLink
@@ -165,44 +176,53 @@ export default function Navbar() {
         </li>
         <li className="relative group">
           <button
-            className="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center overflow-hidden focus:outline-none shadow-md"
-            onClick={toggleProfileDropdown}
+            className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center overflow-hidden focus:outline-none shadow-lg hover:scale-105 transition-transform"
+            onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
           >
             <span className="text-white text-lg font-bold">
               {displayName ? displayName[0].toUpperCase() : "?"}
             </span>
           </button>
+
           {profileDropdownOpen && (
             <div
-              className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 scale-100 origin-top-right"
+              className="absolute right-0 mt-3 w-64 bg-white rounded-lg shadow-xl overflow-hidden transform transition-all duration-300 origin-top-right scale-100 border border-gray-200"
               style={{ zIndex: 50 }}
             >
-              <div className="px-4 py-3 border-b">
-                <p className="text-xs text-gray-500 truncate">
+              <div className="px-5 py-4 border-b bg-gray-50">
+                <p className="text-sm font-semibold text-gray-800">
                   {user?.email || "Not logged in"}
                 </p>
               </div>
+
               <div className="py-2">
                 <Link
                   to="/profile"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition"
-                  onClick={() => handleLinkClick("/profile")}
+                  className="block px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                  onClick={() => {
+                    setProfileDropdownOpen(false);
+                    handleLinkClick("/profile");
+                  }}
                 >
-                  Profile
+                  🧑‍💼 Profile
                 </Link>
                 {user ? (
                   <button
-                    onClick={handleLogout}
-                    className="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition"
+                    onClick={() => {
+                      setProfileDropdownOpen(false);
+                      handleLogout();
+                    }}
+                    className="w-full text-left block px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
                   >
-                    LogOut
+                    🚪 LogOut
                   </button>
                 ) : (
                   <Link
                     to="/authentication"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition"
+                    className="block px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                    onClick={() => setProfileDropdownOpen(false)}
                   >
-                    LogIn
+                    🔑 LogIn
                   </Link>
                 )}
               </div>
@@ -211,124 +231,118 @@ export default function Navbar() {
         </li>
       </ul>
 
-      {/* Dropdown Menu for Mobile View */}
+      {/* Mobile View */}
       <div
-  className={`fixed top-0 left-0 w-full bg-[#222222] text-white transition-transform duration-300 ease-in-out transform ${
-    menuOpen ? "translate-y-0" : "-translate-y-full"
-  } z-40`}
->
-  <div className="flex justify-between items-center px-4 py-4">
-    {/* Logo */}
-    <div className="text-3xl font-semibold">
-      <Link to="/" onClick={() => setMenuOpen(false)}>
-        careerCompass
-      </Link>
-    </div>
-
-    {/* Close Button */}
-    <button
-      className="text-3xl"
-      onClick={toggleMenu}
-      aria-label="Close Menu"
-    >
-      ✖
-    </button>
-  </div>
-
-  {/* Profile Section */}
-  <div className="flex items-center justify-center px-6 py-4">
-    <div className="w-16 h-16 rounded-full bg-gray-500 flex items-center justify-center overflow-hidden">
-      <span className="text-white text-lg font-bold">
-        {displayName ? displayName[0].toUpperCase() : "?"}
-      </span>
-    </div>
-    <Link
-      to="/profile"
-      className="ml-4 text-lg font-semibold hover:text-[#fcb326] transition"
-      onClick={() => setMenuOpen(false)}
-    >
-      Profile
-    </Link>
-  </div>
-
-  {/* Navigation Links */}
-  <ul className="flex flex-col items-center space-y-6 pt-6 pb-8">
-    <li>
-      <HashLink
-        smooth
-        to="/#about"
-        className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
-          activeLink === "/#about"
-            ? "bg-[#fcb326] text-gray-900"
-            : "hover:text-[#fcb326]"
-        }`}
-        onClick={() => handleLinkClick("/#about")}
+        className={`fixed top-0 left-0 w-full bg-[#222222] text-white transition-transform duration-300 ease-in-out transform ${
+          menuOpen ? "translate-y-0" : "-translate-y-full"
+        } z-40`}
       >
-        About
-      </HashLink>
-    </li>
-    <li>
-      <Link
-        to="/Career"
-        className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
-          activeLink === "/Career"
-            ? "bg-[#fcb326] text-gray-900"
-            : "hover:text-[#fcb326]"
-        }`}
-        onClick={() => handleLinkClick("/Career")}
-      >
-        Explore
-      </Link>
-    </li>
-    <li>
-      <Link
-        to="/strategies"
-        className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
-          activeLink === "/strategies"
-            ? "bg-[#fcb326] text-gray-900"
-            : "hover:text-[#fcb326]"
-        }`}
-        onClick={() => handleLinkClick("/strategies")}
-      >
-        Strategies
-      </Link>
-    </li>
-    <li>
-      <HashLink
-        smooth
-        to="/#contact"
-        className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
-          activeLink === "/#contact"
-            ? "bg-[#fcb326] text-gray-900"
-            : "hover:text-[#fcb326]"
-        }`}
-        onClick={() => handleLinkClick("/#contact")}
-      >
-        Contact
-      </HashLink>
-    </li>
+        <div className="flex justify-between items-center px-4 py-4">
+          <div className="text-3xl font-semibold">
+            <Link to="/" onClick={() => setMenuOpen(false)}>
+              careerCompass
+            </Link>
+          </div>
 
-    {/* Conditional Rendering for Login/Logout */}
-    <li>
-      {user ? (
-        <button
-          onClick={handleLogout}
-          className="text-lg font-semibold px-6 py-3 transition duration-300 ease-in-out"
-        >
-          LogOut
-        </button>
-      ) : (
-        <Link
-          to="/authentication"
-          className="text-lg font-semibold px-6 py-3 transition duration-300 ease-in-out"
-        >
-          LogIn
-        </Link>
-      )}
-    </li>
-  </ul>
-</div>
+          <button
+            className="text-3xl"
+            onClick={toggleMenu}
+            aria-label="Close Menu"
+          >
+            ✖
+          </button>
+        </div>
 
+        <div className="flex items-center justify-center px-6 py-4">
+          <div className="w-16 h-16 rounded-full bg-gray-500 flex items-center justify-center overflow-hidden">
+            <span className="text-white text-lg font-bold">
+              {displayName ? displayName[0].toUpperCase() : "?"}
+            </span>
+          </div>
+          <Link
+            to="/profile"
+            className="ml-4 text-lg font-semibold hover:text-[#fcb326] transition"
+            onClick={() => setMenuOpen(false)}
+          >
+            Profile
+          </Link>
+        </div>
+
+        <ul className="flex flex-col items-center space-y-6 pt-6 pb-8">
+          <li>
+            <HashLink
+              smooth
+              to="/#about"
+              className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
+                activeLink === "/#about"
+                  ? "bg-[#fcb326] text-gray-900"
+                  : "hover:text-[#fcb326]"
+              }`}
+              onClick={() => handleLinkClick("/#about")}
+            >
+              About
+            </HashLink>
+          </li>
+          <li>
+            <Link
+              to="/Career"
+              className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
+                activeLink === "/Career"
+                  ? "bg-[#fcb326] text-gray-900"
+                  : "hover:text-[#fcb326]"
+              }`}
+              onClick={() => handleLinkClick("/Career")}
+            >
+              Explore
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/strategies"
+              className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
+                activeLink === "/strategies"
+                  ? "bg-[#fcb326] text-gray-900"
+                  : "hover:text-[#fcb326]"
+              }`}
+              onClick={() => handleLinkClick("/strategies")}
+            >
+              Strategies
+            </Link>
+          </li>
+          <li>
+            <HashLink
+              smooth
+              to="/#contact"
+              className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
+                activeLink === "/#contact"
+                  ? "bg-[#fcb326] text-gray-900"
+                  : "hover:text-[#fcb326]"
+              }`}
+              onClick={() => handleLinkClick("/#contact")}
+            >
+              Contact
+            </HashLink>
+          </li>
+
+          <li>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="text-lg font-semibold px-6 py-3 transition duration-300 ease-in-out"
+              >
+                🚪 LogOut
+              </button>
+            ) : (
+              <Link
+                to="/authentication"
+                className="text-lg font-semibold px-6 py-3 transition duration-300 ease-in-out"
+              >
+                🔑 LogIn
+              </Link>
+            )}
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }
