@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { auth, onAuthStateChanged, signOut } from "../../backend/firestore";
+import { authStateListener, getUserProfile } from "../../backend/authService";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,6 +10,22 @@ export default function Navbar() {
   const [user, setUser] = useState(null); // State to hold user info
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const location = useLocation();
+  const [displayName, setDisplayName] = useState("");
+
+  useEffect(() => {
+    const unsubscribe = authStateListener(async (currentUser) => {
+      if (currentUser) {
+        try {
+          const profile = await getUserProfile();
+          setDisplayName(profile.displayName || "");
+        } catch (error) {
+          console.error("Error fetching profile data:", error.message);
+        }
+      }
+    });
+
+    return () => unsubscribe && unsubscribe();
+  }, []);
 
   // Check if user is authenticated
   useEffect(() => {
@@ -148,45 +165,47 @@ export default function Navbar() {
         </li>
         <li className="relative group">
           <button
-            className="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center overflow-hidden focus:outline-none"
+            className="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center overflow-hidden focus:outline-none shadow-md"
             onClick={toggleProfileDropdown}
           >
-            {user?.photoURL ? (
-              <img
-                src={user.photoURL}
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <span className="text-white text-lg">P</span>
-            )}
+            <span className="text-white text-lg font-bold">
+              {displayName ? displayName[0].toUpperCase() : "?"}
+            </span>
           </button>
           {profileDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg">
-              <Link
-                to="/profile"
-                className="block px-4 py-2 text-black hover:bg-gray-200 hover:rounded-md"
-                onClick={() => handleLinkClick("/profile")}
-              >
-                Profile
-              </Link>
-              <li className="group relative">
+            <div
+              className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 scale-100 origin-top-right"
+              style={{ zIndex: 50 }}
+            >
+              <div className="px-4 py-3 border-b">
+                <p className="text-xs text-gray-500 truncate">
+                  {user?.email || "Not logged in"}
+                </p>
+              </div>
+              <div className="py-2">
+                <Link
+                  to="/profile"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition"
+                  onClick={() => handleLinkClick("/profile")}
+                >
+                  Profile
+                </Link>
                 {user ? (
                   <button
                     onClick={handleLogout}
-                    className="relative text-lg font-semibold text-black transition duration-300 ease-out px-4 pt-1 pb-2"
+                    className="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition"
                   >
                     LogOut
                   </button>
                 ) : (
                   <Link
                     to="/authentication"
-                    className="relative text-lg font-semibold text-black transition duration-300 ease-out px-4 pt-1 pb-2"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition"
                   >
                     LogIn
                   </Link>
                 )}
-              </li>
+              </div>
             </div>
           )}
         </li>
@@ -194,140 +213,122 @@ export default function Navbar() {
 
       {/* Dropdown Menu for Mobile View */}
       <div
-        className={`fixed top-0 left-0 w-full bg-[#222222] text-white transition-transform duration-300 ease-in-out transform ${
-          menuOpen ? "translate-y-0" : "-translate-y-full"
-        } z-40`}
-      >
-        <div className="flex justify-between items-center px-4 py-4">
-          <div className="text-3xl font-semibold">
-            <Link to="/" onClick={() => setMenuOpen(false)}>
-              careerCompass
-            </Link>
-          </div>
+  className={`fixed top-0 left-0 w-full bg-[#222222] text-white transition-transform duration-300 ease-in-out transform ${
+    menuOpen ? "translate-y-0" : "-translate-y-full"
+  } z-40`}
+>
+  <div className="flex justify-between items-center px-4 py-4">
+    {/* Logo */}
+    <div className="text-3xl font-semibold">
+      <Link to="/" onClick={() => setMenuOpen(false)}>
+        careerCompass
+      </Link>
+    </div>
 
-          <button
-            className="text-3xl"
-            onClick={toggleMenu}
-            aria-label="Close Menu"
-          >
-            ✖
-          </button>
-        </div>
-        <div className="flex justify-center items-center px-4 py-4">
-          <div className="w-20 h-20 rounded-full bg-gray-500 flex items-center justify-center overflow-hidden">
-            {user?.photoURL ? (
-              <img
-                src={user.photoURL}
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <span className="text-white text-3xl">P</span>
-            )}
-          </div>
-          <Link
-            to="/profile"
-            className="text-xl font-semibold mt-2 hover:text-[#fcb326] transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            Profile
-          </Link>
-        </div>
-        <ul className="flex flex-col items-center space-y-4 pt-4 pb-6">
-          <li>
-            <HashLink
-              smooth
-              to="/#about"
-              className={`text-xl font-semibold px-4 py-2 rounded-full transition duration-300 ease-in-out ${
-                activeLink === "/#about"
-                  ? "bg-[#fcb326] text-gray-900"
-                  : "hover:text-[#fcb326]"
-              }`}
-              onClick={() => handleLinkClick("/#about")}
-            >
-              About
-            </HashLink>
-          </li>
-          <li>
-            <Link
-              to="/Career"
-              className={`text-xl font-semibold px-4 py-2 rounded-full transition duration-300 ease-in-out ${
-                activeLink === "/Career"
-                  ? "bg-[#fcb326] text-gray-900"
-                  : "hover:text-[#fcb326]"
-              }`}
-              onClick={() => handleLinkClick("/Career")}
-            >
-              Explore
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/strategies"
-              className={`text-xl font-semibold px-4 py-2 rounded-full transition duration-300 ease-in-out ${
-                activeLink === "/strategies"
-                  ? "bg-[#fcb326] text-gray-900"
-                  : "hover:text-[#fcb326]"
-              }`}
-              onClick={() => handleLinkClick("/strategies")}
-            >
-              Strategies
-            </Link>
-          </li>
-          <li>
-            <HashLink
-              smooth
-              to="/#contact"
-              className={`text-xl font-semibold px-4 py-2 rounded-full transition duration-300 ease-in-out ${
-                activeLink === "/#contact"
-                  ? "bg-[#fcb326] text-gray-900"
-                  : "hover:text-[#fcb326]"
-              }`}
-              onClick={() => handleLinkClick("/#contact")}
-            >
-              Contact
-            </HashLink>
-          </li>
-          {/* Conditional Rendering for LogIn/LogOut */}
-          <li>
-            {user ? (
-              <button
-                onClick={handleLogout}
-                className="text-xl font-semibold px-4 py-2 transition duration-300 ease-in-out"
-              >
-                LogOut
-              </button>
-            ) : (
-              <Link
-                to="/authentication"
-                className="text-xl font-semibold px-4 py-2 transition duration-300 ease-in-out"
-              >
-                LogIn
-              </Link>
-            )}
-          </li>
-        </ul>
-      </div>
+    {/* Close Button */}
+    <button
+      className="text-3xl"
+      onClick={toggleMenu}
+      aria-label="Close Menu"
+    >
+      ✖
+    </button>
+  </div>
+
+  {/* Profile Section */}
+  <div className="flex items-center justify-center px-6 py-4">
+    <div className="w-16 h-16 rounded-full bg-gray-500 flex items-center justify-center overflow-hidden">
+      <span className="text-white text-lg font-bold">
+        {displayName ? displayName[0].toUpperCase() : "?"}
+      </span>
+    </div>
+    <Link
+      to="/profile"
+      className="ml-4 text-lg font-semibold hover:text-[#fcb326] transition"
+      onClick={() => setMenuOpen(false)}
+    >
+      Profile
+    </Link>
+  </div>
+
+  {/* Navigation Links */}
+  <ul className="flex flex-col items-center space-y-6 pt-6 pb-8">
+    <li>
+      <HashLink
+        smooth
+        to="/#about"
+        className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
+          activeLink === "/#about"
+            ? "bg-[#fcb326] text-gray-900"
+            : "hover:text-[#fcb326]"
+        }`}
+        onClick={() => handleLinkClick("/#about")}
+      >
+        About
+      </HashLink>
+    </li>
+    <li>
+      <Link
+        to="/Career"
+        className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
+          activeLink === "/Career"
+            ? "bg-[#fcb326] text-gray-900"
+            : "hover:text-[#fcb326]"
+        }`}
+        onClick={() => handleLinkClick("/Career")}
+      >
+        Explore
+      </Link>
+    </li>
+    <li>
+      <Link
+        to="/strategies"
+        className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
+          activeLink === "/strategies"
+            ? "bg-[#fcb326] text-gray-900"
+            : "hover:text-[#fcb326]"
+        }`}
+        onClick={() => handleLinkClick("/strategies")}
+      >
+        Strategies
+      </Link>
+    </li>
+    <li>
+      <HashLink
+        smooth
+        to="/#contact"
+        className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
+          activeLink === "/#contact"
+            ? "bg-[#fcb326] text-gray-900"
+            : "hover:text-[#fcb326]"
+        }`}
+        onClick={() => handleLinkClick("/#contact")}
+      >
+        Contact
+      </HashLink>
+    </li>
+
+    {/* Conditional Rendering for Login/Logout */}
+    <li>
+      {user ? (
+        <button
+          onClick={handleLogout}
+          className="text-lg font-semibold px-6 py-3 transition duration-300 ease-in-out"
+        >
+          LogOut
+        </button>
+      ) : (
+        <Link
+          to="/authentication"
+          className="text-lg font-semibold px-6 py-3 transition duration-300 ease-in-out"
+        >
+          LogIn
+        </Link>
+      )}
+    </li>
+  </ul>
+</div>
+
     </nav>
   );
-}
-
-{
-  /* <li className="group relative">
-          {user ? (
-            <button
-              onClick={handleLogout}
-              className="relative text-lg font-semibold text-black transition duration-300 ease-out px-4 pt-1 pb-2 rounded-full bg-[#fcb326]"
-            >
-              LogOut
-            </button>
-          ) : (
-            <Link
-              to="/authentication"
-              className="relative text-lg font-semibold text-black transition duration-300 ease-out px-4 pt-1 pb-2 rounded-full bg-[#fcb326]"
-            >
-              LogIn
-            </Link>
-          )}
-        </li> */
 }
