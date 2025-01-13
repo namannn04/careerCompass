@@ -180,7 +180,7 @@ export default function Navbar() {
             onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
           >
             <span className="text-white text-lg font-bold">
-              {displayName ? displayName[0].toUpperCase() : "?"}
+              {displayName ? displayName[0].toUpperCase() : "P"}
             </span>
           </button>
 
@@ -256,7 +256,7 @@ export default function Navbar() {
         <div className="flex items-center justify-center px-6 py-4">
           <div className="w-16 h-16 rounded-full bg-gray-500 flex items-center justify-center overflow-hidden">
             <span className="text-white text-lg font-bold">
-              {displayName ? displayName[0].toUpperCase() : "?"}
+              {displayName ? displayName[0].toUpperCase() : "P"}
             </span>
           </div>
           <Link

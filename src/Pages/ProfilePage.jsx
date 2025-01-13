@@ -13,8 +13,12 @@ const ProfilePage = () => {
   const [profileData, setProfileData] = useState({
     displayName: "",
     phone: "",
-    address: "",
+    age: "",
+    country: "",
+    city: "",
     bio: "",
+    institute: "",
+    pursuing: "",
   });
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -119,7 +123,7 @@ const ProfilePage = () => {
               <span className="text-4xl font-bold">
                 {profileData.displayName
                   ? profileData.displayName[0].toUpperCase()
-                  : "?"}
+                  : "P"}
               </span>
             </div>
             <h2 className="mt-4 text-2xl font-semibold">
@@ -169,7 +173,7 @@ const ProfilePage = () => {
                       Phone
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       name="phone"
                       value={profileData.phone}
                       onChange={handleInputChange}
@@ -178,12 +182,60 @@ const ProfilePage = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700">
-                      Address
+                      Age
+                    </label>
+                    <input
+                      type="number"
+                      name="age"
+                      value={profileData.age}
+                      onChange={handleInputChange}
+                      className="w-full mt-1 p-3 border rounded-lg text-gray-900 focus:ring focus:ring-blue-300 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Country
                     </label>
                     <input
                       type="text"
-                      name="address"
-                      value={profileData.address}
+                      name="country"
+                      value={profileData.country}
+                      onChange={handleInputChange}
+                      className="w-full mt-1 p-3 border rounded-lg text-gray-900 focus:ring focus:ring-blue-300 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      City
+                    </label>
+                    <input
+                      type="text"
+                      name="city"
+                      value={profileData.city}
+                      onChange={handleInputChange}
+                      className="w-full mt-1 p-3 border rounded-lg text-gray-900 focus:ring focus:ring-blue-300 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      College/School Name
+                    </label>
+                    <input
+                      type="text"
+                      name="institute"
+                      value={profileData.institute}
+                      onChange={handleInputChange}
+                      className="w-full mt-1 p-3 border rounded-lg text-gray-900 focus:ring focus:ring-blue-300 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                    Pursuing
+                    </label>
+                    <input
+                      type="text"
+                      name="pursuing"
+                      value={profileData.pursuing}
                       onChange={handleInputChange}
                       className="w-full mt-1 p-3 border rounded-lg text-gray-900 focus:ring focus:ring-blue-300 outline-none"
                     />
@@ -201,10 +253,42 @@ const ProfilePage = () => {
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg shadow">
                     <h4 className="text-sm font-medium text-gray-600">
-                      Address
+                      Age
                     </h4>
                     <p className="text-gray-800 mt-1">
-                      {profileData.address || "Not provided"}
+                      {profileData.age || "Not provided"}
+                    </p>
+                  </div>
+                  <div className="p-4 bg-gray-50 rounded-lg shadow">
+                    <h4 className="text-sm font-medium text-gray-600">
+                      Country
+                    </h4>
+                    <p className="text-gray-800 mt-1">
+                      {profileData.country || "Not provided"}
+                    </p>
+                  </div>
+                  <div className="p-4 bg-gray-50 rounded-lg shadow">
+                    <h4 className="text-sm font-medium text-gray-600">
+                      City
+                    </h4>
+                    <p className="text-gray-800 mt-1">
+                      {profileData.city || "Not provided"}
+                    </p>
+                  </div>
+                  <div className="p-4 bg-gray-50 rounded-lg shadow">
+                    <h4 className="text-sm font-medium text-gray-600">
+                    College/School Name
+                    </h4>
+                    <p className="text-gray-800 mt-1">
+                      {profileData.institute || "Not provided"}
+                    </p>
+                  </div>
+                  <div className="p-4 bg-gray-50 rounded-lg shadow">
+                    <h4 className="text-sm font-medium text-gray-600">
+                    Pursuing
+                    </h4>
+                    <p className="text-gray-800 mt-1">
+                      {profileData.pursuing || "Not provided"}
                     </p>
                   </div>
                 </div>
