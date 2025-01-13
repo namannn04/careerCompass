@@ -112,129 +112,138 @@ const ProfilePage = () => {
         </div>
       )}
       <div className="min-h-screen bg-transparent flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl w-full bg-white shadow-xl rounded-lg p-8">
-          {error && (
-            <p className="text-red-500 text-center font-medium mb-4">{error}</p>
-          )}
-
-          <div className="text-center">
-            <div
-              className="w-24 h-24 mx-auto rounded-full bg-black flex items-center justify-center shadow-md"
-            >
-              <span className="text-white text-2xl font-bold">
-                {profileData.displayName ? profileData.displayName[0] : "?"}
+        <div className="max-w-4xl w-full bg-gray-400 shadow-xl rounded-2xl border border-gray-200 overflow-hidden">
+          {/* Profile Header */}
+          <div className="flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-white py-8">
+            <div className="w-24 h-24 rounded-full bg-gray-700 flex items-center justify-center shadow-lg border-4 border-white">
+              <span className="text-4xl font-bold">
+                {profileData.displayName
+                  ? profileData.displayName[0].toUpperCase()
+                  : "?"}
               </span>
             </div>
+            <h2 className="mt-4 text-2xl font-semibold">
+              {profileData.displayName || "Your Name"}
+            </h2>
+            <p className="text-sm italic text-gray-300">
+              {profileData.bio || "Bio: Not provided"}
+            </p>
           </div>
 
-          <div className="mt-8 text-center">
+          {/* Profile Details Section */}
+          <div className="p-8 space-y-6">
+            {error && (
+              <p className="text-red-500 text-center font-medium">{error}</p>
+            )}
+
+            {/* Editable Fields */}
             {isEditing ? (
               <>
-                <input
-                  type="text"
-                  name="displayName"
-                  value={profileData.displayName}
-                  onChange={handleInputChange}
-                  placeholder="Your Name"
-                  className="w-full text-center border-b-2 border-gray-300 focus:border-blue-500 outline-none text-xl font-bold text-gray-800"
-                />
-                <textarea
-                  name="bio"
-                  value={profileData.bio}
-                  onChange={handleInputChange}
-                  placeholder="Your Bio"
-                  className="w-full mt-4 text-center border-b-2 border-gray-300 focus:border-blue-500 outline-none text-gray-700"
-                  rows="2"
-                />
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      name="displayName"
+                      value={profileData.displayName}
+                      onChange={handleInputChange}
+                      className="w-full mt-1 p-3 border rounded-lg text-gray-900 focus:ring focus:ring-blue-300 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Bio
+                    </label>
+                    <textarea
+                      name="bio"
+                      value={profileData.bio}
+                      onChange={handleInputChange}
+                      rows="2"
+                      className="w-full mt-1 p-3 border rounded-lg text-gray-900 focus:ring focus:ring-blue-300 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Phone
+                    </label>
+                    <input
+                      type="text"
+                      name="phone"
+                      value={profileData.phone}
+                      onChange={handleInputChange}
+                      className="w-full mt-1 p-3 border rounded-lg text-gray-900 focus:ring focus:ring-blue-300 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Address
+                    </label>
+                    <input
+                      type="text"
+                      name="address"
+                      value={profileData.address}
+                      onChange={handleInputChange}
+                      className="w-full mt-1 p-3 border rounded-lg text-gray-900 focus:ring focus:ring-blue-300 outline-none"
+                    />
+                  </div>
+                </div>
               </>
             ) : (
               <>
-                <h2 className="text-3xl font-bold text-gray-800">
-                  {profileData.displayName || "Your Name"}
-                </h2>
-                <p className="text-gray-500 italic mt-2">
-                  {profileData.bio || "Bio: Not provided"}
-                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="p-4 bg-gray-50 rounded-lg shadow">
+                    <h4 className="text-sm font-medium text-gray-600">Phone</h4>
+                    <p className="text-gray-800 mt-1">
+                      {profileData.phone || "Not provided"}
+                    </p>
+                  </div>
+                  <div className="p-4 bg-gray-50 rounded-lg shadow">
+                    <h4 className="text-sm font-medium text-gray-600">
+                      Address
+                    </h4>
+                    <p className="text-gray-800 mt-1">
+                      {profileData.address || "Not provided"}
+                    </p>
+                  </div>
+                </div>
               </>
             )}
-          </div>
 
-          <div className="mt-8">
-            <h3 className="text-xl font-semibold text-gray-700">
-              Profile Details
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Phone
-                </label>
-                {!isEditing ? (
-                  <p className="text-gray-700 mt-1">
-                    {profileData.phone || "Not provided"}
-                  </p>
-                ) : (
-                  <input
-                    type="text"
-                    name="phone"
-                    value={profileData.phone}
-                    onChange={handleInputChange}
-                    className="w-full mt-1 p-2 border rounded text-black"
-                  />
-                )}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Address
-                </label>
-                {!isEditing ? (
-                  <p className="text-gray-700 mt-1">
-                    {profileData.address || "Not provided"}
-                  </p>
-                ) : (
-                  <input
-                    type="text"
-                    name="address"
-                    value={profileData.address}
-                    onChange={handleInputChange}
-                    className="w-full mt-1 p-2 border rounded text-black"
-                  />
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 flex justify-end space-x-4">
-            {isEditing ? (
-              <>
+            {/* Buttons */}
+            <div className="flex justify-end space-x-4">
+              {isEditing ? (
+                <>
+                  <button
+                    onClick={() => setIsEditing(false)}
+                    className="px-6 py-2 bg-gray-500 text-white rounded-lg shadow hover:bg-gray-600"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleSave}
+                    disabled={loading}
+                    className="px-6 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600"
+                  >
+                    {loading ? "Saving..." : "Save"}
+                  </button>
+                </>
+              ) : (
                 <button
-                  onClick={() => setIsEditing(false)}
-                  className="px-6 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600"
+                  onClick={() => setIsEditing(true)}
+                  className="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600"
                 >
-                  Cancel
+                  Edit Profile
                 </button>
-                <button
-                  onClick={handleSave}
-                  className="px-6 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600"
-                  disabled={loading}
-                >
-                  {loading ? "Saving..." : "Save"}
-                </button>
-              </>
-            ) : (
+              )}
               <button
-                onClick={() => setIsEditing(true)}
-                className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600"
+                onClick={handleSignOut}
+                className="px-6 py-2 bg-red-500 text-white rounded-lg shadow hover:bg-red-600"
               >
-                Edit Profile
+                Sign Out
               </button>
-            )}
-            <button
-              onClick={handleSignOut}
-              className="px-6 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600"
-            >
-              Sign Out
-            </button>
+            </div>
           </div>
         </div>
       </div>
