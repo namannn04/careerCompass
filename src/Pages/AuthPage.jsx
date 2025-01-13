@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // For redirection
+import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ChevronRight, Mail } from 'lucide-react';
 import { Button } from "../Components/ui/Button";
 import { Input } from "../Components/ui/Input";
 import { Label } from "../Components/ui/Label";
-import { signUp, signIn } from "../../backend/authService"; // Import authentication methods
+import { signUp, signIn } from "../../backend/authService";
 import logo from '../assets/logo-avatars/logo.png';
 
 export default function AuthPage() {
