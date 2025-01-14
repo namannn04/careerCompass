@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const strategies = [
   {
@@ -143,6 +144,164 @@ const strategies = [
       ],
     },
   },
+  {
+    id: 8,
+    title: "Mindfulness Meditation",
+    description: "Improve focus and reduce stress through mindfulness.",
+    details: {
+      overview: `Mindfulness meditation helps you stay present and develop better focus by observing your thoughts without judgment.`,
+      steps: [
+        "Find a quiet place and sit comfortably.",
+        "Close your eyes and focus on your breath.",
+        "When your mind wanders, gently bring it back to your breath.",
+        "Practice daily for 5-10 minutes, gradually increasing the duration.",
+      ],
+      benefits: [
+        "Enhances concentration and mental clarity.",
+        "Reduces anxiety and stress levels.",
+        "Promotes emotional well-being and resilience.",
+      ],
+    },
+  },
+  {
+    id: 9,
+    title: "SMART Goals Framework",
+    description: "Set achievable goals with the SMART criteria.",
+    details: {
+      overview: `The SMART framework ensures your goals are clear and attainable by focusing on five aspects:
+      - Specific: Define the goal clearly.
+      - Measurable: Include criteria to track progress.
+      - Achievable: Set realistic and attainable objectives.
+      - Relevant: Align the goal with your long-term plans.
+      - Time-bound: Specify a deadline for achieving the goal.`,
+      steps: [
+        "Identify a specific goal you want to achieve.",
+        "Break it down into measurable milestones.",
+        "Assess the feasibility of the goal within your resources.",
+        "Ensure the goal aligns with your values and priorities.",
+        "Set a deadline and create an action plan.",
+      ],
+      benefits: [
+        "Provides a clear direction and purpose.",
+        "Increases motivation by breaking goals into manageable steps.",
+        "Improves time management and accountability.",
+      ],
+    },
+  },
+  {
+    id: 10,
+    title: "Digital Detox",
+    description: "Enhance productivity by limiting screen time.",
+    details: {
+      overview: `A digital detox involves consciously reducing screen time to minimize distractions and improve focus.`,
+      steps: [
+        "Set specific times for checking emails and social media.",
+        "Use apps or tools to track and limit screen time.",
+        "Create phone-free zones, like the bedroom or dining area.",
+        "Engage in offline activities, such as reading or outdoor sports.",
+      ],
+      benefits: [
+        "Reduces mental fatigue and screen-related stress.",
+        "Enhances productivity by eliminating distractions.",
+        "Improves sleep quality and overall well-being.",
+      ],
+    },
+  },
+  {
+    id: 11,
+    title: "Pareto Principle (80/20 Rule)",
+    description: "Focus on the 20% of tasks that yield 80% of results.",
+    details: {
+      overview: `The Pareto Principle helps prioritize tasks by identifying the most impactful activities.`,
+      steps: [
+        "List all tasks and responsibilities.",
+        "Identify the tasks that contribute the most value or results.",
+        "Focus your energy on these high-impact tasks.",
+        "Delegate or minimize low-priority tasks.",
+      ],
+      benefits: [
+        "Maximizes efficiency and output.",
+        "Helps focus on what's truly important.",
+        "Reduces wasted time and effort on trivial tasks.",
+      ],
+    },
+  },
+  {
+    id: 12,
+    title: "Eat That Frog",
+    description: "Start your day by tackling the hardest task first.",
+    details: {
+      overview: `This technique emphasizes prioritizing the most challenging or important task early in the day when your energy and willpower are at their peak.`,
+      steps: [
+        "Identify your 'frog'—the hardest or most important task.",
+        "Complete this task first thing in the morning.",
+        "Move on to less demanding tasks after finishing the 'frog.'",
+        "Repeat daily for consistent productivity.",
+      ],
+      benefits: [
+        "Reduces procrastination and boosts motivation.",
+        "Sets a positive tone for the rest of the day.",
+        "Helps accomplish key priorities efficiently.",
+      ],
+    },
+  },
+  {
+    id: 13,
+    title: "Active Recall Technique",
+    description: "Enhance learning by testing yourself actively.",
+    details: {
+      overview: `Active recall involves retrieving information from memory without relying on notes, strengthening long-term retention.`,
+      steps: [
+        "Study a topic briefly and close your notes.",
+        "Write down or say out loud everything you remember.",
+        "Compare your recollection with the source material.",
+        "Focus on areas where you struggle and repeat the process.",
+      ],
+      benefits: [
+        "Improves memory retention and understanding.",
+        "Identifies weak points in your knowledge.",
+        "Makes study sessions more effective and engaging.",
+      ],
+    },
+  },
+  {
+    id: 14,
+    title: "Feynman Technique",
+    description: "Master any topic by teaching it to someone else.",
+    details: {
+      overview: `The Feynman Technique involves simplifying complex concepts into plain language to improve understanding.`,
+      steps: [
+        "Choose a topic you want to learn.",
+        "Write an explanation as if teaching a beginner.",
+        "Identify gaps in your understanding and review the material.",
+        "Refine your explanation until it's simple and clear.",
+      ],
+      benefits: [
+        "Deepens understanding of difficult topics.",
+        "Reveals areas that need further study.",
+        "Encourages critical thinking and clarity.",
+      ],
+    },
+  },
+  {
+    id: 15,
+    title: "Visualization Technique",
+    description: "Achieve goals by mentally rehearsing success.",
+    details: {
+      overview: `Visualization involves imagining yourself successfully achieving your goals, which boosts confidence and focus.`,
+      steps: [
+        "Set a specific goal you want to achieve.",
+        "Close your eyes and visualize the steps to achieve it in vivid detail.",
+        "Imagine overcoming challenges and reaching the desired outcome.",
+        "Practice daily to reinforce your mental image.",
+      ],
+      benefits: [
+        "Increases motivation and confidence.",
+        "Strengthens focus and determination.",
+        "Improves performance by reducing anxiety and self-doubt.",
+      ],
+    },
+  },
 ];
 
 const StrategySection = () => {
@@ -153,66 +312,97 @@ const StrategySection = () => {
   };
 
   return (
-    <div id="strat" className="mt-20 text-gray-100 min-h-screen py-10 px-6">
-      {/* Header Section */}
-      <header className="text-center mb-12">
-        <h1 className="text-4xl font-extrabold text-blue-400">
-          Explore Proven Strategies
-        </h1>
-        <p className="text-lg text-gray-400 mt-3">
-          Elevate your focus, productivity, and career clarity with these expert techniques.
-        </p>
-      </header>
+    <div
+      id="strat"
+      className="mt-20 text-gray-100 min-h-screen py-20 px-6 relative overflow-hidden"
+    >
+      <div className="absolute inset-0 opacity-20 z-0"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSI+PC9yZWN0Pgo8cGF0aCBkPSJNMCA1TDUgMFpNNiA0TDQgNlpNLTEgMUwxIC0xWiIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')] opacity-5 z-10"></div>
+      <div className="relative z-20 container mx-auto">
+        {/* Header Section */}
+        <header className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-[#fcb326] mb-6 pb-2">
+            Explore Proven Strategies
+          </h1>
+          <p className="text-2xl text-gray-300 mt-4 max-w-2xl mx-auto leading-relaxed">
+            Elevate your focus, productivity, and career clarity with these
+            expert techniques.
+          </p>
+        </header>
 
-      {/* Strategy List */}
-      <div className="space-y-8 flex justify-center items-center flex-col">
-        {strategies.map((strategy) => (
-          <div
-            key={strategy.id}
-            className="bg-gray-800 rounded-2xl w-11/12 lg:w-3/4 shadow-lg p-6 transition-transform transform hover:scale-105"
-          >
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-semibold text-blue-300">
-                {strategy.title}
-              </h2>
-              <button
-                onClick={() => toggleDetails(strategy.id)}
-                className="bg-blue-500 text-gray-100 px-4 py-2 rounded-lg hover:bg-blue-400 transition focus:ring-2 focus:ring-blue-300"
-              >
-                {openId === strategy.id ? "Hide Details" : "Explore"}
-              </button>
-            </div>
-            <p className="text-gray-400 mt-3">{strategy.description}</p>
-
-            {/* Details Section */}
-            <Transition
-              show={openId === strategy.id}
-              enter="transition-all duration-500 ease-out"
-              enterFrom="opacity-0 max-h-0"
-              enterTo="opacity-100 max-h-screen"
-              leave="transition-all duration-500 ease-in"
-              leaveFrom="opacity-100 max-h-screen"
-              leaveTo="opacity-0 max-h-0"
+        {/* Strategy List */}
+        <div className="space-y-12 flex justify-center items-center flex-col">
+          {strategies.map((strategy) => (
+            <div
+              key={strategy.id}
+              className="bg-white bg-opacity-5 backdrop-filter backdrop-blur-lg rounded-3xl w-full max-w-4xl shadow-lg p-8 transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white border-opacity-20"
             >
-              <div className="mt-4 p-4 bg-gray-700 rounded-lg text-gray-300 overflow-hidden">
-                <h3 className="text-lg font-bold mb-2">Overview</h3>
-                <p className="mb-4">{strategy.details.overview}</p>
-                <h3 className="text-lg font-bold mb-2">Steps</h3>
-                <ul className="list-disc list-inside mb-4">
-                  {strategy.details.steps.map((step, index) => (
-                    <li key={index}>{step}</li>
-                  ))}
-                </ul>
-                <h3 className="text-lg font-bold mb-2">Benefits</h3>
-                <ul className="list-disc list-inside">
-                  {strategy.details.benefits.map((benefit, index) => (
-                    <li key={index}>{benefit}</li>
-                  ))}
-                </ul>
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <h2 className="text-3xl font-bold text-[#fcb326]">
+                  {strategy.title}
+                </h2>
+                <button
+                  onClick={() => toggleDetails(strategy.id)}
+                  className="bg-[rgb(135,91,201)] text-white px-6 py-3 rounded-full hover:opacity-90 transition focus:ring-2 focus:ring-[#fcb326] flex items-center group"
+                >
+                  {openId === strategy.id ? "Hide Details" : "Explore"}
+                  <ChevronDownIcon
+                    className={`w-5 h-5 ml-2 transition-transform group-hover:translate-y-1 ${
+                      openId === strategy.id ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
               </div>
-            </Transition>
-          </div>
-        ))}
+              <p className="text-gray-300 mt-4 text-lg">
+                {strategy.description}
+              </p>
+
+              {/* Details Section */}
+              <Transition
+                show={openId === strategy.id}
+                enter="transition-all duration-500 ease-out"
+                enterFrom="opacity-0 max-h-0"
+                enterTo="opacity-100 max-h-screen"
+                leave="transition-all duration-500 ease-in"
+                leaveFrom="opacity-100 max-h-screen"
+                leaveTo="opacity-0 max-h-0"
+              >
+                <div className="mt-6 p-6 bg-white bg-opacity-5 rounded-2xl text-gray-200 overflow-hidden border border-white border-opacity-10">
+                  <h3 className="text-2xl font-bold mb-4 text-[#fcb326]">
+                    Overview
+                  </h3>
+                  <p className="mb-6 text-lg leading-relaxed">
+                    {strategy.details.overview}
+                  </p>
+                  <h3 className="text-2xl font-bold mb-4 text-[#fcb326]">
+                    Steps
+                  </h3>
+                  <ul className="mb-6 space-y-3">
+                    {strategy.details.steps.map((step, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-[rgb(135,91,201)] mr-3 font-bold">
+                          {index + 1}.
+                        </span>
+                        <span className="text-lg">{step}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <h3 className="text-2xl font-bold mb-4 text-[#fcb326]">
+                    Benefits
+                  </h3>
+                  <ul className="space-y-3">
+                    {strategy.details.benefits.map((benefit, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-[rgb(135,91,201)] mr-3">•</span>
+                        <span className="text-lg">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Transition>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
