@@ -35,7 +35,7 @@ const StrategySection = () => {
           {strategies.map((strategy) => (
             <div
               key={strategy.id}
-              className="bg-white bg-opacity-5 backdrop-filter backdrop-blur-lg rounded-3xl w-full max-w-4xl shadow-lg p-8 transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white border-opacity-20"
+              className="bg-white bg-opacity-5 backdrop-filter backdrop-blur-lg rounded-3xl w-full max-w-5xl shadow-lg p-8 transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white border-opacity-20"
             >
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <h2 className="text-3xl font-bold text-[#fcb326]">
