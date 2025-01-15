@@ -1,149 +1,8 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { strategies } from "./strat";
 
-const strategies = [
-  {
-    id: 1,
-    title: "Ikigai Method",
-    description:
-      "Discover your life's purpose by balancing passion, profession, and mission.",
-    details: {
-      overview: `The Ikigai method helps you identify your sweet spot by exploring four areas:
-      - What you love (your passion)
-      - What you're good at (your talent)
-      - What the world needs (your mission)
-      - What you can be paid for (your profession)`,
-      steps: [
-        "List your skills and things you love doing.",
-        "Identify global problems or needs you feel passionate about solving.",
-        "Match these needs with your expertise.",
-        "Explore job opportunities or entrepreneurial ventures.",
-      ],
-      benefits: [
-        "Achieve work-life balance by pursuing meaningful work.",
-        "Find greater motivation and satisfaction in your career.",
-        "Create a sustainable income source aligned with your purpose.",
-      ],
-    },
-  },
-  {
-    id: 2,
-    title: "Pomodoro Technique",
-    description: "Boost productivity by working in short, focused bursts.",
-    details: {
-      overview: `The Pomodoro Technique involves working in intervals called 'Pomodoros' with breaks in between.`,
-      steps: [
-        "Set a timer for 25 minutes and focus on one task.",
-        "Take a 5-minute break after each interval.",
-        "Repeat this cycle 4 times, then take a longer 15-30 minute break.",
-      ],
-      benefits: [
-        "Improves focus and reduces distractions.",
-        "Prevents burnout with regular breaks.",
-        "Enhances productivity and time management skills.",
-      ],
-    },
-  },
-  {
-    id: 3,
-    title: "Eisenhower Matrix",
-    description: "Prioritize tasks based on urgency and importance.",
-    details: {
-      overview: `This method divides tasks into four quadrants based on urgency and importance:
-      - Do: Urgent and important tasks.
-      - Schedule: Important but not urgent tasks.
-      - Delegate: Urgent but not important tasks.
-      - Eliminate: Tasks that are neither urgent nor important.`,
-      steps: [
-        "List all your tasks for the day.",
-        "Categorize each task into one of the four quadrants.",
-        "Focus on the 'Do' quadrant first.",
-        "Regularly reassess priorities to stay on track.",
-      ],
-      benefits: [
-        "Helps you focus on what truly matters.",
-        "Reduces procrastination by clarifying priorities.",
-        "Improves time management and decision-making.",
-      ],
-    },
-  },
-  {
-    id: 4,
-    title: "Flow State",
-    description: "Achieve peak performance by working in a state of flow.",
-    details: {
-      overview: `Flow state is a mental state where you're fully immersed and highly focused on a task.`,
-      steps: [
-        "Choose a challenging but achievable task.",
-        "Eliminate all distractions from your workspace.",
-        "Set a clear goal and measure progress.",
-        "Work for extended periods without interruptions.",
-      ],
-      benefits: [
-        "Increases productivity and creativity.",
-        "Improves the quality of work.",
-        "Provides a sense of fulfillment and accomplishment.",
-      ],
-    },
-  },
-  {
-    id: 5,
-    title: "Brain Dump Method",
-    description: "Clear your mind by writing down all your thoughts.",
-    details: {
-      overview: `This method involves offloading your thoughts onto paper to declutter your mind.`,
-      steps: [
-        "Set aside 10-15 minutes in a quiet space.",
-        "Write down everything on your mind without filtering.",
-        "Organize the thoughts into categories or action items.",
-        "Review the list and prioritize tasks or ideas.",
-      ],
-      benefits: [
-        "Reduces stress and mental overload.",
-        "Improves focus and clarity of thought.",
-        "Helps in organizing and prioritizing tasks.",
-      ],
-    },
-  },
-  {
-    id: 6,
-    title: "Time-Blocking",
-    description: "Schedule your day by assigning tasks to specific time slots.",
-    details: {
-      overview: `Time-blocking involves dividing your day into chunks of time, each dedicated to a specific task or activity.`,
-      steps: [
-        "List all your tasks for the day.",
-        "Allocate specific time slots for each task.",
-        "Include buffer time for unexpected interruptions.",
-        "Stick to your schedule and adjust as needed.",
-      ],
-      benefits: [
-        "Improves time management and productivity.",
-        "Ensures a balanced schedule with work and breaks.",
-        "Reduces decision fatigue and procrastination.",
-      ],
-    },
-  },
-  {
-    id: 7,
-    title: "5-Hour Rule",
-    description: "Dedicate 5 hours a week to learning and self-improvement.",
-    details: {
-      overview: `The 5-hour rule involves setting aside one hour each day for deliberate learning.`,
-      steps: [
-        "Choose a topic or skill to learn each week.",
-        "Spend 1 hour daily reading, practicing, or reflecting.",
-        "Track your progress and set specific learning goals.",
-        "Apply your new knowledge to real-life scenarios.",
-      ],
-      benefits: [
-        "Encourages continuous self-improvement.",
-        "Keeps you competitive and innovative in your field.",
-        "Enhances critical thinking and problem-solving skills.",
-      ],
-    },
-  },
-];
 
 const StrategySection = () => {
   const [openId, setOpenId] = useState(null);
@@ -153,66 +12,97 @@ const StrategySection = () => {
   };
 
   return (
-    <div id="strat" className="mt-20 text-gray-100 min-h-screen py-10 px-6">
-      {/* Header Section */}
-      <header className="text-center mb-12">
-        <h1 className="text-4xl font-extrabold text-blue-400">
-          Explore Proven Strategies
-        </h1>
-        <p className="text-lg text-gray-400 mt-3">
-          Elevate your focus, productivity, and career clarity with these expert techniques.
-        </p>
-      </header>
+    <div
+      id="strat"
+      className="mt-20 text-gray-100 min-h-screen py-20 px-6 relative overflow-hidden"
+    >
+      <div className="absolute inset-0 opacity-20 z-0"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSI+PC9yZWN0Pgo8cGF0aCBkPSJNMCA1TDUgMFpNNiA0TDQgNlpNLTEgMUwxIC0xWiIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')] opacity-5 z-10"></div>
+      <div className="relative z-20 container mx-auto">
+        {/* Header Section */}
+        <header className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-[#fcb326] mb-6 pb-2">
+            Explore Proven Strategies
+          </h1>
+          <p className="text-2xl text-gray-300 mt-4 max-w-2xl mx-auto leading-relaxed">
+            Elevate your focus, productivity, and career clarity with these
+            expert techniques.
+          </p>
+        </header>
 
-      {/* Strategy List */}
-      <div className="space-y-8 flex justify-center items-center flex-col">
-        {strategies.map((strategy) => (
-          <div
-            key={strategy.id}
-            className="bg-gray-800 rounded-2xl w-11/12 lg:w-3/4 shadow-lg p-6 transition-transform transform hover:scale-105"
-          >
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-semibold text-blue-300">
-                {strategy.title}
-              </h2>
-              <button
-                onClick={() => toggleDetails(strategy.id)}
-                className="bg-blue-500 text-gray-100 px-4 py-2 rounded-lg hover:bg-blue-400 transition focus:ring-2 focus:ring-blue-300"
-              >
-                {openId === strategy.id ? "Hide Details" : "Explore"}
-              </button>
-            </div>
-            <p className="text-gray-400 mt-3">{strategy.description}</p>
-
-            {/* Details Section */}
-            <Transition
-              show={openId === strategy.id}
-              enter="transition-all duration-500 ease-out"
-              enterFrom="opacity-0 max-h-0"
-              enterTo="opacity-100 max-h-screen"
-              leave="transition-all duration-500 ease-in"
-              leaveFrom="opacity-100 max-h-screen"
-              leaveTo="opacity-0 max-h-0"
+        {/* Strategy List */}
+        <div className="space-y-12 flex justify-center items-center flex-col">
+          {strategies.map((strategy) => (
+            <div
+              key={strategy.id}
+              className="bg-white bg-opacity-5 backdrop-filter backdrop-blur-lg rounded-3xl w-full max-w-5xl shadow-lg p-8 transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-white border-opacity-20"
             >
-              <div className="mt-4 p-4 bg-gray-700 rounded-lg text-gray-300 overflow-hidden">
-                <h3 className="text-lg font-bold mb-2">Overview</h3>
-                <p className="mb-4">{strategy.details.overview}</p>
-                <h3 className="text-lg font-bold mb-2">Steps</h3>
-                <ul className="list-disc list-inside mb-4">
-                  {strategy.details.steps.map((step, index) => (
-                    <li key={index}>{step}</li>
-                  ))}
-                </ul>
-                <h3 className="text-lg font-bold mb-2">Benefits</h3>
-                <ul className="list-disc list-inside">
-                  {strategy.details.benefits.map((benefit, index) => (
-                    <li key={index}>{benefit}</li>
-                  ))}
-                </ul>
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <h2 className="text-3xl font-bold text-[#fcb326]">
+                  {strategy.title}
+                </h2>
+                <button
+                  onClick={() => toggleDetails(strategy.id)}
+                  className="bg-[rgb(135,91,201)] text-white px-6 py-3 rounded-full hover:opacity-90 transition focus:ring-2 focus:ring-[#fcb326] flex items-center group"
+                >
+                  {openId === strategy.id ? "Hide Details" : "Explore"}
+                  <ChevronDownIcon
+                    className={`w-5 h-5 ml-2 transition-transform group-hover:translate-y-1 ${
+                      openId === strategy.id ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
               </div>
-            </Transition>
-          </div>
-        ))}
+              <p className="text-gray-300 mt-4 text-lg">
+                {strategy.description}
+              </p>
+
+              {/* Details Section */}
+              <Transition
+                show={openId === strategy.id}
+                enter="transition-all duration-500 ease-out"
+                enterFrom="opacity-0 max-h-0"
+                enterTo="opacity-100 max-h-screen"
+                leave="transition-all duration-500 ease-in"
+                leaveFrom="opacity-100 max-h-screen"
+                leaveTo="opacity-0 max-h-0"
+              >
+                <div className="mt-6 p-6 bg-white bg-opacity-5 rounded-2xl text-gray-200 overflow-hidden border border-white border-opacity-10">
+                  <h3 className="text-2xl font-bold mb-4 text-[#fcb326]">
+                    Overview
+                  </h3>
+                  <p className="mb-6 text-lg leading-relaxed">
+                    {strategy.details.overview}
+                  </p>
+                  <h3 className="text-2xl font-bold mb-4 text-[#fcb326]">
+                    Steps
+                  </h3>
+                  <ul className="mb-6 space-y-3">
+                    {strategy.details.steps.map((step, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-[rgb(135,91,201)] mr-3 font-bold">
+                          {index + 1}.
+                        </span>
+                        <span className="text-lg">{step}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <h3 className="text-2xl font-bold mb-4 text-[#fcb326]">
+                    Benefits
+                  </h3>
+                  <ul className="space-y-3">
+                    {strategy.details.benefits.map((benefit, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-[rgb(135,91,201)] mr-3">•</span>
+                        <span className="text-lg">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Transition>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
