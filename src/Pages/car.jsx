@@ -1,4 +1,4 @@
-import CareerDetail from "./SubCareerDetails";
+import CareerDetail from "../Components/Career/SubCareerDetails";
 
 export default function Car(){
     return(
