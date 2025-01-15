@@ -171,7 +171,7 @@ const Career = () => {
       </div>
 
       {/* Floating particles */}
-      {[...Array(50)].map((_, index) => (
+      {/* {[...Array(50)].map((_, index) => (
         <motion.div
           key={index}
           className="absolute w-2 h-2 bg-blue-400 rounded-full"
@@ -191,7 +191,7 @@ const Career = () => {
             repeatType: "reverse",
           }}
         />
-      ))}
+      ))} */}
 
       <motion.div
         className="byLine bg-[#875BC9] text-white p-4 text-center text-3xl font-semibold"
