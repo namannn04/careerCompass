@@ -14,7 +14,6 @@ import Footer from "../Footer/Footer"
 import { db } from '../../../backend/firestore'
 import { collection, query, where, getDocs } from 'firebase/firestore'
 
-// Import required styles
 import 'swiper/css'
 import 'swiper/css/autoplay'
 

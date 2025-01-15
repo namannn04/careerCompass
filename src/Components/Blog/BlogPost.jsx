@@ -59,56 +59,56 @@ const BlogPost = ({ title, author, data, content, quote, quoteAuth, head }) => {
           </motion.div>
 
           <div className="space-y-8 bg-gray-900 px-12 py-12 rounded-3xl">
-            {content.map((section, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="border-b-[4px] border-gray-800 pb-9"
+      {content.map((section, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.1 }}
+          className="border-b-[4px] border-gray-800 pb-9"
+        >
+          <motion.button
+            className="w-full text-left focus:outline-none"
+            onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+          >
+            <div className="flex justify-between items-center">
+              <h3 className="text-3xl font-semibold text-[#fcb326]">{section.question}</h3>
+              <motion.span
+                animate={{ rotate: activeIndex === index ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="text-gray-400"
               >
-                <motion.button
-                  className="w-full text-left focus:outline-none"
-                  onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-                >
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-3xl font-semibold">{section.question}</h3>
-                    <motion.span
-                      animate={{ rotate: activeIndex === index ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="text-gray-400"
-                    >
-                      ▼
-                    </motion.span>
-                  </div>
-                </motion.button>
-                <AnimatePresence>
-                  {activeIndex === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="mt-4">
-                        <p className="text-2xl text-gray-300 mt-9 mb-3 leading-relaxed">{section.answer}</p>
-                        {section.imageUrl && (
-                          <motion.img
-                            src={section.imageUrl}
-                            alt=""
-                            className="w-full h-auto object-cover rounded-lg shadow-lg"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5 }}
-                          />
-                        )}
-                      </div>
-                    </motion.div>
+                {activeIndex === index ? '▲' : '▼'}
+              </motion.span>
+            </div>
+          </motion.button>
+          <AnimatePresence>
+            {activeIndex === index && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="mt-4">
+                  <p className="text-2xl text-gray-300 mt-9 mb-3 leading-relaxed">{section.answer}</p>
+                  {section.imageUrl && (
+                    <motion.img
+                      src={section.imageUrl}
+                      alt=""
+                      className="w-full h-auto object-cover rounded-lg shadow-lg mt-6"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                    />
                   )}
-                </AnimatePresence>
+                </div>
               </motion.div>
-            ))}
-          </div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      ))}
+    </div>
         </div>
       </main>
 
