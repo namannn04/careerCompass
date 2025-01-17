@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import mainImage from "./main.png";
-import careerData from "./careerData";
+import mainImage from "../Components/Career/main.png";
+import careerData from "../Components/Career/careerData";
 import { Link } from "react-router-dom";
-import "./career.css";
-import "./subCar.css";
-import Navbar from "../Navbar";
-import Footer from "../Footer/Footer";
+import "../Styles/career.css";
+import "../Styles/subCar.css";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer/Footer";
 import { ArrowRight, Search, BookOpen, Users } from "lucide-react";
 
 const Career = () => {
