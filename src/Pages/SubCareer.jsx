@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import careerData from "./careerData";
-import Navbar from "../Navbar";
-import Footer from "../Footer/Footer";
+import careerData from "../Components/Career/careerData";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer/Footer";
 import { Search, ArrowRight } from "lucide-react";
-import "./subCar.css";
+import "../Styles/subCar.css";
 
 const SubCar = () => {
   const { id } = useParams();

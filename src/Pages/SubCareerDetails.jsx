@@ -6,12 +6,12 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import { motion } from "framer-motion"
 import { Lightbulb, Book, GraduationCap } from 'lucide-react'
-import blogData from "../Blog/blogData"
-import BlogPost from "../Blog/BlogPost"
-import Flowchart from "./flow"
-import Navbar from "../Navbar"
-import Footer from "../Footer/Footer"
-import { db } from '../../../backend/firestore'
+import blogData from "../Components/Blog/blogData"
+import BlogPost from "../Components/Blog/BlogPost"
+import Flowchart from "../Components/Career/flow"
+import Navbar from "../Components/Navbar"
+import Footer from "../Components/Footer/Footer"
+import { db } from '../../backend/firestore'
 import { collection, query, where, getDocs } from 'firebase/firestore'
 
 import 'swiper/css'
@@ -70,10 +70,10 @@ export default function CareerDetail() {
       
       <main className="container mx-auto px-4 py-12">
         <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-7xl font-bold text-center mt-9 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600"
-        >
+          className="text-7xl leading-tight font-bold text-center mt-9 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600"
+          >
           {careerName}
         </motion.h1>
 
