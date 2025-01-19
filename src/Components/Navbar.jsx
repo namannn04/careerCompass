@@ -185,49 +185,95 @@ export default function Navbar() {
           </button>
 
           {profileDropdownOpen && (
-            <div
-              className="absolute right-0 mt-3 w-64 bg-white rounded-lg shadow-xl overflow-hidden transform transition-all duration-300 origin-top-right scale-100 border border-gray-200"
-              style={{ zIndex: 50 }}
-            >
-              <div className="px-5 py-4 border-b bg-gray-50">
-                <p className="text-sm font-semibold text-gray-800">
-                  {user?.email || "Not logged in"}
-                </p>
-              </div>
+  <div
+    className="absolute right-0 mt-3 w-80 bg-white rounded-2xl shadow-xl border border-gray-300 overflow-hidden"
+    style={{ zIndex: 50 }}
+  >
+    {/* Header Section */}
+    <div className="flex items-center justify-between px-6 py-4 bg-gray-50 border-b">
+      <p className="text-sm font-semibold text-gray-800 truncate">
+        {user?.email || "Not logged in"}
+      </p>
+      <button
+        className="text-gray-400 hover:text-gray-800 transition-transform transform hover:scale-110 duration-200"
+        onClick={() => setProfileDropdownOpen(false)}
+        title="Close"
+      >
+        ✕
+      </button>
+    </div>
 
-              <div className="py-2">
-                <Link
-                  to="/profile"
-                  className="block px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
-                  onClick={() => {
-                    setProfileDropdownOpen(false);
-                    handleLinkClick("/profile");
-                  }}
-                >
-                  🧑‍💼 Profile
-                </Link>
-                {user ? (
-                  <button
-                    onClick={() => {
-                      setProfileDropdownOpen(false);
-                      handleLogout();
-                    }}
-                    className="w-full text-left block px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
-                  >
-                    🚪 LogOut
-                  </button>
-                ) : (
-                  <Link
-                    to="/authentication"
-                    className="block px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
-                    onClick={() => setProfileDropdownOpen(false)}
-                  >
-                    🔑 LogIn
-                  </Link>
-                )}
-              </div>
+    {/* Options Section */}
+    <div className="divide-y divide-gray-200">
+      {/* Profile Option */}
+      <div className="group">
+        <Link
+          to="/profile"
+          className="flex items-center gap-4 px-6 py-4 transition-all duration-200 hover:bg-gray-100"
+          onClick={() => {
+            setProfileDropdownOpen(false);
+            handleLinkClick("/profile");
+          }}
+        >
+          <div className="flex items-center justify-center bg-gray-100 rounded-lg w-10 h-10 text-gray-600 group-hover:bg-gray-200">
+            🧑‍💼
+          </div>
+          <span className="text-base font-medium text-gray-700 group-hover:text-gray-900">
+            Profile
+          </span>
+        </Link>
+      </div>
+
+      {/* LogOut or LogIn */}
+      <div className="group">
+        {user ? (
+          <button
+            onClick={() => {
+              setProfileDropdownOpen(false);
+              handleLogout();
+            }}
+            className="flex items-center gap-4 px-6 py-4 w-full text-left transition-all duration-200 hover:bg-gray-100"
+          >
+            <div className="flex items-center justify-center bg-gray-100 rounded-lg w-10 h-10 text-gray-600 group-hover:bg-gray-200">
+              🚪
             </div>
-          )}
+            <span className="text-base font-medium text-gray-700 group-hover:text-gray-900">
+              LogOut
+            </span>
+          </button>
+        ) : (
+          <Link
+            to="/authentication"
+            className="flex items-center gap-4 px-6 py-4 transition-all duration-200 hover:bg-gray-100"
+            onClick={() => setProfileDropdownOpen(false)}
+          >
+            <div className="flex items-center justify-center bg-gray-100 rounded-lg w-10 h-10 text-gray-600 group-hover:bg-gray-200">
+              🔑
+            </div>
+            <span className="text-base font-medium text-gray-700 group-hover:text-gray-900">
+                LogIn
+            </span>
+          </Link>
+        )}
+      </div>
+    </div>
+
+    {/* Footer Section */}
+    <div className="px-6 py-3 bg-gray-50 text-center border-t">
+      <p className="text-xs text-gray-500">
+        Need help? Visit our{" "}
+        <Link
+          to="/support"
+          className="text-gray-800 font-medium hover:underline hover:text-gray-900"
+          onClick={() => setProfileDropdownOpen(false)}
+        >
+          Support
+        </Link>
+      </p>
+    </div>
+  </div>
+)}
+
         </li>
       </ul>
 
