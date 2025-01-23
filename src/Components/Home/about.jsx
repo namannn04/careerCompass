@@ -109,10 +109,10 @@ export default function About() {
         </Card>
 
         <Card className="bg-blue-400 text-white">
-          <h3 className="text-2xl font-bold mb-2 text-blue-800">
+          <h3 className="text-2xl font-bold mb-2 text-[#000000]">
             Community Chatbox
           </h3>
-          <p className="text-yellow-300 pt-5">
+          <p className="text-[#ffffff] pt-5">
             A space for everyone to connect, ask questions, and share insights.
             Collaborate, clear doubts, and grow together in a supportive
             environment.
@@ -124,10 +124,10 @@ export default function About() {
         </Card>
 
         <Card className="bg-indigo-100 row-span-2 text-indigo-700">
-          <h3 className="text-2xl font-bold mb-2 text-blue-800 flex justify-between">
+          <h3 className="text-3xl font-bold mb-2 text-blue-800 flex justify-between">
             Community Chatbox <Heart className="h-8 w-8 text-indigo-500 mb-4" />
           </h3>
-          <p className="mb-4 text-gray-600">
+          <p className="mb-4 text-gray-600 text-lg">
             Our strategies are designed to help you enhance focus, optimize your
             study habits, and choose a more efficient career path. By
             implementing proven techniques like time management, prioritization,
@@ -152,11 +152,12 @@ export default function About() {
         </Card>
 
         <Card className="col-span-2 bg-cyan-200 hover:bg-cyan-300 text-green-800">
+          
+          <h3 className="text-2xl font-semibold mb-2 text-green-800 flex justify-between pr-5">
           <Lightbulb className="h-12 w-12 mb-4" />
-          <h3 className="text-lg font-semibold mb-2 text-green-800">
             Counselling
           </h3>
-          <p className="text-green-500">
+          <p className="text-[#d936de]">
             We provide counseling to help you with your career and studies. If
             needed, our expert counselors will assist you in making informed
             decisions and offer valuable guidance tailored to your goals.
