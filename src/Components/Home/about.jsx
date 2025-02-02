@@ -125,7 +125,7 @@ export default function About() {
 
         <Card className="bg-indigo-100 row-span-2 text-indigo-700">
           <h3 className="text-3xl font-bold mb-2 text-blue-800 flex justify-between">
-            Community Chatbox <Heart className="h-8 w-8 text-indigo-500 mb-4" />
+            Community Chatbox <Heart className="h-16 w-16 text-indigo-500 mb-4" />
           </h3>
           <p className="mb-4 text-gray-600 text-lg">
             Our strategies are designed to help you enhance focus, optimize your
