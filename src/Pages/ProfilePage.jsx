@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import {
-  authStateListener,
-  signOut,
-  getUserProfile,
-  updateUserProfile,
-} from "../../backend/authService";
+import { authStateListener, signOut, getUserProfile, updateUserProfile } from "../../backend/authService";
+import { ArrowRight, Heart } from "lucide-react";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -19,6 +15,7 @@ const ProfilePage = () => {
     bio: "",
     institute: "",
     pursuing: "",
+    favourites: [],
   });
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -81,6 +78,23 @@ const ProfilePage = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const toggleFavourite = async (career) => {
+    if (!user) {
+      alert("Please sign in to manage favourites.");
+      return;
+    }
+
+    let updatedFavourites;
+    if (profileData.favourites.includes(career)) {
+      updatedFavourites = profileData.favourites.filter((fav) => fav !== career);
+    } else {
+      updatedFavourites = [...profileData.favourites, career];
+    }
+
+    setProfileData((prev) => ({ ...prev, favourites: updatedFavourites }));
+    await updateUserProfile({ favourites: updatedFavourites });
   };
 
   const handleSignOut = async () => {
@@ -207,6 +221,64 @@ const ProfilePage = () => {
                 ))}
               </div>
             )}
+
+            {/* Favourites Section */}
+            <div className="mt-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                Favourites
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {profileData.favourites?.map((favourite, index) => (
+                  <div
+                    key={index}
+                    className="group relative transition-transform transform hover:scale-105 hover:shadow-2xl"
+                  >
+                    <Link to={`/career/${encodeURIComponent(favourite)}`}>
+                      <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700 flex flex-col justify-between min-h-[300px] h-auto">
+                        {/* Card Content */}
+                        <div className="p-6 flex-grow flex flex-col">
+                          <div className="w-12 h-12 bg-indigo-900/50 rounded-full flex items-center justify-center mb-4">
+                            <span className="text-2xl text-indigo-300">
+                              {favourite.charAt(0)}
+                            </span>
+                          </div>
+                          <h3 className="text-xl font-semibold text-white mb-2 line-clamp-2">
+                            {favourite}
+                          </h3>
+                          <p className="text-gray-400 line-clamp-3 flex-grow">
+                            Explore the exciting world of {favourite} and
+                            discover the opportunities that await you in this
+                            dynamic field.
+                          </p>
+                        </div>
+
+                        {/* Card Footer */}
+                        <div className="bg-indigo-900/30 p-3 group-hover:bg-indigo-900/50 transition-colors duration-300">
+                          <div className="flex items-center justify-between text-indigo-300 group-hover:text-indigo-200">
+                            <span className="font-medium">Explore More</span>
+                            <ArrowRight className="transform group-hover:translate-x-1 transition duration-300" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+
+                    {/* Favourite Icon */}
+                    <button
+                      onClick={() => toggleFavourite(favourite)}
+                      className="absolute top-4 right-4 p-2 bg-gray-700/50 rounded-full hover:bg-gray-700/70 transition-colors duration-300"
+                    >
+                      <Heart
+                        className={`w-6 h-6 ${
+                          profileData.favourites.includes(favourite)
+                            ? "text-red-500 fill-red-500"
+                            : "text-gray-300"
+                        }`}
+                      />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             <div className="flex justify-end space-x-4 mt-4">
               {isEditing ? (
