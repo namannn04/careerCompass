@@ -79,10 +79,30 @@ body, html {
 
   .card {
     margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
   }
 
   .hidden-before-animation {
     opacity: 1;
     visibility: visible;
+  }
+
+  .card h2 {
+    font-size: 2rem;
+  }
+
+  .card p {
+    font-size: 1rem;
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
   }
 }
