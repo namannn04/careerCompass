@@ -10,7 +10,7 @@ const InputField = ({ name, type, placeholder, value, onChange, icon: Icon }) =>
     <input
       type={type}
       name={name}
-      className="w-full pl-12 py-4 border border-gray-300 rounded-lg bg-white/50 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+      className="w-full pl-12 py-4 border border-gray-300 rounded-lg bg-white/50 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-[#875BC9] focus:border-transparent"
       placeholder={placeholder}
       value={value}
       onChange={onChange}
@@ -84,9 +84,12 @@ const Contact = () => {
         transition={{ duration: 0.5 }}
         className="w-full max-w-3xl p-8 rounded-2xl bg-white/30 backdrop-blur-md shadow-2xl"
       >
-        <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-[#fcb326] text-center mb-8">
-          Contact Us
+        <h2 className="text-4xl font-extrabold text-center text-[#fcb326] mb-4">
+          Let's Connect!
         </h2>
+        <p className="text-center text-lg font-bold text-[#fcb326] mb-8">
+          Have a question? Drop us a message, and we'll get back to you soon.
+        </p>
         <form onSubmit={handleSubmit} className="space-y-6">
           <InputField
             name="name"
@@ -160,7 +163,7 @@ const Contact = () => {
           <textarea
             name="message"
             rows="5"
-            className="w-full p-4 border border-gray-300 rounded-lg bg-white/50 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+            className="w-full p-4 border border-gray-300 rounded-lg bg-white/50 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-[#875BC9] focus:border-transparent"
             placeholder="Your Message"
             value={formState.message}
             onChange={handleChange}
@@ -174,7 +177,7 @@ const Contact = () => {
             className={`w-full py-4 text-lg font-bold rounded-lg transition-all ${
               isSubmitting
                 ? "bg-gray-300 cursor-not-allowed"
-                : "bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:shadow-lg hover:shadow-pink-500/50"
+                : "bg-gradient-to-r from-pink-500 to-[#875BC9] text-white hover:shadow-lg hover:shadow-[#fcb326]"
             }`}
           >
             {isSubmitting ? "Sending..." : "Send Message"}
