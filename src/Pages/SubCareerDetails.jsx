@@ -1,57 +1,75 @@
-'use client'
+"use client";
 
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper/modules'
-import { motion } from "framer-motion"
-import { Lightbulb, Book, GraduationCap } from 'lucide-react'
-import blogData from "../Components/Blog/blogData"
-import BlogPost from "../Components/Blog/BlogPost"
-import Flowchart from "../Components/Career/flow"
-import Navbar from "../Components/Navbar"
-import Footer from "../Components/Footer/Footer"
-import { db } from '../../backend/firestore'
-import { collection, query, where, getDocs } from 'firebase/firestore'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import { motion } from "framer-motion";
+import { Lightbulb, Book, GraduationCap } from "lucide-react";
+// import blogData from "../Components/Blog/blogData"
+import BlogPost from "../Components/Blog/BlogPost";
+import Flowchart from "../Components/Career/flow";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer/Footer";
+import { db } from "../../backend/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
-import 'swiper/css'
-import 'swiper/css/autoplay'
+import "swiper/css";
+import "swiper/css/autoplay";
 
 export default function CareerDetail() {
-  const { careerName } = useParams()
-  const [career, setCareer] = useState(null)
-  const [showBlog, setShowBlog] = useState(false)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const { careerName } = useParams();
+  const [career, setCareer] = useState(null);
+  const [blogData, setBlogData] = useState(null);
+  const [showBlog, setShowBlog] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchCareerData = async () => {
-      try {
-        const careersRef = collection(db, 'careers')
-        const q = query(careersRef, where('careerName', '==', careerName))
-        const querySnapshot = await getDocs(q)
-
-        if (!querySnapshot.empty) {
-          setCareer(querySnapshot.docs[0].data())
-        } else {
-          setError(`Career "${careerName}" not found. Please check the URL and try again.`)
-        }
-      } catch (error) {
-        setError('An error occurred while fetching the career data. Please try again later.')
-      } finally {
-        setLoading(false)
-      }
+    if (!careerName) {
+      setError("Career name is undefined.");
+      setLoading(false);
+      return;
     }
 
-    fetchCareerData()
-  }, [careerName])
+    const fetchCareerData = async () => {
+      try {
+        const careersRef = collection(db, 'careers');
+        const q = query(careersRef, where('careerName', '==', careerName));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+          setCareer(querySnapshot.docs[0].data());
+
+          // Fetch associated blog data here
+          const blogRef = collection(db, 'blogs');
+          const blogQuery = query(blogRef, where('careerName', '==', careerName));
+          const blogSnapshot = await getDocs(blogQuery);
+
+          if (!blogSnapshot.empty) {
+            setBlogData(blogSnapshot.docs[0].data());
+          } else {
+            setError("Blog not found for this career.");
+          }
+        } else {
+          setError(`Career "${careerName}" not found. Please check the URL and try again.`);
+        }
+      } catch (error) {
+        setError('An error occurred while fetching the career or blog data. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCareerData();
+  }, [careerName]);
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin" />
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -61,19 +79,19 @@ export default function CareerDetail() {
           {error}
         </div>
       </div>
-    )
+    );
   }
 
   return (
     <div className="min-h-screen text-gray-100">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-12">
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-7xl leading-tight font-bold text-center mt-9 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600"
-          >
+        >
           {careerName}
         </motion.h1>
 
@@ -85,18 +103,20 @@ export default function CareerDetail() {
             <Book className="w-8 h-8 text-amber-400" />
             Learning Resources
           </h2>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {/* Online Resources */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="bg-gray-800/50 rounded-xl p-6 border border-gray-700/50 backdrop-blur"
             >
-              <h3 className="text-2xl font-medium mb-4 text-amber-400">Online Resources</h3>
+              <h3 className="text-2xl font-medium mb-4 text-amber-400">
+                Online Resources
+              </h3>
               <div className="space-y-3">
                 {career.resources?.online?.map((resource, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="p-4 bg-gray-800 rounded-lg hover:bg-gray-700/50 transition-colors cursor-pointer"
                   >
@@ -107,15 +127,17 @@ export default function CareerDetail() {
             </motion.div>
 
             {/* Offline Resources */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               className="bg-gray-800/50 rounded-xl p-6 border border-gray-700/50 backdrop-blur"
             >
-              <h3 className="text-2xl font-medium mb-4 text-amber-400">Offline Resources</h3>
+              <h3 className="text-2xl font-medium mb-4 text-amber-400">
+                Offline Resources
+              </h3>
               <div className="space-y-3">
                 {career.resources?.offline?.map((resource, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="p-4 bg-gray-800 rounded-lg hover:bg-gray-700/50 transition-colors cursor-pointer"
                   >
@@ -149,19 +171,23 @@ export default function CareerDetail() {
             >
               {career.skillsRequired.map((skill, index) => (
                 <SwiperSlide key={index}>
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 }}
                     className="bg-gray-800 p-6 rounded-xl border border-amber-400/20 backdrop-blur hover:border-amber-400/40 transition-colors"
                   >
-                    <div className="text-lg font-medium text-center">{skill}</div>
+                    <div className="text-lg font-medium text-center">
+                      {skill}
+                    </div>
                   </motion.div>
                 </SwiperSlide>
               ))}
             </Swiper>
           ) : (
-            <div className="text-center text-gray-400">No skills data available.</div>
+            <div className="text-center text-gray-400">
+              No skills data available.
+            </div>
           )}
         </section>
 
@@ -174,8 +200,8 @@ export default function CareerDetail() {
             {showBlog ? "Hide Blog" : "Read the Blog"}
           </button>
 
-          {showBlog && (
-            <motion.div 
+          {showBlog && blogData && (
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="mt-8"
@@ -196,6 +222,5 @@ export default function CareerDetail() {
 
       <Footer />
     </div>
-  )
+  );
 }
-
