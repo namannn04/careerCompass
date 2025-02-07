@@ -16,9 +16,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 
-export async function getBlogForCareer(careerId) {
+export async function getBlogForCareer(careerName) {
   const blogsCollection = collection(db, "blogs")
-  const q = query(blogsCollection, where("careerId", "==", careerId))
+  const q = query(blogsCollection, where("careerName", "==", careerName))
 
   try {
     const querySnapshot = await getDocs(q)
@@ -26,7 +26,7 @@ export async function getBlogForCareer(careerId) {
       const blogDoc = querySnapshot.docs[0]
       return { id: blogDoc.id, ...blogDoc.data() }
     } else {
-      console.log(`No blog found for career: ${careerId}`)
+      console.log(`No blog found for career: ${careerName}`)
       return null
     }
   } catch (error) {
