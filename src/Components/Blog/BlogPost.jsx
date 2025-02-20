@@ -1,27 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
-const BlogPost = ({ title, author, data, content, quote, quoteAuth, head }) => {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [scrollY, setScrollY] = useState(0);
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { getBlogForCareer } from "../../../backend/getBlog"
+
+const BlogPost = ({ careerId }) => {
+  const [blogData, setBlogData] = useState(null)
+  const [activeIndex, setActiveIndex] = useState(null)
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const fetchBlogData = async () => {
+      const data = await getBlogForCareer(careerId)
+      setBlogData(data)
+    }
+    fetchBlogData()
+  }, [careerId])
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  if (!blogData) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className="min-h-screen text-white bg-[#1c1c1c]">
-      <motion.header 
+      <motion.header
         className="w-full py-16"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto text-center mt-9">
-          <h1 className="text-7xl md:text-6xl text-[#fcb326] font-bold mb-[7rem]">{title}</h1>
-          <motion.div 
+          <h1 className="text-7xl md:text-6xl text-[#fcb326] font-bold mb-[7rem]">{blogData.title}</h1>
+          <motion.div
             className="mb-[5rem] mt-9 p-8 bg-[#2a2a2a] rounded-lg shadow-lg border-2 border-[#fcb326]/20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -29,12 +44,12 @@ const BlogPost = ({ title, author, data, content, quote, quoteAuth, head }) => {
           >
             <blockquote className="text-4xl italic text-gray-300 mb-6 relative">
               <span className="absolute top-0 left-0 text-4xl text-[#fcb326]">"</span>
-              <p className="ml-8">{quote}</p>
+              <p className="ml-8">{blogData.quote}</p>
               <span className="absolute bottom-0 right-0 text-4xl text-[#fcb326]">"</span>
             </blockquote>
-            <p className="text-right text-lg text-[#fcb326]">— {quoteAuth}</p>
+            <p className="text-right text-lg text-[#fcb326]">— {blogData.quoteAuth}</p>
           </motion.div>
-          <p className="text-2xl text-gray-300">{data}</p>
+          <p className="text-2xl text-gray-300">{blogData.data}</p>
         </div>
       </motion.header>
 
@@ -45,14 +60,14 @@ const BlogPost = ({ title, author, data, content, quote, quoteAuth, head }) => {
         transition={{ delay: 0.6, duration: 0.6 }}
       >
         <div className="w-1/4 h-px bg-[#fcb326]/30"></div>
-        <p className="mx-4 text-xl text-[#fcb326]">By {author}</p>
+        <p className="mx-4 text-xl text-[#fcb326]">By {blogData.author}</p>
         <div className="w-1/4 h-px bg-[#fcb326]/30"></div>
       </motion.div>
 
       <main className="w-full px-4 py-14">
         <div className="max-w-9xl mx-auto">
           <div className="space-y-8">
-            {content.map((section, index) => (
+            {blogData.content.map((section, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
@@ -82,23 +97,13 @@ const BlogPost = ({ title, author, data, content, quote, quoteAuth, head }) => {
                   {activeIndex === index && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
+                      animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
                     >
                       <div className="mt-6 pl-14">
                         <div className="h-px w-full bg-[#fcb326]/20 mb-6"></div>
                         <p className="text-xl text-gray-300 leading-relaxed">{section.answer}</p>
-                        {section.imageUrl && (
-                          <motion.img
-                            src={section.imageUrl}
-                            alt=""
-                            className="w-full h-auto object-cover rounded-lg shadow-lg mt-6 border-2 border-[#fcb326]/20"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5 }}
-                          />
-                        )}
                       </div>
                     </motion.div>
                   )}
@@ -115,13 +120,13 @@ const BlogPost = ({ title, author, data, content, quote, quoteAuth, head }) => {
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: scrollY > 200 ? 1 : 0, y: scrollY > 200 ? 0 : 20 }}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         ↑
       </motion.button>
     </div>
-  );
-};
+  )
+}
 
-export default BlogPost;
+export default BlogPost
 
