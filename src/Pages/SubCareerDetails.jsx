@@ -48,9 +48,7 @@ export default function CareerDetail() {
 
           if (!blogSnapshot.empty) {
             setBlogData(blogSnapshot.docs[0].data());
-          } else {
-            setError("Blog not found for this career.");
-          }
+          } 
         } else {
           setError(`Career "${careerName}" not found. Please check the URL and try again.`);
         }
@@ -206,7 +204,7 @@ export default function CareerDetail() {
               animate={{ opacity: 1, y: 0 }}
               className="mt-8"
             >
-              <BlogPost
+              <BlogPost careerName={careerName}
                 title={blogData.title}
                 author={blogData.author}
                 career={careerName}

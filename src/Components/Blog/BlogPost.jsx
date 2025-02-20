@@ -1,20 +1,32 @@
-
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 import { getBlogForCareer } from "../../../backend/getBlog"
+import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
-const BlogPost = ({ careerId }) => {
+const BlogPost = ({ careerName }) => {
   const [blogData, setBlogData] = useState(null)
   const [activeIndex, setActiveIndex] = useState(null)
   const [scrollY, setScrollY] = useState(0)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchBlogData = async () => {
-      const data = await getBlogForCareer(careerId)
-      setBlogData(data)
+      if (careerName) {
+        try {
+          console.log("Fetching blog data for career:", careerName)
+          const data = await getBlogForCareer(careerName)
+          console.log("Received blog data:", data)
+          setBlogData(data)
+        } catch (err) {
+          console.error("Error fetching blog data:", err)
+          setError("Failed to load blog data. Please try again later.")
+        }
+      } else {
+        console.log("No careerName provided to BlogPost")
+      }
     }
     fetchBlogData()
-  }, [careerId])
+  }, [careerName])
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -22,12 +34,19 @@ const BlogPost = ({ careerId }) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  if (error) {
+    return <div className="text-red-500">{error}</div>
+  }
+
+  if (!careerName) {
+    return <div className="text-yellow-500">No career selected. Please choose a career to view the blog.</div>
+  }
+
   if (!blogData) {
     return <div>Loading...</div>
   }
-
   return (
-    <div className="min-h-screen text-white bg-[#1c1c1c]">
+    <div className="min-h-screen text-white">
       <motion.header
         className="w-full py-16"
         initial={{ opacity: 0, y: -50 }}
