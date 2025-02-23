@@ -70,7 +70,7 @@ export default function About() {
     <div
       ref={sectionRef}
       id="about"
-      className={`relative max-w-screen-xl mx-auto px-4 my-40 min-h-screen ${
+      className={`relative w-[80%]py-auto my-40 min-h-screen ${
         animationPlayed || window.innerWidth <= 768
           ? "animate-gather-once"
           : "hidden-before-animation"

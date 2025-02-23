@@ -115,7 +115,7 @@ const Career = () => {
               <img
                 src={mainImage}
                 alt="Career exploration"
-                className="max-w-[35rem] h-auto"
+                className="md:max-w-[35rem] h-auto"
               />
             </motion.div>
             <motion.div
