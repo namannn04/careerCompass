@@ -70,7 +70,7 @@ export default function About() {
     <div
       ref={sectionRef}
       id="about"
-      className={`relative w-[80%]py-auto my-40 min-h-screen ${
+      className={`relative md:max-w-screen-xl max-w-screen-[90%] mx-auto  my-40 min-h-screen ${
         animationPlayed || window.innerWidth <= 768
           ? "animate-gather-once"
           : "hidden-before-animation"
@@ -125,8 +125,8 @@ export default function About() {
         </Card>
 
         <Card className="bg-indigo-100 row-span-2 text-indigo-700">
-          <h3 className="text-3xl font-bold mb-2 text-blue-800 flex justify-between">
-            Community Chatbox <Heart className="h-16 w-16 text-indigo-500 mb-4" />
+          <h3 className="text-4xl font-bold mb-2 text-blue-800 flex justify-between">
+            Strategies <Heart className="h-16 w-16 text-indigo-500 mb-4" />
           </h3>
           <p className="mb-4 text-gray-600 text-lg">
             Our strategies are designed to help you enhance focus, optimize your
