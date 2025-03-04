@@ -96,16 +96,16 @@ export default function Navbar() {
 
       {/* Desktop View */}
       <ul className="hidden md:flex space-x-10">
-        <li className="group relative">
+        <li className="group pt-2 relative">
           <HashLink
             smooth
             to="/#about"
             className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
               activeLink === "/#about" ? "text-[#fcb326]" : ""
             }`}
-            style={{
-              fontFamily: "'Sevillana', cursive",
-            }}
+            // style={{
+            //   fontFamily: "'Sevillana', cursive",
+            // }}
             onClick={() => handleLinkClick("/#about")}
           >
             About
@@ -116,15 +116,15 @@ export default function Navbar() {
             ></span>
           </HashLink>
         </li>
-        <li className="group relative">
+        <li className="group pt-2 relative">
           <Link
             to="/Career"
             className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
               activeLink === "/Career" ? "text-[#fcb326]" : ""
             }`}
-            style={{
-              fontFamily: "'Sevillana', cursive",
-            }}
+            // style={{
+            //   fontFamily: "'Sevillana', cursive",
+            // }}
             onClick={() => handleLinkClick("/Career")}
           >
             Explore
@@ -135,15 +135,15 @@ export default function Navbar() {
             ></span>
           </Link>
         </li>
-        <li className="group relative">
+        <li className="group pt-2 relative">
           <Link
             to="/strategies"
             className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
               activeLink === "/strategies" ? "text-[#fcb326]" : ""
             }`}
-            style={{
-              fontFamily: "'Sevillana', cursive",
-            }}
+            // style={{
+            //   fontFamily: "'Sevillana', cursive",
+            // }}
             onClick={() => handleLinkClick("/strategies")}
           >
             Strategies
@@ -154,16 +154,16 @@ export default function Navbar() {
             ></span>
           </Link>
         </li>
-        <li className="group relative">
+        <li className="group pt-2 relative">
           <HashLink
             smooth
             to="/#contact"
             className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
               activeLink === "/#contact" ? "text-[#fcb326]" : ""
             }`}
-            style={{
-              fontFamily: "'Sevillana', cursive",
-            }}
+            // style={{
+            //   fontFamily: "'Sevillana', cursive",
+            // }}
             onClick={() => handleLinkClick("/#contact")}
           >
             Contact
