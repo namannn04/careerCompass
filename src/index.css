@@ -1,3 +1,8 @@
+/* @import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+} */
+
 body {
   padding: 0;
   margin: 0;
@@ -25,7 +30,3 @@ main {
   }
 }
 
-@import "tailwindcss";
-@plugin "daisyui" {
-  themes: all;
-}
