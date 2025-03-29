@@ -185,7 +185,7 @@ export default function Navbar() {
             // }}
             onClick={() => handleLinkClick("/chatbot")}
           >
-            AI ASS
+            Guru AI
             <span
               className={`absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left ${
                 activeLink === "/#contact" ? "scale-x-100" : "scale-x-0"
@@ -390,6 +390,32 @@ export default function Navbar() {
               onClick={() => handleLinkClick("/strategies")}
             >
               Strategies
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/counselling"
+              className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
+                activeLink === "/counselling"
+                  ? "bg-[#fcb326] text-gray-900"
+                  : "hover:text-[#fcb326]"
+              }`}
+              onClick={() => handleLinkClick("/counselling")}
+            >
+              Counselling
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/chatbot"
+              className={`text-lg font-semibold px-6 py-3 rounded-full transition duration-300 ease-in-out ${
+                activeLink === "/chatbot"
+                  ? "bg-[#fcb326] text-gray-900"
+                  : "hover:text-[#fcb326]"
+              }`}
+              onClick={() => handleLinkClick("/chatbot")}
+            >
+              Guru AI
             </Link>
           </li>
           <li>
