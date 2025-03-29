@@ -157,16 +157,16 @@ export default function Navbar() {
         <li className="group pt-2 relative">
           <HashLink
             smooth
-            to="/#contact"
+            to="/chatbot"
             className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
-              activeLink === "/#contact" ? "text-[#fcb326]" : ""
+              activeLink === "/chatbot" ? "text-[#fcb326]" : ""
             }`}
             // style={{
             //   fontFamily: "'Sevillana', cursive",
             // }}
-            onClick={() => handleLinkClick("/#contact")}
+            onClick={() => handleLinkClick("/chatbot")}
           >
-            Contact
+            AI ASS
             <span
               className={`absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left ${
                 activeLink === "/#contact" ? "scale-x-100" : "scale-x-0"
