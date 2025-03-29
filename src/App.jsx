@@ -10,6 +10,8 @@ import Strategies from "./Pages/Strategies";
 import ScrollToTop from "./Components/ui/ScrollToTop";
 import AuthPage from "./Pages/AuthPage";
 import ProfilePage from "./Pages/ProfilePage";
+import Chatbot from "./Components/Chatbot";
+import Counselling from "./Pages/Counselling";
 // import useThemeStore from "./Context/useThemeStroe";
 // import Settings from "./Components/Settings";
 
@@ -29,6 +31,8 @@ function App() {
           <Route path="/strategies" element={<Strategies />} />
           <Route path="/authentication" element={<AuthPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/chatbot" element={<Chatbot />} />
+          <Route path="/counselling" element={<Counselling />} />
           {/* <Route path="/setting" element={<Settings />} /> */}
         </Routes>
       </Router>
