@@ -12,6 +12,7 @@ import AuthPage from "./Pages/AuthPage";
 import ProfilePage from "./Pages/ProfilePage";
 import Chatbot from "./Components/Chatbot";
 import Counselling from "./Pages/Counselling";
+import AptosWallet from "./Components/AptosWallet";
 // import useThemeStore from "./Context/useThemeStroe";
 // import Settings from "./Components/Settings";
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/counselling" element={<Counselling />} />
+          <Route path="/wallet" element={<AptosWallet />} />
           {/* <Route path="/setting" element={<Settings />} /> */}
         </Routes>
       </Router>

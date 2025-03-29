@@ -130,17 +130,17 @@ const ProfilePage = () => {
         </div>
       )}
       <div className="min-h-screen bg-transparent flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl w-full bg-white shadow-2xl rounded-xl border border-[#fcb326] overflow-hidden">
+        <div className="max-w-4xl w-full bg-gradient-to-br from-black/70 to-purple-800/70  shadow-2xl rounded-xl border border-purple-800 overflow-hidden">
           {/* Profile */}
-          <div className="flex flex-col items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 text-white py-10">
-            <div className="w-28 h-28 rounded-full bg-gradient-to-r from-gray-700 via-gray-600 to-gray-500 flex items-center justify-center shadow-lg border-4 border-[#fcb326]">
+          <div className="flex flex-col items-center justify-center bg-transparent text-white py-10">
+            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-purple-700  to-gray-900 flex items-center justify-center shadow-lg border-4 border-[#fcb326]">
               <span className="text-5xl font-extrabold text-[#fcb326]">
                 {profileData.displayName
                   ? profileData.displayName[0].toUpperCase()
                   : "P"}
               </span>
             </div>
-            <h2 className="mt-4 text-3xl font-semibold">
+            <h2 className="mt-4 text-3xl font-semibold text-[#fcb326]">
               {profileData.displayName || "Your Name"}
             </h2>
             <p className="text-md italic text-gray-300 mt-1">
@@ -149,7 +149,7 @@ const ProfilePage = () => {
           </div>
 
           {/* Profile Details */}
-          <div className="p-8 space-y-8 bg-[#bb974e]">
+          <div className="p-8 space-y-8 bg-transparent">
             {error && (
               <p className="text-red-500 text-center font-medium">{error}</p>
             )}
@@ -171,7 +171,7 @@ const ProfilePage = () => {
                   { label: "Pursuing", name: "pursuing", type: "text" },
                 ].map(({ label, name, type, rows }) => (
                   <div key={name}>
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-[#fcb326]">
                       {label}
                     </label>
                     {type === "textarea" ? (
@@ -224,7 +224,7 @@ const ProfilePage = () => {
 
             {/* Favourites Section */}
             <div className="mt-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+              <h3 className="text-2xl font-bold text-[#fcb326] mb-4">
                 Favourites
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -234,7 +234,7 @@ const ProfilePage = () => {
                     className="group relative transition-transform transform hover:scale-105 hover:shadow-2xl"
                   >
                     <Link to={`/career/${encodeURIComponent(favourite)}`}>
-                      <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700 flex flex-col justify-between min-h-[300px] h-auto">
+                      <div className="bg-purple-800/30 rounded-lg overflow-hidden shadow-lg border border-gray-700 flex flex-col justify-between min-h-[300px] h-auto">
                         {/* Card Content */}
                         <div className="p-6 flex-grow flex flex-col">
                           <div className="w-12 h-12 bg-indigo-900/50 rounded-full flex items-center justify-center mb-4">
@@ -242,7 +242,7 @@ const ProfilePage = () => {
                               {favourite.charAt(0)}
                             </span>
                           </div>
-                          <h3 className="text-xl font-semibold text-white mb-2 line-clamp-2">
+                          <h3 className="text-xl font-semibold text-[#fcb326] mb-2 line-clamp-2">
                             {favourite}
                           </h3>
                           <p className="text-gray-400 line-clamp-3 flex-grow">
@@ -255,7 +255,7 @@ const ProfilePage = () => {
                         {/* Card Footer */}
                         <div className="bg-indigo-900/30 p-3 group-hover:bg-indigo-900/50 transition-colors duration-300">
                           <div className="flex items-center justify-between text-indigo-300 group-hover:text-indigo-200">
-                            <span className="font-medium">Explore More</span>
+                            <span className="font-medium text-[#fcb326] ">Explore More</span>
                             <ArrowRight className="transform group-hover:translate-x-1 transition duration-300" />
                           </div>
                         </div>
