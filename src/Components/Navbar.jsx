@@ -174,7 +174,7 @@ export default function Navbar() {
             ></span>
           </HashLink>
         </li>
-        <li className="group pt-2 relative">
+        {/* <li className="group pt-2 relative">
           <Link
             to="/setting"
             className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
@@ -192,7 +192,7 @@ export default function Navbar() {
               }`}
             ></span>
           </Link>
-        </li>
+        </li> */}
         <li className="relative group">
           <button
             className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center overflow-hidden focus:outline-none shadow-lg hover:scale-105 transition-transform"
