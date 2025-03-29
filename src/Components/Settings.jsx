@@ -1,5 +1,5 @@
 import { THEMES } from "../Constants/index.js";
-import { useThemeStore } from "../Context/useThemeStroe.js";
+import useThemeStore from "../Context/useThemeStroe.js";
 const Settings = () => {
   const { theme, setTheme } = useThemeStore();
 
