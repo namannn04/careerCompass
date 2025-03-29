@@ -155,6 +155,25 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="group pt-2 relative">
+          <Link
+            to="/counselling"
+            className={`relative text-xl font-semibold hover:text-[#fcb326] transition duration-300 ease-out pb-1 ${
+              activeLink === "/counselling" ? "text-[#fcb326]" : ""
+            }`}
+            // style={{
+            //   fontFamily: "'Sevillana', cursive",
+            // }}
+            onClick={() => handleLinkClick("/counselling")}
+          >
+            Counselling
+            <span
+              className={`absolute left-0 bottom-0 w-full h-[2px] bg-[#fcb326]  scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left ${
+                activeLink === "/counselling" ? "scale-x-100" : "scale-x-0"
+              }`}
+            ></span>
+          </Link>
+        </li>
+        <li className="group pt-2 relative">
           <HashLink
             smooth
             to="/chatbot"
