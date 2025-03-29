@@ -10,6 +10,8 @@ import Strategies from "./Pages/Strategies";
 import ScrollToTop from "./Components/ui/ScrollToTop";
 import AuthPage from "./Pages/AuthPage";
 import ProfilePage from "./Pages/ProfilePage";
+import Chatbot from "./Components/Chatbot";
+import AptosWallet from "./Components/AptosWallet";
 // import useThemeStore from "./Context/useThemeStroe";
 // import Settings from "./Components/Settings";
 
@@ -20,6 +22,7 @@ function App() {
       <Router>
         <Background />
         <ScrollToTop />
+        {/* <AptosWallet/> */}
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/career" element={<Career />} />
@@ -28,6 +31,7 @@ function App() {
           <Route path="/strategies" element={<Strategies />} />
           <Route path="/authentication" element={<AuthPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/chatbot" element={<Chatbot />} />
           {/* <Route path="/setting" element={<Settings />} /> */}
         </Routes>
       </Router>
