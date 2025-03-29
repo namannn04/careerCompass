@@ -1,5 +1,5 @@
 import { Card } from "../Components/ui/Card";
-import { Button } from "../Components/ui/button";
+import { Button } from "../Components/ui/Button";
 import counsel from "../assets/careers/counsel.png";
 import { useState } from "react";
 
