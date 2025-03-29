@@ -1,4 +1,4 @@
-import { Card } from "../Components/ui/card";
+import { Card } from "../Components/ui/Card";
 import { Button } from "../Components/ui/button";
 import counsel from "../assets/careers/counsel.png";
 import { useState } from "react";
