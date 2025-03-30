@@ -13,17 +13,38 @@ import ProfilePage from "./Pages/ProfilePage";
 import Chatbot from "./Components/Chatbot";
 import Counselling from "./Pages/Counselling";
 import AptosWallet from "./Components/AptosWallet";
+import { useState } from "react";
+import "./Admin/admin-dashboard.css";
+import LoginForm from "./Admin/LoginForm";
+import AdminDashboard from "./Admin/AdminDashboard";
+import AccessDenied from "./Admin/AccessDenied";
 // import useThemeStore from "./Context/useThemeStroe";
 // import Settings from "./Components/Settings";
 
 function App() {
   // const { theme } = useThemeStore();
+  const [authState, setAuthState] = useState("login"); // 'login', 'authenticated', 'denied'
+
+  const handleLogin = () => {
+    setAuthState("authenticated");
+  };
+
+  const handleLogout = () => {
+    setAuthState("login");
+  };
+
+  const handleAccessDenied = () => {
+    setAuthState("denied");
+  };
+
+  const handleBackToLogin = () => {
+    setAuthState("login");
+  };
   return (
-    <div >
+    <div>
       <Router>
         <Background />
         <ScrollToTop />
-        {/* <AptosWallet/> */}
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/career" element={<Career />} />
@@ -34,7 +55,22 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/counselling" element={<Counselling />} />
-          <Route path="/wallet" element={<AptosWallet />} />
+          <Route
+            path="/admin"
+            element={
+              <div className="App">
+                {authState === "login" && <LoginForm onLogin={handleLogin} />}
+
+                {authState === "authenticated" && (
+                  <AdminDashboard onLogout={handleLogout} />
+                )}
+
+                {authState === "denied" && (
+                  <AccessDenied onBackToLogin={handleBackToLogin} />
+                )}
+              </div>
+            }
+          />
           {/* <Route path="/setting" element={<Settings />} /> */}
         </Routes>
       </Router>
