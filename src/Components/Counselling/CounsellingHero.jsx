@@ -1,4 +1,12 @@
 "use client";
+import counsel from "../../assets/careers/counsel.jpg";
+import c1 from "../../assets/careers/c1.jpg";
+import c2 from "../../assets/careers/c2.jpg";
+import c3 from "../../assets/careers/c3.jpg";
+import c4 from "../../assets/careers/c4.jpg";
+import c5 from "../../assets/careers/c5.jpg";
+import c7 from "../../assets/careers/c7.jpg";
+
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,7 +43,13 @@ export default function CounsellingHero() {
 
     return () => clearInterval(interval);
   }, []);
-
+  const profileImages = [
+    "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1567189675890-1f60614d27a2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  ];
   const counsellingReasons = [
     {
       id: 1,
@@ -48,7 +62,7 @@ export default function CounsellingHero() {
       lightColor: "bg-amber-50",
       textColor: "text-[#fcb326]",
       borderColor: "border-amber-200",
-      image: "/placeholder.svg?height=400&width=600",
+      image: c1,
     },
     {
       id: 2,
@@ -61,7 +75,7 @@ export default function CounsellingHero() {
       lightColor: "bg-purple-50",
       textColor: "text-[#875BC9]",
       borderColor: "border-purple-200",
-      image: "/placeholder.svg?height=400&width=600",
+      image: c2,
     },
     {
       id: 3,
@@ -74,7 +88,7 @@ export default function CounsellingHero() {
       lightColor: "bg-amber-50",
       textColor: "text-[#fcb326]",
       borderColor: "border-amber-200",
-      image: "/placeholder.svg?height=400&width=600",
+      image: c3,
     },
     {
       id: 4,
@@ -87,7 +101,7 @@ export default function CounsellingHero() {
       lightColor: "bg-purple-50",
       textColor: "text-[#875BC9]",
       borderColor: "border-purple-200",
-      image: "/placeholder.svg?height=400&width=600",
+      image: c4,
     },
     {
       id: 5,
@@ -100,7 +114,7 @@ export default function CounsellingHero() {
       lightColor: "bg-amber-50",
       textColor: "text-[#fcb326]",
       borderColor: "border-amber-200",
-      image: "/placeholder.svg?height=400&width=600",
+      image: c5,
     },
     {
       id: 6,
@@ -113,7 +127,7 @@ export default function CounsellingHero() {
       lightColor: "bg-purple-50",
       textColor: "text-[#875BC9]",
       borderColor: "border-purple-200",
-      image: "/placeholder.svg?height=400&width=600",
+      image: c7,
     },
   ];
 
@@ -143,7 +157,6 @@ export default function CounsellingHero() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7 }}
                 >
-
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#fcb326] to-[#fcb326]/80">
                       Personalized Career
@@ -196,8 +209,8 @@ export default function CounsellingHero() {
                           className="w-10 h-10 rounded-full border-2 border-slate-900 overflow-hidden"
                         >
                           <img
-                            src={`/placeholder.svg?height=40&width=40&text=${i}`}
-                            alt={`Student ${i}`}
+                            src={profileImages[i] || "/placeholder.svg"}
+                            alt={"img"}
                             width={40}
                             height={40}
                             className="w-full h-full object-cover"
@@ -218,13 +231,13 @@ export default function CounsellingHero() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: 0.2 }}
                 >
-                  <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+                  <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border ">
                     <img
-                      src="/placeholder.svg?height=600&width=800&text=Career+Counselling"
-                      width={800}
-                      height={600}
+                      src={counsel}
+                      width={500}
+                      height={500}
                       alt="Career counselling session"
-                      className="w-full h-auto object-cover"
+                      className="w-[730px] h-[520px] object-cover rounded-xl"
                       priority
                     />
 
@@ -263,19 +276,6 @@ export default function CounsellingHero() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Video play button */}
-                  <motion.div
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center cursor-pointer border border-white/20 group">
-                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-r from-[#fcb326] to-[#875BC9] flex items-center justify-center shadow-lg group-hover:from-[#875BC9] group-hover:to-[#fcb326] transition-all duration-300">
-                        <Play className="w-6 h-6 text-white fill-white ml-1" />
-                      </div>
-                    </div>
-                  </motion.div>
 
                   {/* Decorative elements */}
                   <div className="absolute -top-10 -left-10 w-20 h-20 rounded-full border border-[#fcb326]/20 flex items-center justify-center">

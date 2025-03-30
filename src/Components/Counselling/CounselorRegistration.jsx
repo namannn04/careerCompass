@@ -133,7 +133,7 @@ export default function CounselorRegistration() {
                   Join Our Team
                 </div>
                 <h2 className="mb-4 text-4xl font-bold md:text-5xl leading-tight">
-                  Become a <span className="text-[#fcb326]">Counselor</span>
+                  Become a <span className="text-[#fcb326]">Counsellor</span>
                 </h2>
                 <p className="mb-8 opacity-90 text-lg">
                   Share your expertise and guide students toward their dream careers. Make a real difference in their
@@ -159,7 +159,7 @@ export default function CounselorRegistration() {
                   size="lg"
                   className="bg-[#fcb326] text-black font-semibold hover:bg-[#fcb326]/90 transition-all duration-300 transform hover:scale-105 hover:shadow-xl px-8 py-6 text-lg rounded-xl"
                 >
-                  Register as a Counselor
+                  Register as a Counsellor
                 </Button>
               </div>
             </div>
@@ -196,7 +196,7 @@ export default function CounselorRegistration() {
               className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-xl bg-black p-8 text-white shadow-2xl"
             >
               <div className="mb-8 flex items-center justify-between border-b border-gray-800 pb-4">
-                <h3 className="text-3xl font-bold text-[#fcb326]">Counselor Registration</h3>
+                <h3 className="text-3xl font-bold text-[#fcb326]">Counsellor Registration</h3>
                 <Button
                   variant="ghost"
                   size="icon"
