@@ -12,7 +12,6 @@ import AuthPage from "./Pages/AuthPage";
 import ProfilePage from "./Pages/ProfilePage";
 import Chatbot from "./Components/Chatbot";
 import Counselling from "./Pages/Counselling";
-import AptosWallet from "./Components/AptosWallet";
 import { useState } from "react";
 import "./Admin/admin-dashboard.css";
 import LoginForm from "./Admin/LoginForm";
