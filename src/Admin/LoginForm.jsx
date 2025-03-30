@@ -12,6 +12,7 @@ function LoginForm({ onLogin }) {
   const adminAccounts = [
     { email: "sanidhya14321@gmail.com", password: "cc12345678" },
     { email: "namandadhich15592@gmail.com", password: "cc1234567" },
+    {email: "khushipawar987@gmail.com", password: "cc123"},
     { email: "admin3@example.com", password: "password3" },
     { email: "admin4@example.com", password: "password4" },
   ]
