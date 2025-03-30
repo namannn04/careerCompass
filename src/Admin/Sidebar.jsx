@@ -27,6 +27,14 @@ function Sidebar({ activeTab, setActiveTab, onLogout }) {
         >
           Counselor Approvals
         </button>
+        <button
+          className={`w-full text-left px-3 py-2 rounded-md flex items-center text-sm font-medium ${
+            activeTab === "CareersDashboard" ? "bg-purple-600 text-white" : "text-gray-300 hover:bg-gray-700/50"
+          }`}
+          onClick={() => setActiveTab("CareersDashboard")}
+        >
+          Careers
+        </button>
       </nav>
 
       <div className="mt-auto pt-4 border-t border-gray-700/50">

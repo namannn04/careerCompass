@@ -52,7 +52,7 @@ function DashboardMetrics() {
                 </div>
               </div>
               <div className="p-6 pt-4">
-                <div className="text-3xl font-bold text-white">187</div>
+                <div className="text-3xl font-bold text-white">511</div>
                 <p className="text-gray-400 text-sm mt-1">+5 new this week</p>
               </div>
             </div>
