@@ -15,14 +15,19 @@ import {
   DollarSign,
   LinkIcon,
   Image,
+  Loader2,
 } from "lucide-react"
 import { Button } from "../ui/Button"
 import { Input } from "../ui/Input"
 import Textarea from "../ui/Textarea"
 import { Label } from "../ui/Label"
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+import { thirdDb } from "../../../backend/firestore"
 
 export default function CounselorRegistration() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState({ success: false, message: "" })
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -43,38 +48,74 @@ export default function CounselorRegistration() {
   })
 
   const openModal = () => setIsModalOpen(true)
-  const closeModal = () => setIsModalOpen(false)
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSubmitStatus({ success: false, message: "" })
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Here you would typically send the data to your backend
+    setIsSubmitting(true)
 
-    // Clear form and close modal
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      profilePictureUrl: "",
-      qualification: "",
-      experience: "",
-      specialization: "",
-      certifications: "",
-      idProofUrl: "",
-      degreeUploadUrl: "",
-      availabilitySlots: "",
-      consultationFees: "",
-      feeAmount: "",
-      linkedinProfile: "",
-      testimonials: "",
-      bio: "",
-    })
-    closeModal()
+    try {
+      // Add timestamp to the form data
+      const dataToSubmit = {
+        ...formData,
+        createdAt: serverTimestamp(), // Using server timestamp for more accuracy
+        updatedAt: serverTimestamp(),
+      }
+
+      // Add document to Firestore using thirdDb
+      const docRef = await addDoc(collection(thirdDb, "counselorRegistrations"), dataToSubmit)
+
+      // Log the saved data and document ID
+      console.log("Document written with ID: ", docRef.id)
+      console.log("Saved counselor data:", dataToSubmit)
+
+      // Show success message
+      setSubmitStatus({
+        success: true,
+        message: "Registration submitted successfully! We'll review your application and get back to you soon.",
+      })
+
+      // Clear form
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        profilePictureUrl: "",
+        qualification: "",
+        experience: "",
+        specialization: "",
+        certifications: "",
+        idProofUrl: "",
+        degreeUploadUrl: "",
+        availabilitySlots: "",
+        consultationFees: "",
+        feeAmount: "",
+        linkedinProfile: "",
+        testimonials: "",
+        bio: "",
+      })
+
+      // Close modal after 3 seconds on success
+      setTimeout(() => {
+        closeModal()
+      }, 3000)
+    } catch (error) {
+      console.error("Error adding document: ", error)
+      setSubmitStatus({
+        success: false,
+        message: "An error occurred while submitting your registration. Please try again.",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -165,6 +206,16 @@ export default function CounselorRegistration() {
                   <X className="h-6 w-6" />
                 </Button>
               </div>
+
+              {submitStatus.message && (
+                <div
+                  className={`mb-6 p-4 rounded-lg ${
+                    submitStatus.success ? "bg-green-900/50 text-green-300" : "bg-red-900/50 text-red-300"
+                  }`}
+                >
+                  {submitStatus.message}
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Personal Information Section */}
@@ -435,9 +486,17 @@ export default function CounselorRegistration() {
                 <div className="flex justify-end pt-6 border-t border-gray-800">
                   <Button
                     type="submit"
-                    className="bg-[#fcb326] px-10 py-6 font-semibold text-black hover:bg-[#fcb326]/90 text-lg rounded-xl"
+                    disabled={isSubmitting}
+                    className="bg-[#fcb326] px-10 py-6 font-semibold text-black hover:bg-[#fcb326]/90 text-lg rounded-xl disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Send Request
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      "Send Request"
+                    )}
                   </Button>
                 </div>
               </form>
@@ -448,3 +507,4 @@ export default function CounselorRegistration() {
     </section>
   )
 }
+

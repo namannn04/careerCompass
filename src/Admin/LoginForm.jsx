@@ -10,8 +10,8 @@ function LoginForm({ onLogin }) {
 
   // Hardcoded admin accounts for demo
   const adminAccounts = [
-    { email: "sanidhya14321@gmail.com", password: "cc123456789" },
-    { email: "admin2@example.com", password: "password2" },
+    { email: "sanidhya14321@gmail.com", password: "cc12345678" },
+    { email: "namandadhich15592@gmail.com", password: "cc1234567" },
     { email: "admin3@example.com", password: "password3" },
     { email: "admin4@example.com", password: "password4" },
   ]
