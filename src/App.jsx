@@ -18,6 +18,7 @@ import "./Admin/admin-dashboard.css";
 import LoginForm from "./Admin/LoginForm";
 import AdminDashboard from "./Admin/AdminDashboard";
 import AccessDenied from "./Admin/AccessDenied";
+import ScheduleMeeting from "./Components/ScheduleMeeting";
 // import useThemeStore from "./Context/useThemeStroe";
 // import Settings from "./Components/Settings";
 
@@ -55,10 +56,11 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/counselling" element={<Counselling />} />
+          <Route path="/schedule" element={<ScheduleMeeting />} />
           <Route
             path="/admin"
             element={
-              <div className="App">
+              <div className="">
                 {authState === "login" && <LoginForm onLogin={handleLogin} />}
 
                 {authState === "authenticated" && (
